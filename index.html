@@ -5,162 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Financial Products Hub</title>
   <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-    body {background: linear-gradient(135deg, #f0f4ff, #f9f9f9); color: #111; padding-top: 0px;}
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    /* Header */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      line-height: 1.5;
+    }
+
+    /* Header Styling */
     header {
-      position: fixed;
+      position: sticky; /* Makes the header fixed on scroll */
       top: 0;
-      left: 0;
       width: 100%;
       background: linear-gradient(90deg, #0d6efd, #6610f2);
       color: white;
       text-align: center;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 16px 0; /* Height automatically adjusts to text */
+      font-size: 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       z-index: 1000;
-      animation: fadeInDown 1s ease;
-    }
-    header p {
-      font-size:1.1rem;
-      opacity:0.95;
-      margin:0;
     }
 
-    main {padding-top: 80px;} /* padding to avoid overlap */
-
-    /* Grid layout */
-    .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap:24px;
-      padding:20px;
-      max-width:1200px;
-      margin:auto;
+    /* Dummy content to scroll */
+    main {
+      padding: 20px;
     }
 
-    /* Card */
-    .card {
-      background:white;
-      border-radius:16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      padding:24px 18px;
-      text-align:center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow:0 12px 28px rgba(0,0,0,0.12);
-    }
-    .card img {
-      max-width:140px;
-      height:60px;
-      object-fit:contain;
-      margin-bottom:16px;
-    }
-    .card h3 {
-      margin:8px 0;
-      font-size:1.2rem;
-    }
-    .card p {
-      font-size:0.95rem;
-      color:#555;
-      margin:0 0 16px;
-    }
-    .btn {
-      display:inline-block;
-      padding:10px 20px;
-      border-radius:30px;
-      background: linear-gradient(90deg, #0d6efd, #6610f2);
-      color:white;
-      font-weight:bold;
-      text-decoration:none;
-      transition: background 0.3s ease, transform 0.2s;
-    }
-    .btn:hover {
-      background: linear-gradient(90deg, #0b5ed7, #520dc2);
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align:center;
-      padding:20px;
-      background:#f1f3f8;
-      font-size:0.9rem;
-      color:#666;
-      margin-top: 20px;
-    }
-
-    @keyframes fadeInDown {
-      0% {opacity:0; transform:translateY(-30px);}
-      100% {opacity:1; transform:translateY(0);}
-    }
-
-    @media(max-width:768px){
-      header p{ font-size:1rem; }
+    main p {
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <p>All your favorite financial products in one place</p>
+    All your favorite financial products in one place
   </header>
 
-  <main class="grid">
-    <!-- Flipkart -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Flipkart_logo.png" alt="Flipkart">
-      <h3>Flipkart</h3>
-      <p>Latest deals & electronics at great prices</p>
-      <a href="https://fktr.in/8pjvTD4" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
-
-    <!-- Myntra -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Myntra_Logo.png" alt="Myntra">
-      <h3>Myntra</h3>
-      <p>Trendy fashion & lifestyle products</p>
-      <a href="https://myntr.it/xMQuj4e" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
-
-    <!-- Nykaa -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Nykaa_Logo.png" alt="Nykaa">
-      <h3>Nykaa</h3>
-      <p>Beauty, wellness & cosmetics online</p>
-      <a href="https://myntr.it/2qWcVAd" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
-
-    <!-- Ajio -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/AJIO_Logo.png" alt="Ajio">
-      <h3>Ajio</h3>
-      <p>Fresh fashion & lifestyle for every season</p>
-      <a href="https://ajiio.in/JaZOlfU" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
-
-    <!-- Mamaearth -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Mamaearth_logo.png" alt="Mamaearth">
-      <h3>Mamaearth</h3>
-      <p>Natural skincare, haircare & baby care products</p>
-      <a href="https://bitli.in/2JBBn7z" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
-
-    <!-- DermaCo -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/The_Derma_Co_Logo.png" alt="DermaCo">
-      <h3>The Derma Co.</h3>
-      <p>Dermatologist-tested skincare essentials</p>
-      <a href="https://bitli.in/uUXfJEQ" target="_blank" rel="noopener nofollow" class="btn">Shop Now</a>
-    </div>
+  <main> 
   </main>
-
-  <footer>
-    © 2025 Financial Products Hub | Affiliate links used. We may earn a commission.
-  </footer>
 
 </body>
 </html>

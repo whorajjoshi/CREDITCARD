@@ -1,0 +1,320 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personal Loans — Credit Line</title>
+  <meta name="description" content="Compare and apply for top personal loans — features, interest rates & easy apply. Choose the best personal loan for you." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#6610f2;
+      --accent:#0d6efd;
+      --muted:#666;
+      --card-bg:#ffffff;
+      --page-bg:#f5f7fb;
+      --radius:12px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--page-bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Top header / back */
+    .topbar{
+      background:linear-gradient(90deg,var(--accent),var(--primary));
+      color:#fff;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .topbar a.logo{
+      color:#fff; text-decoration:none; font-weight:700; font-size:1.05rem;
+    }
+    .topbar .back{
+      background:rgba(255,255,255,0.12);
+      padding:8px 10px;
+      border-radius:8px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:24px auto;
+      padding:0 18px 60px;
+    }
+
+    /* Heading */
+    .heading {
+      text-align:center;
+      margin-bottom:14px;
+    }
+    .heading h1{
+      font-size:1.6rem;
+      color:var(--primary);
+      font-weight:800;
+    }
+    .heading p{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:0.95rem;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:0 6px 20px rgba(20,20,40,0.06);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(20,20,40,0.09); }
+
+    .bank-logo{
+      width:64px; height:64px; border-radius:10px; background:#f1f3f7;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; color:var(--muted); font-size:0.85rem;
+      flex-shrink:0;
+    }
+
+    .card-body{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .card-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .card-title h3{ font-size:1rem; margin:0; font-weight:700; color:#111; }
+    .card-meta{ font-size:0.88rem; color:var(--muted); margin-top:4px; }
+
+    .tag-row{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;
+    }
+    .tag{ background:#eef2ff; color:var(--primary); padding:6px 8px; border-radius:8px; font-size:0.8rem; font-weight:600; }
+
+    .card-footer{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .fee{ font-size:0.95rem; font-weight:700; color:#111; }
+    .elig{ font-size:0.85rem; color:var(--muted); }
+
+    .apply-btn{
+      background:linear-gradient(90deg,var(--accent),var(--primary));
+      color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:40px;
+      background:#343a40;
+      color:#fff;
+      padding:20px;
+      text-align:center;
+      border-radius:12px 12px 0 0;
+    }
+
+    footer .footer-cta p{
+      font-size:0.95rem;
+      margin-bottom:10px;
+      line-height:1.4;
+    }
+
+    footer .whatsapp-btn{
+      display:inline-block;
+      background:#25D366;
+      color:#fff;
+      font-weight:700;
+      padding:10px 18px;
+      border-radius:8px;
+      text-decoration:none;
+      transition:transform 0.15s ease;
+    }
+
+    footer .whatsapp-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    @media(max-width:520px){
+      .bank-logo{ width:56px; height:56px; font-size:0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <a class="back" href="index.html" title="Back to home">← Back</a>
+    <a class="logo" href="index.html">Credit Line</a>
+  </div>
+
+  <main class="container">
+    <!-- Heading -->
+    <div class="heading">
+      <h1>Personal Loans</h1>
+      <p>Compare top personal loans & easy apply</p>
+    </div>
+
+    <!-- Cards Grid -->
+    <section class="grid">
+
+      <!-- Aditya Birla Udhyog Plus -->
+      <article class="card">
+        <div class="bank-logo">AB</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Aditya Birla Udhyog Plus</h3>
+          </div>
+          <div class="card-meta">Flexible personal loan for business & personal needs</div>
+          <div class="tag-row">
+            <div class="tag">Quick Approval</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Interest Rate: Varies</div>
+              <div class="elig">Eligibility: PAN & KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://loan.gromo.in/az/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mpokket -->
+      <article class="card">
+        <div class="bank-logo">MP</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Mpokket Personal Loan</h3>
+          </div>
+          <div class="card-meta">Instant personal loan with minimal documentation</div>
+          <div class="tag-row">
+            <div class="tag">Fast Processing</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Interest Rate: Varies</div>
+              <div class="elig">Eligibility: PAN & KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://loan.gromo.in/mp/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- IDFC First Bank -->
+      <article class="card">
+        <div class="bank-logo">IDFC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>IDFC First Bank Personal Loan</h3>
+          </div>
+          <div class="card-meta">Flexible loan with quick approval</div>
+          <div class="tag-row">
+            <div class="tag">Easy Apply</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Interest Rate: Varies</div>
+              <div class="elig">Eligibility: PAN & KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://loan.gromo.in/lo/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Hero Fincorp -->
+      <article class="card">
+        <div class="bank-logo">HF</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Hero Fincorp Personal Loan</h3>
+          </div>
+          <div class="card-meta">Quick personal loan with minimal documentation</div>
+          <div class="tag-row">
+            <div class="tag">Fast Processing</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Interest Rate: Varies</div>
+              <div class="elig">Eligibility: PAN & KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://loan.gromo.in/hf/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Poonawalla Fincorp -->
+      <article class="card">
+        <div class="bank-logo">PL</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Poonawalla Fincorp Personal Loan</h3>
+          </div>
+          <div class="card-meta">Flexible personal loan with instant approval</div>
+          <div class="tag-row">
+            <div class="tag">Quick Approval</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Interest Rate: Varies</div>
+              <div class="elig">Eligibility: PAN & KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://loan.gromo.in/pl/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-cta">
+      <p><strong>Need help choosing a loan?</strong><br>
+      Chat with Raj on WhatsApp for guidance and personalised suggestions.</p>
+      <a class="whatsapp-btn" href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+    <p style="margin-top:12px; font-size:0.8em; text-align:center;">© 2025 Credit Line</p>
+  </footer>
+
+</body>
+</html>

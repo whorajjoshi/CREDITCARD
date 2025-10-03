@@ -49,39 +49,36 @@
     }
 
     footer h2 {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-size: 1.4rem;
       color: #111;
     }
 
-    .footer-content {
+    footer p.description {
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .footer-row {
       display: flex;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
 
-    .footer-content img {
+    .footer-row img {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
     }
 
-    .about-text {
-      max-width: 600px;
-    }
-
-    .about-text h3 {
-      margin-bottom: 8px;
+    .footer-row .name {
       font-size: 1.2rem;
+      font-weight: 600;
       color: #111;
-    }
-
-    .about-text p {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.4;
     }
 
   </style>
@@ -101,12 +98,12 @@
 
   <footer>
     <h2>About Us</h2>
-    <div class="footer-content">
+    <p class="description">
+      I am a certified financial advisor and have helped many people like you to get credit cards, loans, savings accounts and other financial products.
+    </p>
+    <div class="footer-row">
       <img src="PROFILE.png" alt="Raj Joshi">
-      <div class="about-text">
-        <h3>Raj Joshi</h3>
-        <p>I am a certified financial advisor and have helped many people like you to get credit cards, loans, savings accounts and other financial products.</p>
-      </div>
+      <div class="name">Raj Joshi</div>
     </div>
   </footer>
 

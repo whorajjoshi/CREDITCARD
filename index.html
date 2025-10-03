@@ -43,42 +43,23 @@
     }
 
     /* Footer */
-    footer {
-      background: #f1f3f8;
-      padding: 30px 20px;
+       footer{
+      margin-top:auto;
+      background:#343a40;
+      color:#fff;
+      padding:20px;
+      animation:slideInLeft 1s ease;
     }
-
-    footer h2 {
-      margin-bottom: 12px;
-      font-size: 1.0rem;
-      color: #111;
-    }
-
-    footer p.description {
-      margin-bottom: 20px;
-      font-size: 0.75rem;
-      color: #555;
-      line-height: 1.0;
-    }
-
-    .footer-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .footer-row img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .footer-row .name {
-      font-size: 1.0rem;
-      font-weight: 600;
-      color: #111;
+    footer h2{font-size:1.2em;font-weight:700;margin-bottom:-1px;}
+    footer p{font-size:0.6em; line-height:1.5; margin-bottom:12px;}
+    .footer-content{display:flex;align-items:center;gap:15px;}
+    .footer-content img{width:48px; height:48px; border-radius:50%; object-fit:cover;}
+    .footer-content .info .name{font-weight:700;font-size:1em;}
+    .footer-content .info .job,
+    .footer-content .info .location{font-size:0.85em;}
+    @media(max-width:600px){
+      .footer-content{flex-direction:row;align-items:center;}
+      .footer-content img{margin:0;}
     }
 
   </style>

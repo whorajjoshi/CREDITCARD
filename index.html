@@ -32,72 +32,83 @@
       z-index: 1000;
     }
 
-    /* Bajaj Finserv Section - Full Width */
-    .affiliate {
+    /* Bajaj Finserv Hero Section */
+    .affiliate-hero {
+      position: relative;
       width: 100%;
-      background-color: #ffffff;
-      padding: 10px 0;
-      text-align: center;
+      height: 350px;
+      background: url('BAJAJ1.png') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-top: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    .affiliate img {
-      width: 100%;
-      height: auto;
-      max-width: 1200px; /* optional max-width */
-      display: block;
-      margin: 0 auto 10px auto;
-    }
-
-    .affiliate a {
-      display: inline-block;
-      color: #0d6efd;
+    .affiliate-hero a {
+      background-color: rgba(13, 110, 253, 0.85);
+      color: #fff;
       font-weight: 600;
-      font-size: 0.95rem;
+      padding: 15px 25px;
+      border-radius: 8px;
       text-decoration: none;
-      line-height: 1.2;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .affiliate a:hover {
-      text-decoration: underline;
+    .affiliate-hero a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
-    /* Categories Section */
+    /* Categories Section - Professional & Attractive */
     .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      padding: 30px 20px;
       justify-items: center;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .category {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      width: 150px;
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      border-radius: 16px;
+      padding: 25px 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      width: 180px;
+      cursor: pointer;
     }
 
     .category:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #e0f2ff, #ffffff);
     }
 
     .category img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+
+    .category:hover img {
+      transform: scale(1.2);
     }
 
     .category span {
       display: block;
       font-weight: 600;
-      color: #333;
-      font-size: 0.9rem;
+      color: #0d3b66;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .category:hover span {
+      color: #0d6efd;
     }
 
     /* Footer */
@@ -130,6 +141,13 @@
       .categories { grid-template-columns: repeat(2, 1fr); }
       .footer-content { flex-direction:row; align-items:center; }
       .footer-content img { margin:0; }
+      .affiliate-hero {
+        height: 250px;
+      }
+      .affiliate-hero a {
+        font-size: 0.95rem;
+        padding: 12px 20px;
+      }
     }
 
     /* WhatsApp Floating Button */
@@ -174,11 +192,10 @@
     All your favorite financial products in one place
   </header>
 
-  <!-- Bajaj Finserv Affiliate Section - Full Width -->
-  <section class="affiliate">
-    <img src="BAJAJ1.png" alt="Bajaj Finserv Logo">
+  <!-- Bajaj Finserv Hero Section -->
+  <section class="affiliate-hero">
     <a href="https://loan.gromo.in/bf/V-aqzOog-K" target="_blank">
-      <strong>Apply Now For Bajaj Insta EMI Card</strong>       
+      Apply Now For Bajaj Insta EMI Card
     </a>
   </section>
 

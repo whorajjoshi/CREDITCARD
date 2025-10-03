@@ -32,40 +32,6 @@
       z-index: 1000;
     }
 
-    /* Slider */
-    .slider {
-      position: relative;
-      max-width: 1000px;
-      margin: 20px auto;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    }
-
-    .slides {
-      display: flex;
-      width: 500%; /* 5 slides */
-      animation: slideAnimation 20s infinite;
-    }
-
-    .slides img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    @keyframes slideAnimation {
-      0% { transform: translateX(0%); }
-      20% { transform: translateX(0%); }
-      25% { transform: translateX(-100%); }
-      45% { transform: translateX(-100%); }
-      50% { transform: translateX(-200%); }
-      70% { transform: translateX(-200%); }
-      75% { transform: translateX(-300%); }
-      95% { transform: translateX(-300%); }
-      100% { transform: translateX(-400%); }
-    }
-
     /* Main Content */
     main {
       padding: 20px;
@@ -82,7 +48,6 @@
       background:#343a40;
       color:#fff;
       padding:20px;
-      animation:slideInLeft 1s ease;
     }
 
     footer h2 { font-size:1em; font-weight:700; margin-bottom:10px; }
@@ -104,8 +69,8 @@
     .footer-content .info .location { font-size:0.8em; }
 
     @media(max-width:600px){
-      .footer-content{flex-direction:row;align-items:center;}
-      .footer-content img{margin:0;}
+      .footer-content { flex-direction:row; align-items:center; }
+      .footer-content img { margin:0; }
     }
   </style>
 </head>
@@ -114,17 +79,6 @@
   <header>
     All your favorite financial products in one place
   </header>
-
-  <!-- Slider Section -->
-  <div class="slider">
-    <div class="slides">
-      <img src="credit_card.png" alt="Credit Cards">
-      <img src="loan.png" alt="Loans">
-      <img src="savings_account.png" alt="Savings Accounts">
-      <img src="insurance.png" alt="Insurance">
-      <img src="investment.png" alt="Investment Products">
-    </div>
-  </div>
 
   <main>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

@@ -10,30 +10,25 @@
 
     /* Header */
     header {
-      position: fixed; /* fixed header */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       background: linear-gradient(90deg, #0d6efd, #6610f2);
       color: white;
       text-align: center;
-      padding: 20px; /* height adjusts with content */
+      padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       z-index: 1000;
       animation: fadeInDown 1s ease;
     }
-    header h1 {
-      font-size:2.2rem;
-      white-space: nowrap; /* single line heading */
-      margin-bottom: 5px;
-    }
     header p {
-      font-size:1rem;
-      opacity:0.9;
+      font-size:1.1rem;
+      opacity:0.95;
+      margin:0;
     }
 
-    /* Add padding-top to body content to avoid overlap with fixed header */
-    main {padding-top: 120px;}
+    main {padding-top: 80px;} /* padding to avoid overlap */
 
     /* Grid layout */
     .grid {
@@ -103,7 +98,6 @@
     }
 
     @media(max-width:768px){
-      header h1{ font-size:1.8rem; }
       header p{ font-size:1rem; }
     }
   </style>
@@ -111,7 +105,6 @@
 <body>
 
   <header>
-    <h1>💰 Financial Products Hub</h1>
     <p>All your favorite financial products in one place</p>
   </header>
 

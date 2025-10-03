@@ -1,0 +1,760 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Credit Cards — Credit Line</title>
+  <meta name="description" content="Compare and apply for top credit cards — fees, eligibility and benefits. Choose the best credit card for you." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#6610f2;
+      --accent:#0d6efd;
+      --muted:#666;
+      --card-bg:#ffffff;
+      --page-bg:#f5f7fb;
+      --radius:12px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--page-bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Top header / back */
+    .topbar{
+      background:linear-gradient(90deg,var(--accent),var(--primary));
+      color:#fff;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .topbar a.logo{
+      color:#fff; text-decoration:none; font-weight:700; font-size:1.05rem;
+    }
+    .topbar .back{
+      background:rgba(255,255,255,0.12);
+      padding:8px 10px;
+      border-radius:8px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:600;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:24px auto;
+      padding:0 18px 60px;
+    }
+
+    /* Heading */
+    .heading {
+      text-align:center;
+      margin-bottom:14px;
+    }
+    .heading h1{
+      font-size:1.6rem;
+      color:var(--primary);
+      font-weight:800;
+    }
+    .heading p{
+      color:var(--muted);
+      margin-top:6px;
+      font-size:0.95rem;
+    }
+
+    /* Search / filters */
+    .controls{
+      display:flex;
+      gap:12px;
+      margin:18px 0 24px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+    }
+    .searchbox{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      background:#fff;
+      padding:10px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(20,20,30,0.04);
+      min-width:280px;
+      width:380px;
+    }
+    .searchbox input{
+      border:0; outline:none; font-size:0.95rem; width:100%;
+    }
+    .select, .btn {
+      background:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      border:1px solid rgba(20,20,30,0.06);
+      font-weight:600;
+      cursor:pointer;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--primary));
+      color:#fff; border:0; padding:10px 14px; border-radius:10px;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:0 6px 20px rgba(20,20,40,0.06);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(20,20,40,0.09); }
+
+    .bank-logo{
+      width:64px; height:64px; border-radius:10px; background:#f1f3f7;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; color:var(--muted); font-size:0.85rem;
+      flex-shrink:0;
+    }
+
+    .card-body{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .card-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .card-title h3{ font-size:1rem; margin:0; font-weight:700; color:#111; }
+    .card-meta{ font-size:0.88rem; color:var(--muted); margin-top:4px; }
+
+    .tag-row{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;
+    }
+    .tag{ background:#eef2ff; color:var(--primary); padding:6px 8px; border-radius:8px; font-size:0.8rem; font-weight:600; }
+
+    .card-footer{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    .fee{ font-size:0.95rem; font-weight:700; color:#111; }
+    .elig{ font-size:0.85rem; color:var(--muted); }
+
+    .apply-btn{
+      background:linear-gradient(90deg,var(--accent),var(--primary));
+      color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none;
+    }
+
+    /* Empty / note */
+    .note{ text-align:center; color:var(--muted); margin-top:18px; font-size:0.95rem; }
+
+    /* Responsive tweaks */
+    @media(max-width:520px){
+      .searchbox{ width:100%; min-width:0; }
+      .bank-logo{ width:56px; height:56px; font-size:0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <a class="back" href="index.html" title="Back to home">← Back</a>
+    <a class="logo" href="index.html">Credit Line</a>
+  </div>
+
+  <main class="container">
+    <!-- Heading -->
+    <div class="heading">
+      <h1>Credit Cards</h1>
+      <p>Compare top credit cards — fees, eligibility & easy apply</p>
+    </div>
+
+    <!-- Controls: search / sort / filter (UI only) -->
+    <div class="controls" role="region" aria-label="Search and filters">
+      <div class="searchbox" aria-hidden="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35" stroke="#9aa1b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="11" cy="11" r="6" stroke="#9aa1b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <input id="searchInput" type="search" placeholder="Search bank or card name (e.g., HDFC, ICICI, Axis)" />
+      </div>
+
+      <select id="sortSel" class="select" aria-label="Sort cards">
+        <option value="popular">Sort: Popular</option>
+        <option value="fee-low">Fee: Low to High</option>
+        <option value="fee-high">Fee: High to Low</option>
+      </select>
+
+      <button class="btn btn-primary" id="clearBtn">Clear</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <section class="grid" id="cardsGrid" aria-live="polite">
+
+      <!-- Sample 18 cards (bank, card name, annual fee, eligibility) -->
+      <!-- 1 -->
+      <article class="card" data-name="HDFC Regalia" data-fee="2500" data-bank="HDFC">
+        <div class="bank-logo">HDFC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>HDFC Regalia Credit Card</h3>
+            <div class="card-meta">Rewards: Travel · Lounge</div>
+          </div>
+          <div class="card-meta">Premium travel & lounge access</div>
+
+          <div class="tag-row">
+            <div class="tag">Welcome Bonus</div>
+            <div class="tag">Travel</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹2,500</div>
+              <div class="elig">Eligibility: Income ≥ ₹6 LPA, Age 21–65</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/hdfc-regalia" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card" data-name="SBI Card ELITE" data-fee="4999" data-bank="SBI">
+        <div class="bank-logo">SBI</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>SBI Card ELITE</h3>
+            <div class="card-meta">Rewards · Dining</div>
+          </div>
+          <div class="card-meta">Premium benefits, movie & lounge access</div>
+
+          <div class="tag-row">
+            <div class="tag">Cashback</div>
+            <div class="tag">Dining</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹4,999</div>
+              <div class="elig">Eligibility: Income ≥ ₹7 LPA, Age 21–65</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/sbi-elite" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card" data-name="ICICI Amazon Pay" data-fee="499" data-bank="ICICI">
+        <div class="bank-logo">ICICI</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>ICICI Amazon Pay Credit Card</h3>
+            <div class="card-meta">Cashback on Amazon</div>
+          </div>
+          <div class="card-meta">Best for Amazon shoppers</div>
+
+          <div class="tag-row">
+            <div class="tag">Cashback</div>
+            <div class="tag">Shopping</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹499</div>
+              <div class="elig">Eligibility: Age 18–65, KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/icici-amazon" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card" data-name="Axis Ace" data-fee="499" data-bank="Axis">
+        <div class="bank-logo">AXIS</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Axis Ace Credit Card</h3>
+            <div class="card-meta">Cashback · UPI Offers</div>
+          </div>
+          <div class="card-meta">Everyday cashback on spends</div>
+
+          <div class="tag-row">
+            <div class="tag">Cashback</div>
+            <div class="tag">UPI</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹499</div>
+              <div class="elig">Eligibility: Income ≥ ₹3 LPA, Age 18–65</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/axis-ace" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card" data-name="Amazon SBI Card Prime" data-fee="999" data-bank="SBI">
+        <div class="bank-logo">SBI</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Amazon SBI Card Prime</h3>
+            <div class="card-meta">Amazon Prime benefits</div>
+          </div>
+          <div class="card-meta">Good for frequent Amazon buyers</div>
+
+          <div class="tag-row">
+            <div class="tag">E-commerce</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹999</div>
+              <div class="elig">Eligibility: Age 18+, Prime membership</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/amazon-sbi-prime" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card" data-name="HDFC Millennia" data-fee="500" data-bank="HDFC">
+        <div class="bank-logo">HDFC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>HDFC Millennia Credit Card</h3>
+            <div class="card-meta">Online & travel offers</div>
+          </div>
+          <div class="card-meta">Popular for shopping & streaming</div>
+
+          <div class="tag-row">
+            <div class="tag">Online</div>
+            <div class="tag">Entertainment</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹500</div>
+              <div class="elig">Eligibility: Income ≥ ₹3 LPA, Age 18–70</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/hdfc-millennia" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="card" data-name="Kotak Mahindra Royale" data-fee="1499" data-bank="Kotak">
+        <div class="bank-logo">KOTAK</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Kotak Mahindra Royale</h3>
+            <div class="card-meta">Lifestyle & travel benefits</div>
+          </div>
+          <div class="card-meta">Good for lifestyle spends</div>
+
+          <div class="tag-row">
+            <div class="tag">Lifestyle</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹1,499</div>
+              <div class="elig">Eligibility: Income ≥ ₹5 LPA, Age 21–65</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/kotak-royale" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="card" data-name="Standard Chartered Super Value" data-fee="499" data-bank="SC">
+        <div class="bank-logo">SC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Standard Chartered Super Value</h3>
+            <div class="card-meta">Dining & groceries cashback</div>
+          </div>
+          <div class="card-meta">Great for everyday savings</div>
+
+          <div class="tag-row">
+            <div class="tag">Groceries</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹499</div>
+              <div class="elig">Eligibility: Income ≥ ₹2.5 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/sc-supervalue" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="card" data-name="ICICI Sapphiro" data-fee="3999" data-bank="ICICI">
+        <div class="bank-logo">ICICI</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>ICICI Sapphiro Credit Card</h3>
+            <div class="card-meta">Premium travel & dining</div>
+          </div>
+          <div class="card-meta">Lounge access, rewards</div>
+
+          <div class="tag-row">
+            <div class="tag">Premium</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹3,999</div>
+              <div class="elig">Eligibility: Income ≥ ₹6 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/icici-sapphiro" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="card" data-name="Axis Vistara Signature" data-fee="3499" data-bank="Axis">
+        <div class="bank-logo">AXIS</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Axis Vistara Signature</h3>
+            <div class="card-meta">Airline points & travel</div>
+          </div>
+          <div class="card-meta">Best for Vistara flyers</div>
+
+          <div class="tag-row">
+            <div class="tag">Airlines</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹3,499</div>
+              <div class="elig">Eligibility: Income ≥ ₹5 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/axis-vistara" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="card" data-name="RBL Platinum" data-fee="999" data-bank="RBL">
+        <div class="bank-logo">RBL</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>RBL Platinum</h3>
+            <div class="card-meta">Fuel & dining offers</div>
+          </div>
+          <div class="card-meta">Good rewards mix</div>
+
+          <div class="tag-row">
+            <div class="tag">Fuel</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹999</div>
+              <div class="elig">Eligibility: Income ≥ ₹3 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/rbl-platinum" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="card" data-name="Amazon Pay ICICI Sapphiro" data-fee="999" data-bank="ICICI">
+        <div class="bank-logo">ICICI</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>ICICI Amazon Pay (Prime)</h3>
+            <div class="card-meta">E-commerce benefits</div>
+          </div>
+          <div class="card-meta">Extra cashback for Prime</div>
+
+          <div class="tag-row">
+            <div class="tag">E-commerce</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹999</div>
+              <div class="elig">Eligibility: Age 18+, KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/icici-amazon-prime" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="card" data-name="Standard Chartered Ultimate" data-fee="5999" data-bank="SC">
+        <div class="bank-logo">SC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Standard Chartered Ultimate</h3>
+            <div class="card-meta">High-end lifestyle rewards</div>
+          </div>
+          <div class="card-meta">Premium concierge & perks</div>
+
+          <div class="tag-row">
+            <div class="tag">Premium</div>
+            <div class="tag">Lifestyle</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹5,999</div>
+              <div class="elig">Eligibility: Income ≥ ₹10 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/sc-ultimate" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="card" data-name="IDFC First Prime" data-fee="0" data-bank="IDFC">
+        <div class="bank-logo">IDFC</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>IDFC First Prime</h3>
+            <div class="card-meta">No joining fee offers</div>
+          </div>
+          <div class="card-meta">Great zero-fee starter card</div>
+
+          <div class="tag-row">
+            <div class="tag">Zero Fee</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹0</div>
+              <div class="elig">Eligibility: Age 18+, KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/idfc-prime" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 15 -->
+      <article class="card" data-name="Flipkart Axis" data-fee="499" data-bank="Axis">
+        <div class="bank-logo">AXIS</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Flipkart Axis Bank Credit Card</h3>
+            <div class="card-meta">Flipkart & offline benefits</div>
+          </div>
+          <div class="card-meta">Great for Flipkart shoppers</div>
+
+          <div class="tag-row">
+            <div class="tag">E-commerce</div>
+            <div class="tag">Cashback</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹499</div>
+              <div class="elig">Eligibility: Age 18+, KYC</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/flipkart-axis" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 16 -->
+      <article class="card" data-name="Yes First Exclusive" data-fee="1999" data-bank="Yes">
+        <div class="bank-logo">YES</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>YES First Exclusive</h3>
+            <div class="card-meta">Travel & dining credits</div>
+          </div>
+          <div class="card-meta">Good mid-premium card</div>
+
+          <div class="tag-row">
+            <div class="tag">Dining</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹1,999</div>
+              <div class="elig">Eligibility: Income ≥ ₹4 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/yes-first" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 17 -->
+      <article class="card" data-name="Kotak Sapphiro" data-fee="3499" data-bank="Kotak">
+        <div class="bank-logo">KOTAK</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Kotak Sapphiro</h3>
+            <div class="card-meta">Travel & reward points</div>
+          </div>
+          <div class="card-meta">Premium travel benefits</div>
+
+          <div class="tag-row">
+            <div class="tag">Travel</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹3,499</div>
+              <div class="elig">Eligibility: Income ≥ ₹5 LPA</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/kotak-sapphiro" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 18 -->
+      <article class="card" data-name="Bajaj Finserv RBL" data-fee="299" data-bank="BFSI">
+        <div class="bank-logo">BF</div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Bajaj Finserv Co-Branded Card</h3>
+            <div class="card-meta">BNPL & EMI benefits</div>
+          </div>
+          <div class="card-meta">Good for EMI & retail offers</div>
+
+          <div class="tag-row">
+            <div class="tag">EMI</div>
+          </div>
+
+          <div class="card-footer">
+            <div>
+              <div class="fee">Annual Fee ₹299</div>
+              <div class="elig">Eligibility: Age 18+, Active Salaried</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://example.com/apply/bajaj-card" target="_blank" rel="noopener">Apply</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- End cards -->
+    </section>
+
+    <div class="note">
+      Note: Fees and eligibility shown are indicative. Final terms depend on bank verification and KYC.
+    </div>
+  </main>
+
+  <!-- Footer (simple) -->
+  <footer style="background:#111; color:#fff; padding:18px 0; text-align:center;">
+    <div style="max-width:1100px;margin:auto;padding:0 18px;">
+      <div style="font-weight:700; margin-bottom:6px;">Need help choosing a card?</div>
+      <div style="color:#ccc; margin-bottom:10px;">Chat with Raj on WhatsApp for guidance and personalised suggestions.</div>
+      <a href="https://wa.me/919610841436?text=Hi%20Raj%2C%20I%20need%20help%20choosing%20a%20credit%20card" target="_blank" style="display:inline-block;background:linear-gradient(90deg,#0d6efd,#6610f2);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;">Chat on WhatsApp</a>
+      <div style="margin-top:12px; font-size:0.85rem; color:#888;">© 2025 Credit Line</div>
+    </div>
+  </footer>
+
+  <!-- Small client-side filter (works immediately, no backend) -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cardsGrid = document.getElementById('cardsGrid');
+    const clearBtn = document.getElementById('clearBtn');
+    const sortSel = document.getElementById('sortSel');
+
+    function renderFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      const cards = Array.from(cardsGrid.querySelectorAll('.card'));
+
+      // filter
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const bank = card.dataset.bank.toLowerCase();
+        const match = !q || name.includes(q) || bank.includes(q);
+        card.style.display = match ? 'flex' : 'none';
+      });
+
+      // sort (fee)
+      const val = sortSel.value;
+      if (val === 'fee-low' || val === 'fee-high') {
+        // create array of visible cards and sort by data-fee (number)
+        const visible = cards.filter(c => c.style.display !== 'none');
+        visible.sort((a,b)=>{
+          const fa = Number(a.dataset.fee) || 0;
+          const fb = Number(b.dataset.fee) || 0;
+          return val === 'fee-low' ? fa - fb : fb - fa;
+        });
+        // append in sorted order
+        visible.forEach(c => cardsGrid.appendChild(c));
+      }
+    }
+
+    searchInput.addEventListener('input', renderFilter);
+    sortSel.addEventListener('change', renderFilter);
+    clearBtn.addEventListener('click', ()=>{
+      searchInput.value = '';
+      sortSel.value = 'popular';
+      renderFilter();
+    });
+
+    // initial
+    renderFilter();
+  </script>
+</body>
+</html>

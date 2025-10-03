@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Financial Products Hub</title>
+  <title>Credit Line - Financial Products Hub</title>
+  <meta name="description" content="Get Credit Cards, Loans, Demat Accounts, Saving Accounts and Bajaj EMI Card at one place. Apply now with expert financial advisor Raj Joshi.">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <style>
     * {
       margin: 0;
@@ -12,7 +20,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #f9f9f9;
       line-height: 1.5;
     }
@@ -27,12 +35,12 @@
       text-align: center;
       padding: 12px 0;
       font-size: 0.95rem;
-      font-weight: 500;
+      font-weight: 600;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       z-index: 1000;
     }
 
-    /* Bajaj Finserv Section - Full Width */
+    /* Affiliate Section */
     .affiliate {
       width: 100%;
       background-color: #ffffff;
@@ -45,7 +53,7 @@
     .affiliate img {
       width: 100%;
       height: auto;
-      max-width: 1200px; /* optional max-width */
+      max-width: 1200px;
       display: block;
       margin: 0 auto 10px auto;
     }
@@ -54,9 +62,8 @@
       display: inline-block;
       color: #0d6efd;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
       text-decoration: none;
-      line-height: 1.2;
     }
 
     .affiliate a:hover {
@@ -79,12 +86,19 @@
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 150px;
     }
 
     .category:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .category a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
     .category img {
@@ -165,7 +179,6 @@
       50% { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
       100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     }
-
   </style>
 </head>
 <body>
@@ -174,7 +187,7 @@
     All your favorite financial products in one place
   </header>
 
-  <!-- Bajaj Finserv Affiliate Section - Full Width -->
+  <!-- Bajaj Finserv Affiliate Section -->
   <section class="affiliate">
     <img src="BAJAJ1.png" alt="Bajaj Finserv Logo">
     <a href="https://loan.gromo.in/bf/V-aqzOog-K" target="_blank">
@@ -185,20 +198,28 @@
   <!-- Categories Section -->
   <section class="categories">
     <div class="category">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Credit Card">
-      <span>Credit Card</span>
+      <a href="credit-card.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Credit Card">
+        <span>Credit Card</span>
+      </a>
     </div>
     <div class="category">
-      <img src="https://cdn-icons-png.flaticon.com/512/2910/2910761.png" alt="Demat Account">
-      <span>Demat Account</span>
+      <a href="demat-account.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910761.png" alt="Demat Account">
+        <span>Demat Account</span>
+      </a>
     </div>
     <div class="category">
-      <img src="https://cdn-icons-png.flaticon.com/512/2331/2331945.png" alt="Saving Account">
-      <span>Saving Account</span>
+      <a href="saving-account.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/2331/2331945.png" alt="Saving Account">
+        <span>Saving Account</span>
+      </a>
     </div>
     <div class="category">
-      <img src="https://cdn-icons-png.flaticon.com/512/3126/3126505.png" alt="Personal Loan">
-      <span>Personal Loan</span>
+      <a href="personal-loan.html">
+        <img src="https://cdn-icons-png.flaticon.com/512/3126/3126505.png" alt="Personal Loan">
+        <span>Personal Loan</span>
+      </a>
     </div>
   </section>
 

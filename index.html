@@ -14,19 +14,19 @@ header {
   position: sticky; top:0; z-index:1000;
   background: linear-gradient(90deg,#0d6efd,#6610f2);
   color:#fff; text-align:center;
-  padding:16px 10px; font-weight:700; font-size:1.25rem;
+  padding:14px 10px; font-weight:700; font-size:1.15rem;
   box-shadow:0 6px 12px rgba(0,0,0,0.15);
-  line-height:1.3; letter-spacing:0.5px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  line-height:1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
 /* Slideshow */
 .slideshow-container {
-  position: relative; max-width:1000px; height:300px;
+  position: relative; max-width:1000px; height:250px;
   margin:10px auto; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  border-radius:10px;
 }
 .slide { display:none; height:100%; width:100%; position:absolute; transition:opacity 1s ease; }
-.slide img { width:100%; height:100%; object-fit:cover; cursor:pointer; border-radius:0; transition:transform 0.5s ease; }
+.slide img { width:100%; height:100%; object-fit:cover; cursor:pointer; border-radius:10px; transition:transform 0.5s ease; }
 .slide img:hover { transform:scale(1.03); }
 
 .apply-btn {
@@ -39,15 +39,6 @@ header {
 }
 .apply-btn:hover { transform:scale(1.1); box-shadow:0 0 25px #0d6efd; }
 @keyframes glow { 0% { box-shadow:0 0 10px #0d6efd; } 100% { box-shadow:0 0 25px #0d6efd; } }
-
-.prev,.next {
-  cursor:pointer; position:absolute; top:50%;
-  padding:12px 16px; color:#fff; font-weight:bold; font-size:20px;
-  background:rgba(0,0,0,0.4); border-radius:50%; user-select:none;
-  transform:translateY(-50%); transition:0.3s;
-}
-.prev:hover,.next:hover { background:rgba(0,0,0,0.7); }
-.next { right:15px; } .prev { left:15px; }
 
 /* Scrollable Product Row */
 .product-row {
@@ -111,7 +102,7 @@ footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15
 /* Responsive */
 @media(max-width:768px){
   header { font-size:1rem; white-space:normal; overflow:visible; }
-  .slideshow-container { height:230px; }
+  .slideshow-container { height:200px; }
   .product-card { width:110px; height:110px; }
   .product-card h4 { font-size:0.8rem; }
   .category { padding:18px; }
@@ -145,9 +136,6 @@ footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15
     <a href="#" target="_blank"><img src="slide5.png" alt="Slide5"></a>
     <a href="#" class="apply-btn" target="_blank">Apply Now</a>
   </div>
-
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 
 <!-- Scrollable Products -->
@@ -195,8 +183,8 @@ function showSlides(){
   setTimeout(showSlides,4000);
 }
 showSlides();
-function plusSlides(n){ slideIndex+=n-1; if(slideIndex<0) slideIndex=slides.length-1; showSlides(); }
 
+// Auto scroll product row
 const productRow = document.querySelector('.product-row');
 let scrollSpeed = 1;
 let scrollInterval;

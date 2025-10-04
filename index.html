@@ -30,9 +30,9 @@ header {
 .slide img:hover { transform:scale(1.03); }
 
 .apply-btn {
-  position:absolute; bottom:15px; right:15px;
-  background:#0d6efd; color:#fff; padding:10px 20px;
-  border-radius:30px; font-weight:600; font-size:0.9rem;
+  position:absolute; bottom:12px; right:12px;
+  background:#0d6efd; color:#fff; padding:8px 16px;
+  border-radius:30px; font-weight:600; font-size:0.85rem;
   text-decoration:none; box-shadow:0 0 15px #0d6efd;
   animation:glow 1.5s infinite alternate;
   transition:transform 0.3s, box-shadow 0.3s;
@@ -60,7 +60,7 @@ header {
 
 /* Premium Headings */
 .categories-heading {
-  margin:10px 0 5px 0; text-align:center;
+  margin:15px 0 10px 0; text-align:center;
   font-size:1.5rem; font-weight:800;
   background: linear-gradient(90deg,#6610f2,#0d6efd);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -72,36 +72,43 @@ header {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   gap:18px; padding:0 15px; max-width:1000px; margin:0 auto 30px auto;
 }
-.category {
+.categories a.category {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
   background:#fff; border-radius:16px; padding:22px;
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  transition:0.4s; cursor:pointer;
+  transition:0.4s; cursor:pointer; text-decoration:none;
 }
-.category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
-.category img { width:48px; margin-bottom:10px; transition:0.3s; }
-.category p { font-weight:700; font-size:0.95rem; color:#6610f2; }
+.categories a.category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
+.categories a.category img { width:48px; margin-bottom:10px; transition:0.3s; }
+.categories a.category p { font-weight:700; font-size:0.95rem; color:#6610f2; }
 
 /* About Us Section */
 .about-section {
   background: linear-gradient(135deg, #0d6efd, #6610f2);
-  padding:20px 15px;
+  padding:40px 15px;
   color:#fff;
   border-radius:16px;
-  margin-top:30px;
+  margin-top:40px;
+  overflow:hidden;
 }
 .about-container {
   max-width:1000px;
   margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 1s ease;
 }
-.about-text h2 {
-  font-size:0.8rem;
-  font-weight:800;
-  margin-bottom:8px;
+.about-container.visible {
+  opacity:1;
+  transform:translateY(0);
 }
-.about-text p {
-  font-size:0.6rem;
-  line-height:1.4;
-}
+.about-text h2 { font-size:0.8rem; font-weight:800; margin-bottom:8px; }
+.about-text p { font-size:0.6rem; line-height:1.4; }
+.about-text span { font-size:0.6rem; }
 
 /* WhatsApp Button */
 .whatsapp-button {
@@ -120,14 +127,16 @@ header {
   .slideshow-container { height:180px; }
   .product-card { width:110px; height:110px; }
   .product-card h4 { font-size:0.8rem; }
-  .category { padding:18px; }
+  .categories a.category { padding:18px; }
   .categories-heading { font-size:1.25rem; }
+  .about-container { flex-direction:row; align-items:center; justify-content:center; text-align:center; }
+  .about-text { min-width:50%; }
 }
 </style>
 </head>
 <body>
 
-<header>Credit Line – Your Smart Financial Companion</header>
+<header>All your favorite financial products in one place</header>
 
 <!-- Slideshow -->
 <div class="slideshow-container">
@@ -170,10 +179,22 @@ header {
 
 <!-- Categories -->
 <section class="categories">
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></div>
+  <a href="credit-card.html" class="category">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg">
+    <p>Credit Card</p>
+  </a>
+  <a href="demat-account.html" class="category">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg">
+    <p>Demat Account</p>
+  </a>
+  <a href="saving-account.html" class="category">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg">
+    <p>Saving Account</p>
+  </a>
+  <a href="personal-loan.html" class="category">
+    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg">
+    <p>Personal Loan</p>
+  </a>
 </section>
 
 <!-- About Us Section -->
@@ -182,6 +203,9 @@ header {
     <div class="about-text">
       <h2>Credit Line – Your Smart Financial Companion</h2>
       <p>Effortlessly secure the best credit cards, loans & savings accounts with expert guidance from OnlineHub India. Trusted across Rajasthan for fast, simple, and reliable financial solutions.</p>
+    </div>
+    <div class="about-image">
+      <img src="profile.png" alt="Raj Joshi">
     </div>
   </div>
 </section>
@@ -219,6 +243,16 @@ function startAutoScroll() {
 productRow.addEventListener('mouseenter', () => clearInterval(scrollInterval));
 productRow.addEventListener('mouseleave', () => startAutoScroll());
 startAutoScroll();
+
+// Scroll-triggered fade-in for About Us
+const aboutSection = document.querySelector('.about-container');
+window.addEventListener('scroll', () => {
+  const sectionTop = aboutSection.getBoundingClientRect().top;
+  const triggerPoint = window.innerHeight - 100;
+  if(sectionTop < triggerPoint) {
+    aboutSection.classList.add('visible');
+  }
+});
 </script>
 
 </body>

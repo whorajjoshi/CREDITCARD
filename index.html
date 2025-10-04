@@ -51,8 +51,8 @@ header {
 
 /* Scrollable Product Row */
 .product-row {
-  display:flex; overflow-x:auto; gap:12px; padding:12px;
-  margin:10px auto 25px auto; max-width:1000px; position:relative;
+  display:flex; overflow-x:auto; gap:12px; padding:12px 0;
+  margin:0 auto 20px auto; max-width:1000px; position:relative;
   scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none;
 }
 .product-row::-webkit-scrollbar { display:none; }
@@ -69,44 +69,29 @@ header {
 
 /* Premium Headings */
 .premium-heading {
-  text-align:center;
-  font-size:1.5rem;
-  font-weight:800;
+  font-size:1.5rem; font-weight:800;
   background: linear-gradient(90deg,#0d6efd,#6610f2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position:relative;
-  display:inline-block;
-  margin:25px auto 15px auto;
-  cursor:pointer;
-  animation: float 3s ease-in-out infinite;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display:inline-block; position:relative;
+  cursor:pointer; animation: float 3s ease-in-out infinite;
   transition:all 0.4s ease;
 }
 .premium-heading::after {
-  content:"";
-  display:block;
-  height:4px;
-  width:50%;
-  background:linear-gradient(90deg,#0d6efd,#6610f2);
-  margin:3px auto 0 auto;
-  border-radius:2px;
-  transition:all 0.4s ease;
-  box-shadow:0 0 12px rgba(13,110,253,0.5);
+  content:""; display:block; height:4px; width:50%;
+  background:linear-gradient(90deg,#0d6efd,#6610f2); margin:6px auto 0 auto;
+  border-radius:2px; transition:all 0.4s ease; box-shadow:0 0 12px rgba(13,110,253,0.5);
 }
-.premium-heading:hover::after {
-  width:80%;
-  box-shadow:0 0 18px rgba(13,110,253,0.8);
-}
-@keyframes float {
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-5px);}
-  100%{transform:translateY(0);}
-}
+.premium-heading:hover::after { width:80%; box-shadow:0 0 18px rgba(13,110,253,0.8); }
+@keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-5px);} 100%{transform:translateY(0);} }
+
+/* Headings spacing update */
+.expert-heading { margin:25px auto 15px auto; text-align:center; }
+.categories-heading { margin:15px 0 5px 1px; text-align:left; }
 
 /* Categories */
 .categories {
   display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:18px; padding:15px; max-width:1000px; margin:auto;
+  gap:18px; padding:0 15px; max-width:1000px; margin:0 auto 30px auto;
 }
 .category {
   background:#fff; border-radius:16px; padding:22px;
@@ -181,7 +166,6 @@ footer p { font-size:0.9rem; line-height:1.6; max-width:600px; margin:0 auto 15p
   <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><h4>Kotak Account</h4></div>
   <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><h4>IDFC Loan</h4></div>
 </section>
-
 
 <!-- Categories Heading -->
 <h2 class="categories-heading premium-heading">Browse Products by Categories</h2>

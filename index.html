@@ -28,6 +28,7 @@ header {
 .slide { display:none; height:100%; width:100%; position:absolute; transition:opacity 1s ease; }
 .slide img { width:100%; height:100%; object-fit:cover; cursor:pointer; border-radius:10px; transition:transform 0.5s ease; }
 .slide img:hover { transform:scale(1.03); }
+
 .apply-btn {
   position:absolute; bottom:15px; right:15px;
   background:#0d6efd; color:#fff; padding:10px 20px;
@@ -57,7 +58,7 @@ header {
 .product-card img { width:42px; height:42px; margin-bottom:10px; transition:0.3s; }
 .product-card h4 { font-size:0.9rem; color:#0d6efd; font-weight:600; }
 
-/* Categories Heading */
+/* Premium Headings */
 .categories-heading {
   margin:15px 0 10px 0; text-align:center;
   font-size:1.5rem; font-weight:800;
@@ -75,7 +76,6 @@ header {
   background:#fff; border-radius:16px; padding:22px;
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.4s; cursor:pointer;
-  text-decoration:none; color:inherit;
 }
 .category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
 .category img { width:48px; margin-bottom:10px; transition:0.3s; }
@@ -84,30 +84,30 @@ header {
 /* About Us Section */
 .about-section {
   background: linear-gradient(135deg, #0d6efd, #6610f2);
-  padding:50px 20px; color:#fff;
-  border-radius:20px; margin-top:40px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  padding:40px 15px; color:#fff; border-radius:16px; margin-top:40px;
+  max-width:1000px; margin-left:auto; margin-right:auto;
+}
+.about-section h2 {
+  font-size:1.8rem; font-weight:800; text-align:center; margin-bottom:15px; line-height:1.2;
+}
+.about-section p {
+  text-align:center; font-size:1rem; line-height:1.6; max-width:850px; margin:0 auto 30px auto;
 }
 .about-container {
-  max-width:1000px; margin:0 auto;
-  display:flex; align-items:center; gap:30px; flex-wrap:wrap;
-  opacity:0; transform:translateY(50px); transition: all 1s ease;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap; justify-content:center;
 }
-.about-container.visible { opacity:1; transform:translateY(0); }
-
-.about-image { flex:0 0 120px; }
+.about-image {
+  flex:0 0 120px;
+}
 .about-image img {
-  width:120px; height:120px; border-radius:50%;
-  object-fit:cover; border:3px solid #fff;
-  box-shadow:0 8px 25px rgba(0,0,0,0.35); transition: transform 0.3s ease;
+  width:120px; height:120px; border-radius:50%; object-fit:cover;
+  border:3px solid #fff; box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
-.about-image img:hover { transform:scale(1.15); }
-
-.about-text { flex:1; min-width:250px; }
-.about-text h2 { font-size:1.8rem; font-weight:800; margin-bottom:12px; text-shadow:0 3px 8px rgba(0,0,0,0.3);}
-.about-text p { font-size:1rem; line-height:1.6; margin-bottom:15px;}
-.about-info span {
-  display:flex; align-items:center; font-weight:600; font-size:0.95rem; margin-bottom:6px; gap:8px;
+.about-text {
+  flex:1; min-width:250px; display:flex; flex-direction:column; gap:8px;
+}
+.about-text span {
+  font-weight:600; font-size:0.95rem;
 }
 
 /* WhatsApp Button */
@@ -129,9 +129,11 @@ header {
   .product-card h4 { font-size:0.8rem; }
   .category { padding:18px; }
   .categories-heading { font-size:1.25rem; }
-  .about-container { flex-direction:column; align-items:center; text-align:center; }
-  .about-text { min-width:100%; }
-  .about-image { margin-bottom:20px; }
+  .about-container { flex-direction:row; justify-content:center; align-items:center; gap:15px; }
+  .about-image img { width:80px; height:80px; }
+  .about-text span { font-size:0.85rem; }
+  .about-section h2 { font-size:1.4rem; }
+  .about-section p { font-size:0.9rem; }
 }
 </style>
 </head>
@@ -180,28 +182,25 @@ header {
 
 <!-- Categories -->
 <section class="categories">
-  <a class="category" href="credit-card.html"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
-  <a class="category" href="demat-account.html"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
-  <a class="category" href="saving-account.html"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
-  <a class="category" href="personal-loan.html"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></a>
+  <a href="credit-card.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
+  <a href="demat-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
+  <a href="saving-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
+  <a href="personal-loan.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></a>
 </section>
 
 <!-- About Us Section -->
 <section class="about-section">
+  <h2>Credit Line – Your Smart Financial Companion</h2>
+  <p>Effortlessly secure the best credit cards, loans & savings accounts with expert guidance from <strong>OnlineHub India</strong>, led by <strong>Raj Joshi</strong>. Trusted across Rajasthan for fast, simple, and reliable financial solutions.</p>
   <div class="about-container">
     <div class="about-image">
-      <img src="PROFILE.png" alt="Raj Joshi">
+      <img src="profile.png" alt="Raj Joshi">
     </div>
     <div class="about-text">
-      <h2>Credit Line – Your Smart Financial Companion</h2>
-      <p>
-        Effortlessly secure the best credit cards, loans & savings accounts with expert guidance from <strong>OnlineHub India</strong>. Trusted across Rajasthan for fast, simple, and reliable financial solutions.
-      </p>
-      <div class="about-info">
-        <span>✅ Expert Advisor: <strong>Raj Joshi</strong></span>
-        <span>📍 Location: Rajasthan, India</span>
-        <span>🏆 Certified & Trusted Service</span>
-      </div>
+      <span>Expert Financial Advisor: <strong>Raj Joshi</strong></span>
+      <span>Location: Rajasthan, India</span>
+      <span>Certified & Trusted Service</span>
+      <span>Supporting Credit Line – Your Smart Financial Companion</span>
     </div>
   </div>
 </section>
@@ -239,16 +238,6 @@ function startAutoScroll() {
 productRow.addEventListener('mouseenter', () => clearInterval(scrollInterval));
 productRow.addEventListener('mouseleave', () => startAutoScroll());
 startAutoScroll();
-
-// Scroll-triggered fade-in for About Us
-const aboutSection = document.querySelector('.about-container');
-window.addEventListener('scroll', () => {
-  const sectionTop = aboutSection.getBoundingClientRect().top;
-  const triggerPoint = window.innerHeight - 100;
-  if(sectionTop < triggerPoint) {
-    aboutSection.classList.add('visible');
-  }
-});
 </script>
 
 </body>

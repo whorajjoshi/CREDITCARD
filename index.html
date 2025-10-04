@@ -1,250 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Credit Line - Financial Products Hub</title>
-  <meta name="description" content="Get Credit Cards, Loans, Demat Accounts, Saving Accounts and Bajaj EMI Card at one place. Apply now with expert financial advisor Raj Joshi.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Products Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter', sans-serif; background:#f2f3f7; color:#333; }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  /* Header */
+  header {
+    position: sticky; top:0; z-index:1000;
+    background: linear-gradient(90deg,#0d6efd,#6610f2);
+    color:#fff; text-align:center;
+    padding:14px 0; font-weight:600; font-size:1.2rem;
+    box-shadow:0 6px 12px rgba(0,0,0,0.15);
+    margin-bottom:0;
+  }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  /* Slideshow */
+  .slideshow-container {
+    position: relative; max-width:1000px; height:350px;
+    margin:0 auto; border-radius:18px; overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  }
+  .slide { display:none; height:100%; width:100%; position:absolute; transition:opacity 1s ease; }
+  .slide img { width:100%; height:100%; object-fit:cover; border-radius:18px; cursor:pointer; transition:transform 0.5s ease; }
+  .slide img:hover { transform:scale(1.03); }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  .apply-btn {
+    position:absolute; bottom:20px; right:20px;
+    background:#0d6efd; color:#fff; padding:12px 22px;
+    border-radius:30px; font-weight:600; font-size:0.95rem;
+    text-decoration:none; box-shadow:0 0 15px #0d6efd;
+    animation:glow 1.5s infinite alternate;
+    transition:transform 0.3s, box-shadow 0.3s;
+  }
+  .apply-btn:hover { transform:scale(1.1); box-shadow:0 0 25px #0d6efd; }
+  @keyframes glow { 0% { box-shadow:0 0 10px #0d6efd; } 100% { box-shadow:0 0 25px #0d6efd; } }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      line-height: 1.5;
-    }
+  .prev,.next {
+    cursor:pointer; position:absolute; top:50%;
+    padding:12px 16px; color:#fff; font-weight:bold; font-size:20px;
+    background:rgba(0,0,0,0.4); border-radius:50%; user-select:none;
+    transform:translateY(-50%); transition:0.3s;
+  }
+  .prev:hover,.next:hover { background:rgba(0,0,0,0.7); }
+  .next { right:15px; } .prev { left:15px; }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #0d6efd, #6610f2);
-      color: white;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 0.95rem;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
+  /* Scrollable Product Row */
+  .product-row {
+    display:flex; overflow-x:auto; gap:12px; padding:12px;
+    margin:10px auto 25px auto; max-width:1000px; position:relative;
+    scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .product-row::-webkit-scrollbar { display:none; }
 
-    /* Affiliate Section */
-    .affiliate {
-      width: 100%;
-      background-color: #ffffff;
-      padding: 10px 0;
-      text-align: center;
-      margin-top: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+  .product-card {
+    flex:0 0 auto; width:140px; height:140px; background:linear-gradient(145deg,#fff,#f8f9fc);
+    border-radius:16px; box-shadow:0 6px 15px rgba(0,0,0,0.08);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; transition:0.4s; cursor:pointer;
+  }
+  .product-card:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+  .product-card img { width:42px; height:42px; margin-bottom:10px; transition:0.3s; }
+  .product-card h4 { font-size:0.9rem; color:#0d6efd; font-weight:600; }
 
-    .affiliate img {
-      width: 100%;
-      height: auto;
-      max-width: 1200px;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
+  /* Categories Heading */
+  .categories-heading {
+    text-align:center; margin:25px 0 15px 0; color:#0d6efd; font-weight:700; font-size:1.4rem;
+    letter-spacing:0.5px;
+  }
 
-    .affiliate a {
-      display: inline-block;
-      color: #0d6efd;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-    }
+  /* Categories */
+  .categories {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:18px; padding:15px; max-width:1000px; margin:auto;
+  }
+  .category {
+    background:#fff; border-radius:16px; padding:22px;
+    text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    transition:0.4s; cursor:pointer;
+  }
+  .category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
+  .category img { width:48px; margin-bottom:10px; transition:0.3s; }
+  .category p { font-weight:600; color:#0d6efd; }
 
-    .affiliate a:hover {
-      text-decoration: underline;
-    }
+  /* Footer */
+  footer {
+    background:#343a40; color:#fff; text-align:center; padding:30px 15px; margin-top:40px;
+  }
+  .footer-content { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:15px; }
+  .footer-content img { width:50px; height:50px; border-radius:50%; }
 
-    /* Categories Section */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      justify-items: center;
-      text-align: center;
-      margin-top: 20px;
-    }
+  /* WhatsApp Button */
+  .whatsapp-button {
+    position:fixed; bottom:20px; right:20px; width:55px; height:55px;
+    z-index:1000; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    animation:pulse 2s infinite;
+  }
+  .whatsapp-button img { width:32px; height:32px; }
+  @keyframes pulse { 0% { transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,0.3); } 50% { transform:scale(1.1); box-shadow:0 6px 18px rgba(0,0,0,0.4); } 100% { transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,0.3); } }
 
-    .category {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 150px;
-    }
-
-    .category:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .category a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .category img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-      /* Icon theme color filter */
-      filter: invert(22%) sepia(94%) saturate(5000%) hue-rotate(220deg) brightness(95%) contrast(100%);
-    }
-
-    .category span {
-      display: block;
-      font-weight: 600;
-      color: #333;
-      font-size: 0.9rem;
-    }
-
-    /* Footer */
-    footer {
-      margin-top:auto;
-      background:#343a40;
-      color:#fff;
-      padding:20px;
-    }
-
-    footer h2 { font-size:1em; font-weight:700; margin-bottom:10px; }
-    footer p { font-size:0.8em; line-height:1.5; margin-bottom:12px; }
-
-    .footer-content {
-      display:flex;
-      align-items:center;
-      gap:15px;
-      margin-top:10px;
-    }
-
-    .footer-content img {
-      width:48px; height:48px; border-radius:50%; object-fit:cover;
-    }
-
-    .footer-content .info .name { font-weight:700; font-size:1em; }
-    .footer-content .info .job, 
-    .footer-content .info .location { font-size:0.8em; }
-
-    @media(max-width:600px){
-      .categories { grid-template-columns: repeat(2, 1fr); }
-      .footer-content { flex-direction:row; align-items:center; }
-      .footer-content img { margin:0; }
-    }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      z-index: 10000;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #25D366;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .whatsapp-button img {
-      width: 35px;
-      height: 35px;
-    }
-
-    .whatsapp-button:hover {
-      transform: scale(1.2);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-      50% { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
-      100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-    }
-  </style>
+  /* Responsive */
+  @media(max-width:768px){
+    .slideshow-container { height:230px; }
+    .product-card { width:110px; height:110px; }
+    .product-card h4 { font-size:0.8rem; }
+    .category { padding:18px; }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    All your favorite financial products in one place
-  </header>
+<header>All your favorite financial products in one place</header>
 
-  <!-- Bajaj Finserv Affiliate Section -->
-  <section class="affiliate">
-    <img src="BAJAJ1.png" alt="Bajaj Finserv Logo">
-    <a href="https://loan.gromo.in/bf/V-aqzOog-K" target="_blank">
-      <strong>Apply Now For Bajaj Insta EMI Card</strong>       
-    </a>
-  </section>
+<!-- Slideshow -->
+<div class="slideshow-container">
+  <div class="slide">
+    <a href="https://loan.gromo.in/bf/V-aqzOog-K" target="_blank"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80" alt="Slide1"></a>
+    <a href="https://loan.gromo.in/bf/V-aqzOog-K" class="apply-btn" target="_blank">Apply Now</a>
+  </div>
+  <div class="slide">
+    <a href="#"><img src="https://images.unsplash.com/photo-1556742400-b5d0e2b6e0c9?auto=format&fit=crop&w=1000&q=80" alt="Slide2"></a>
+    <a href="#" class="apply-btn">Apply Now</a>
+  </div>
+  <div class="slide">
+    <a href="#"><img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437e2?auto=format&fit=crop&w=1000&q=80" alt="Slide3"></a>
+    <a href="#" class="apply-btn">Apply Now</a>
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 
-  <!-- Categories Section -->
-  <section class="categories">
-    <div class="category">
-      <a href="credit-card.html">
-        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Credit Card">
-        <span>Credit Card</span>
-      </a>
-    </div>
-    <div class="category">
-      <a href="demat-account.html">
-        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg" alt="Demat Account">
-        <span>Demat Account</span>
-      </a>
-    </div>
-    <div class="category">
-      <a href="saving-account.html">
-        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg" alt="Saving Account">
-        <span>Saving Account</span>
-      </a>
-    </div>
-    <div class="category">
-      <a href="personal-loan.html">
-        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg" alt="Personal Loan">
-        <span>Personal Loan</span>
-      </a>
-    </div>
-  </section>
+<!-- Scrollable Products -->
+<section class="product-row">
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>HDFC Card</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>ICICI Card</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><h4>SBI Account</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><h4>Demat</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><h4>Personal Loan</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>Axis Card</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><h4>Kotak Account</h4></div>
+  <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><h4>IDFC Loan</h4></div>
+</section>
 
-  <footer>
-    <h2>About Us</h2>
-    <p>I am a <strong>certified financial advisor and have helped many people like you to get credit cards, loans, savings accounts and other financial products.</strong></p>
-    <div class="footer-content">
-      <img src="PROFILE.png" alt="Raj Joshi">
-      <div class="info">
-        <div class="name">RAJ JOSHI</div>
-        <div class="job">CERTIFIED FINANCIAL ADVISOR</div>
-        <div class="location">FROM DUNGARPUR, RAJASTHAN</div>
-      </div>
-    </div>
-  </footer>
+<!-- Categories Heading -->
+<h2 class="categories-heading">Browse Products by Categories</h2>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919610841436?text=I%20need%20help%20for%20my%20credit%20line" 
-     target="_blank" 
-     class="whatsapp-button" 
-     title="Chat with me on WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-  </a>
+<!-- Categories -->
+<section class="categories">
+  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></div>
+  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></div>
+  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></div>
+  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></div>
+</section>
+
+<footer>
+  <h2>About Us</h2>
+  <p>Certified financial advisor helping people with credit cards, loans & savings accounts.</p>
+  <div class="footer-content">
+    <img src="PROFILE.png" alt="Raj Joshi">
+    <div><b>RAJ JOSHI</b><br><small>Certified Financial Advisor</small></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919610841436?text=Hi" class="whatsapp-button" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+
+<script>
+/* Slideshow */
+let slideIndex=0;
+const slides=document.getElementsByClassName("slide");
+function showSlides(){
+  for(let i=0;i<slides.length;i++) slides[i].style.display="none";
+  slideIndex++;
+  if(slideIndex>slides.length) slideIndex=1;
+  slides[slideIndex-1].style.display="block";
+  setTimeout(showSlides,4000);
+}
+showSlides();
+function plusSlides(n){ slideIndex+=n-1; if(slideIndex<0) slideIndex=slides.length-1; showSlides(); }
+
+/* Auto-scroll product row */
+const productRow = document.querySelector('.product-row');
+let scrollSpeed = 1;
+let scrollInterval;
+function startAutoScroll() {
+  scrollInterval = setInterval(() => {
+    productRow.scrollLeft += scrollSpeed;
+    if(productRow.scrollLeft >= productRow.scrollWidth - productRow.clientWidth){
+      productRow.scrollLeft = 0;
+    }
+  }, 20);
+}
+productRow.addEventListener('mouseenter', () => clearInterval(scrollInterval));
+productRow.addEventListener('mouseleave', () => startAutoScroll());
+startAutoScroll();
+</script>
 
 </body>
 </html>

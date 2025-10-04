@@ -23,11 +23,10 @@ header {
 /* Slideshow */
 .slideshow-container {
   position: relative; max-width:1000px; height:350px;
-  margin:0 auto; border-radius:18px; overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,0.2); margin-top:10px;
+  margin:10px auto; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 .slide { display:none; height:100%; width:100%; position:absolute; transition:opacity 1s ease; }
-.slide img { width:100%; height:100%; object-fit:cover; border-radius:18px; cursor:pointer; transition:transform 0.5s ease; }
+.slide img { width:100%; height:100%; object-fit:cover; cursor:pointer; border-radius:0; transition:transform 0.5s ease; }
 .slide img:hover { transform:scale(1.03); }
 
 .apply-btn {
@@ -128,17 +127,26 @@ footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15
 <!-- Slideshow -->
 <div class="slideshow-container">
   <div class="slide">
-    <a href="https://loan.gromo.in/bf/V-aqzOog-K" target="_blank"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80" alt="Slide1"></a>
-    <a href="https://loan.gromo.in/bf/V-aqzOog-K" class="apply-btn" target="_blank">Apply Now</a>
+    <a href="#" target="_blank"><img src="slide1.png" alt="Slide1"></a>
+    <a href="#" class="apply-btn" target="_blank">Apply Now</a>
   </div>
   <div class="slide">
-    <a href="#"><img src="https://images.unsplash.com/photo-1556742400-b5d0e2b6e0c9?auto=format&fit=crop&w=1000&q=80" alt="Slide2"></a>
-    <a href="#" class="apply-btn">Apply Now</a>
+    <a href="#" target="_blank"><img src="slide2.png" alt="Slide2"></a>
+    <a href="#" class="apply-btn" target="_blank">Apply Now</a>
   </div>
   <div class="slide">
-    <a href="#"><img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437e2?auto=format&fit=crop&w=1000&q=80" alt="Slide3"></a>
-    <a href="#" class="apply-btn">Apply Now</a>
+    <a href="#" target="_blank"><img src="slide3.png" alt="Slide3"></a>
+    <a href="#" class="apply-btn" target="_blank">Apply Now</a>
   </div>
+  <div class="slide">
+    <a href="#" target="_blank"><img src="slide4.png" alt="Slide4"></a>
+    <a href="#" class="apply-btn" target="_blank">Apply Now</a>
+  </div>
+  <div class="slide">
+    <a href="#" target="_blank"><img src="slide5.png" alt="Slide5"></a>
+    <a href="#" class="apply-btn" target="_blank">Apply Now</a>
+  </div>
+
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>

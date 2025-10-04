@@ -21,7 +21,7 @@ header {
 
 /* Slideshow */
 .slideshow-container {
-  position: relative; max-width:1000px; height:250px;
+  position: relative; max-width:1000px; height:220px;
   margin:10px auto; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2);
   border-radius:10px;
 }
@@ -76,6 +76,7 @@ header {
   background:#fff; border-radius:16px; padding:22px;
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.4s; cursor:pointer;
+  text-decoration:none;
 }
 .category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
 .category img { width:48px; margin-bottom:10px; transition:0.3s; }
@@ -137,7 +138,7 @@ header {
 /* Responsive */
 @media(max-width:768px){
   header { font-size:1rem; white-space:normal; overflow:visible; }
-  .slideshow-container { height:200px; }
+  .slideshow-container { height:180px; }
   .product-card { width:110px; height:110px; }
   .product-card h4 { font-size:0.8rem; }
   .category { padding:18px; }
@@ -176,7 +177,6 @@ header {
   </div>
 </div>
 
-
 <!-- Scrollable Products -->
 <section class="product-row">
   <div class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>HDFC Card</h4></div>
@@ -192,23 +192,21 @@ header {
 <!-- Categories Heading -->
 <h2 class="categories-heading">Browse Products by Categories</h2>
 
-<!-- Categories -->
+<!-- Categories with proper links -->
 <section class="categories">
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></div>
-  <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></div>
+  <a href="credit-card.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
+  <a href="demat-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
+  <a href="saving-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
+  <a href="personal-loan.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></a>
 </section>
 
 <!-- About Us Section -->
 <footer>
   <section class="about-section">
     <div class="about-container">
-      <!-- Profile Image -->
       <div class="about-image">
         <img src="PROFILE.png" alt="Raj Joshi">
       </div>
-      <!-- About Text -->
       <div class="about-text">
         <h2>About OnlineHub India</h2>
         <p>

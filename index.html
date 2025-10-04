@@ -81,12 +81,47 @@ header {
 .category img { width:48px; margin-bottom:10px; transition:0.3s; }
 .category p { font-weight:700; font-size:0.95rem; color:#6610f2; }
 
-/* Footer */
-footer {
-  background:#343a40; color:#fff; text-align:center; padding:30px 15px; margin-top:40px;
+/* About Us Section */
+.about-section {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  padding:50px 15px;
+  color:#fff;
+  border-radius:16px;
+  margin-top:40px;
+  overflow:hidden;
 }
-footer h2 { margin-bottom:10px; font-size:1.2rem; font-weight:700; }
-footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15px auto; }
+.about-container {
+  max-width:1000px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:25px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 1s ease;
+}
+.about-container.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+.about-image {
+  flex:0 0 120px;
+}
+.about-image img {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #fff;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.about-image img:hover { transform:scale(1.1); }
+.about-text { flex:1; min-width:250px; }
+.about-text h2 { font-size:1.8rem; font-weight:800; margin-bottom:15px; text-shadow:0 2px 5px rgba(0,0,0,0.3); }
+.about-text p { font-size:1rem; line-height:1.7; margin-bottom:15px; }
+.about-info { font-weight:600; font-size:0.95rem; display:flex; flex-direction:column; gap:5px; }
 
 /* WhatsApp Button */
 .whatsapp-button {
@@ -107,6 +142,9 @@ footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15
   .product-card h4 { font-size:0.8rem; }
   .category { padding:18px; }
   .categories-heading { font-size:1.25rem; }
+  .about-container { flex-direction:column; align-items:center; text-align:center; }
+  .about-text { min-width:100%; }
+  .about-image { margin-bottom:15px; }
 }
 </style>
 </head>
@@ -161,18 +199,37 @@ footer p { font-size:0.95rem; line-height:1.6; max-width:650px; margin:0 auto 15
   <div class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Personal Loan</p></div>
 </section>
 
+<!-- About Us Section -->
 <footer>
-  <h2>About Us</h2>
-  <p>OnlineHub India is a Rajasthan-based company providing certified financial advisory services. Our team of expert financial advisors serve with heart and dedication, helping clients secure credit cards, loans, savings accounts, and other financial products with confidence and trust.</p>
-  <div class="footer-content">
-    <img src="PROFILE.png" alt="Raj Joshi">
-    <div><b>RAJ JOSHI</b><br><small>Certified Financial Advisor</small></div>
-  </div>
+  <section class="about-section">
+    <div class="about-container">
+      <!-- Profile Image -->
+      <div class="about-image">
+        <img src="PROFILE.png" alt="Raj Joshi">
+      </div>
+      <!-- About Text -->
+      <div class="about-text">
+        <h2>About OnlineHub India</h2>
+        <p>
+          OnlineHub India is a Rajasthan-based company providing <strong>certified financial advisory services</strong>. Our team of expert financial advisors, led by <strong>Raj Joshi</strong>, serve with heart and dedication, helping clients secure credit cards, loans, savings accounts, and other financial products with confidence and trust.
+        </p>
+        <div class="about-info">
+          <span>Expert Financial Advisor: <strong>Raj Joshi</strong></span>
+          <span>Location: Rajasthan, India</span>
+          <span>Certified & Trusted Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </footer>
 
-<a href="https://wa.me/919610841436?text=Hi" class="whatsapp-button" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919610841436?text=Hello%20Raj,%20I%20am%20interested%20in%20learning%20about%20your%20financial%20products.%20Please%20assist%20me%20with%20the%20best%20options." class="whatsapp-button" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
 
 <script>
+// Slideshow
 let slideIndex=0;
 const slides=document.getElementsByClassName("slide");
 function showSlides(){
@@ -199,6 +256,16 @@ function startAutoScroll() {
 productRow.addEventListener('mouseenter', () => clearInterval(scrollInterval));
 productRow.addEventListener('mouseleave', () => startAutoScroll());
 startAutoScroll();
+
+// Scroll-triggered fade-in for About Us
+const aboutSection = document.querySelector('.about-container');
+window.addEventListener('scroll', () => {
+  const sectionTop = aboutSection.getBoundingClientRect().top;
+  const triggerPoint = window.innerHeight - 100;
+  if(sectionTop < triggerPoint) {
+    aboutSection.classList.add('visible');
+  }
+});
 </script>
 
 </body>

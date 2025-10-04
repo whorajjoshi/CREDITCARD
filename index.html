@@ -77,6 +77,7 @@ header {
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.4s; cursor:pointer;
   text-decoration:none;
+  color: inherit;
 }
 .category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
 .category img { width:48px; margin-bottom:10px; transition:0.3s; }
@@ -85,44 +86,43 @@ header {
 /* About Us Section */
 .about-section {
   background: linear-gradient(135deg, #0d6efd, #6610f2);
-  padding:50px 15px;
-  color:#fff;
-  border-radius:16px;
-  margin-top:40px;
-  overflow:hidden;
+  padding: 40px 15px;
+  border-radius: 16px;
+  color: #fff;
+  margin: 40px auto;
+  max-width: 1000px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 .about-container {
-  max-width:1000px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  flex-wrap:wrap;
-  opacity:0;
-  transform:translateY(50px);
-  transition:all 1s ease;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
 .about-container.visible {
-  opacity:1;
-  transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 .about-image {
-  flex:0 0 120px;
+  flex: 0 0 120px;
 }
 .about-image img {
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid #fff;
-  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   transition: transform 0.3s;
 }
-.about-image img:hover { transform:scale(1.1); }
-.about-text { flex:1; min-width:250px; }
-.about-text h2 { font-size:1.8rem; font-weight:800; margin-bottom:15px; text-shadow:0 2px 5px rgba(0,0,0,0.3); }
-.about-text p { font-size:1rem; line-height:1.7; margin-bottom:15px; }
-.about-info { font-weight:600; font-size:0.95rem; display:flex; flex-direction:column; gap:5px; }
+.about-image img:hover { transform: scale(1.1); }
+.about-text { flex: 1; min-width: 250px; }
+.about-text h2 { font-size:1.8rem; font-weight:800; margin-bottom:10px; text-shadow:0 2px 5px rgba(0,0,0,0.3); }
+.about-text p { font-size:1rem; line-height:1.5; margin-bottom:12px; }
+.about-info { display:flex; flex-direction:column; gap:6px; font-weight:600; font-size:0.95rem; }
 
 /* WhatsApp Button */
 .whatsapp-button {
@@ -192,7 +192,7 @@ header {
 <!-- Categories Heading -->
 <h2 class="categories-heading">Browse Products by Categories</h2>
 
-<!-- Categories with proper links -->
+<!-- Categories -->
 <section class="categories">
   <a href="credit-card.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
   <a href="demat-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
@@ -201,26 +201,24 @@ header {
 </section>
 
 <!-- About Us Section -->
-<footer>
-  <section class="about-section">
-    <div class="about-container">
-      <div class="about-image">
-        <img src="PROFILE.png" alt="Raj Joshi">
-      </div>
-      <div class="about-text">
-        <h2>About OnlineHub India</h2>
-        <p>
-          OnlineHub India is a Rajasthan-based company providing <strong>certified financial advisory services</strong>. Our team of expert financial advisors, led by <strong>Raj Joshi</strong>, serve with heart and dedication, helping clients secure credit cards, loans, savings accounts, and other financial products with confidence and trust.
-        </p>
-        <div class="about-info">
-          <span>Expert Financial Advisor: <strong>Raj Joshi</strong></span>
-          <span>Location: Rajasthan, India</span>
-          <span>Certified & Trusted Service</span>
-        </div>
+<section class="about-section">
+  <div class="about-container">
+    <!-- Left: Profile Image -->
+    <div class="about-image">
+      <img src="profile.png" alt="Raj Joshi">
+    </div>
+    <!-- Right: Quick Facts -->
+    <div class="about-text">
+      <h2>Credit Line - OnlineHub India</h2>
+      <p>Rajasthan-based experts helping you secure <strong>credit cards, loans & savings</strong> with ease and confidence.</p>
+      <div class="about-info">
+        <span>Expert Advisor: <strong>Raj Joshi</strong></span>
+        <span>Location: Rajasthan, India</span>
+        <span>Certified & Trusted</span>
       </div>
     </div>
-  </section>
-</footer>
+  </div>
+</section>
 
 <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/919610841436?text=Hello%20Raj,%20I%20am%20interested%20in%20learning%20about%20your%20financial%20products.%20Please%20assist%20me%20with%20the%20best%20options." class="whatsapp-button" target="_blank">

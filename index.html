@@ -43,6 +43,9 @@ header {
   display:grid; grid-template-columns:repeat(6,1fr);
   gap:12px; padding:0 15px; max-width:1000px; margin:20px auto;
 }
+.categories h2 {
+  grid-column:1/-1; text-align:center; color:#6610f2; margin-bottom:12px;
+}
 .category {
   background:#fff; border-radius:16px; padding:12px; 
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
@@ -84,7 +87,7 @@ header {
 
 /* Review Section */
 .review-section {
-  background: linear-gradient(135deg,#cce0ff,#99c2ff); /* soft pastel blue */
+  background: linear-gradient(135deg,#cce0ff,#99c2ff);
   padding:30px 15px;
   border-radius:16px;
   margin-bottom:30px;
@@ -170,32 +173,32 @@ header {
 
 <!-- Categories -->
 <section class="categories">
-  <h2 style="grid-column:1/-1; text-align:center; color:#6610f2; margin-bottom:12px;">Browse Products by Categories</h2>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Loan</p></a>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shield.svg"><p>Insurance</p></a>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
-  <a href="#" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shopping-cart.svg"><p>Ecommerce Store</p></a>
+  <h2>Browse Products by Categories</h2>
+  <a href="credit-card.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
+  <a href="personal-loan.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Loan</p></a>
+  <a href="insurance.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shield.svg"><p>Insurance</p></a>
+  <a href="saving-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
+  <a href="demat-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
+  <a href="ecommerce.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shopping-cart.svg"><p>Ecommerce Store</p></a>
 </section>
 
 <!-- Product Grid Section -->
 <section class="product-section">
   <h2>Apply for Our Trending Products</h2>
   <div class="product-grid">
-    <a href="#" class="product-card">
+    <a href="https://sales.gromo.in/kw/V-aqzOog-K" target="_blank" class="product-card">
       <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="KIWI Credit Card">
       <h4>KIWI Credit Card</h4>
     </a>
-    <a href="#" class="product-card">
+    <a href="https://sales.gromo.in/if/V-aqzOog-K" target="_blank" class="product-card">
       <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="POP Credit Card">
       <h4>POP Credit Card</h4>
     </a>
-    <a href="#" class="product-card">
+    <a href="https://sales.gromo.in/yp/V-aqzOog-K" target="_blank" class="product-card">
       <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC Credit Card">
       <h4>IDFC Credit Card</h4>
     </a>
-    <a href="#" class="product-card">
+    <a href="all-products.html" class="product-card">
       <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/list.svg" alt="All Products">
       <h4>All Products</h4>
     </a>

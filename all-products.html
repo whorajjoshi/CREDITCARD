@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Products - Credit Line</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+
+body { background:#f2f3f7; color:#333; }
+
+header {
+  background: linear-gradient(90deg,#0d6efd,#6610f2);
+  color:#fff; text-align:center; padding:15px 10px;
+  font-weight:700; font-size:1.1rem; box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  position: sticky; top:0; z-index:1000;
+}
+
+.container { max-width:1200px; margin:20px auto; padding:0 15px; }
+
+/* Search & Filter */
+.search-filter { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:20px; }
+.search-filter input, .search-filter select {
+  padding:8px 12px; border-radius:25px; border:1px solid #ccc; outline:none;
+  font-size:0.9rem;
+  transition:0.3s;
+}
+.search-filter input:focus, .search-filter select:focus { border-color:#6610f2; box-shadow:0 0 8px #6610f2; }
+
+/* Product Grid */
+.product-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+.product-card {
+  background:#fff; border-radius:16px; box-shadow:0 6px 15px rgba(0,0,0,0.08);
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:15px 10px; position:relative; height:270px; transition:0.3s;
+}
+.product-card:hover { transform:translateY(-5px) scale(1.03); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+.product-card img { width:48px; height:48px; margin-bottom:8px; }
+.product-card h4 { font-size:0.9rem; color:#0d6efd; margin-bottom:5px; font-weight:600; }
+.product-card .fee {
+  font-size:0.8rem; font-weight:700; color:#FF4C60;
+  margin-bottom:8px; background:#ffe6e9; padding:4px 10px; border-radius:20px;
+}
+.product-card .get-now {
+  margin-top:auto; /* push to bottom */
+  background:#6610f2; color:#fff; padding:8px 18px; border-radius:25px;
+  text-decoration:none; font-weight:600; font-size:0.85rem;
+  box-shadow:0 4px 12px rgba(102,16,242,0.3);
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.product-card .get-now:hover {
+  transform:scale(1.05);
+  box-shadow:0 6px 18px rgba(102,16,242,0.4);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .search-filter { flex-direction:column; }
+  .product-card { height:auto; padding:12px 8px; }
+}
+</style>
+</head>
+<body>
+
+<header>All Products - Credit Line</header>
+
+<div class="container">
+  <!-- Search & Filter -->
+  <div class="search-filter">
+    <input type="text" id="searchInput" placeholder="Search Product...">
+    <select id="categoryFilter">
+      <option value="All">All Categories</option>
+      <option value="Credit Card">Credit Card</option>
+    </select>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="productGrid">
+    <!-- Product Cards -->
+    <div class="product-card" data-name="Axis MyZone Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis MyZone Credit Card">
+      <h4>Axis MyZone Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/iPoFfxB" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="HSBC Platinum Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Platinum Credit Card">
+      <h4>HSBC Platinum Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/vTmc7lo" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Flipkart Credit Card Store" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Flipkart Credit Card Store">
+      <h4>Axis Flipkart Credit Card Store</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/py1x8n8" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="SBI Cashback Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="SBI Cashback Credit Card">
+      <h4>SBI Cashback Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/ByrcGNl" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="FIRSTmoney vy IDFC Bank" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="FIRSTmoney vy IDFC Bank">
+      <h4>FIRSTmoney vy IDFC Bank</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/b2zwNz1" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Privilege Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Privilege Credit Card">
+      <h4>Axis Privilege Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/9QM1NWM" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Mangus Credit Card Store" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Mangus Credit Card Store">
+      <h4>Axis Mangus Credit Card Store</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/xa3h0qW" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Indian OIl Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Indian OIl Credit Card">
+      <h4>Axis Indian OIl Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/CZB3wN7" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Indian Oil Rupay Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Indian Oil Rupay Credit Card">
+      <h4>Axis Indian Oil Rupay Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/j950Iaf" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Airtel Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Airtel Credit Card">
+      <h4>Axis Airtel Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/NjhH30E" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Lic Signature Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Lic Signature Credit Card">
+      <h4>Axis Lic Signature Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/ICfp9be" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="Axis Lic Platinum Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Lic Platinum Credit Card">
+      <h4>Axis Lic Platinum Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/gDF060J" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="IDFC First Power Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Power Credit Card">
+      <h4>IDFC First Power Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/vE2ONcZ" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="IDFC First Power Plus Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Power Plus Credit Card">
+      <h4>IDFC First Power Plus Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/4i71wJJ" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="IDFC First Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Credit Card">
+      <h4>IDFC First Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/45f5N5T" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="IDFC First Bank Mayura Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Bank Mayura Credit Card">
+      <h4>IDFC First Bank Mayura Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/fcCnJwp" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="HSBC Live Plus Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Live Plus Credit Card">
+      <h4>HSBC Live Plus Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/vi1XN4i" target="_blank" class="get-now">GET NOW</a>
+    </div>
+    <div class="product-card" data-name="HSBC Travel One Credit Card" data-category="Credit Card">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Travel One Credit Card">
+      <h4>HSBC Travel One Credit Card</h4>
+      <p class="fee">ZERO Fess</p>
+      <a href="https://bitli.in/sbq9rr7" target="_blank" class="get-now">GET NOW</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Search Filter
+const searchInput = document.getElementById('searchInput');
+const categoryFilter = document.getElementById('categoryFilter');
+const productGrid = document.getElementById('productGrid');
+const productCards = productGrid.getElementsByClassName('product-card');
+
+function filterProducts(){
+  const searchText = searchInput.value.toLowerCase();
+  const categoryText = categoryFilter.value;
+
+  for(let card of productCards){
+    const name = card.dataset.name.toLowerCase();
+    const category = card.dataset.category;
+    if((name.includes(searchText)) && (categoryText==='All' || category===categoryText)){
+      card.style.display='flex';
+    } else {
+      card.style.display='none';
+    }
+  }
+}
+
+searchInput.addEventListener('input', filterProducts);
+categoryFilter.addEventListener('change', filterProducts);
+</script>
+
+</body>
+</html>

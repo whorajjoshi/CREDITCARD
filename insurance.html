@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Insurance — Credit Line</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#6610f2;
+  --accent:#0d6efd;
+  --muted:#666;
+  --card-bg:#fff;
+  --page-bg:#f5f7fb;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--page-bg);color:#222;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+/* Topbar */
+.topbar{
+  background:linear-gradient(90deg,var(--accent),var(--primary));
+  color:#fff;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.topbar a.logo{color:#fff;text-decoration:none;font-weight:700;font-size:1.05rem;}
+.topbar .back{
+  background:rgba(255,255,255,0.12);
+  padding:8px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+}
+
+/* Container */
+.container{max-width:1100px;margin:24px auto;padding:0 18px 60px;}
+
+/* Heading */
+.heading{text-align:center;margin-bottom:14px;}
+.heading h1{font-size:1.6rem;color:var(--primary);font-weight:800;}
+.heading p{color:var(--muted);margin-top:6px;font-size:0.95rem;}
+
+/* Categories Buttons */
+.category-grid{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  margin:10px 0 25px 0;
+  padding:0 5px;
+}
+.category-card{
+  background:#fff;
+  border-radius:16px;
+  padding:12px 8px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:0.3s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  flex:1;
+  min-width:80px;
+  text-decoration:none;
+  color:#000;
+}
+.category-card:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+.category-card img{width:36px;height:36px;margin-bottom:6px;}
+
+/* Product Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+}
+.card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow:0 6px 20px rgba(20,20,40,0.06);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(20,20,40,0.09);}
+.bank-logo{
+  width:64px;height:64px;border-radius:10px;background:#f1f3f7;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--muted);font-size:0.85rem;flex-shrink:0;
+}
+.card-body{flex:1;display:flex;flex-direction:column;gap:6px;}
+.card-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.card-title h3{font-size:1rem;margin:0;font-weight:700;color:#111;}
+.card-meta{font-size:0.88rem;color:var(--muted);margin-top:4px;}
+.card-footer{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.fee{font-size:0.95rem;font-weight:700;color:#111;}
+.elig{font-size:0.85rem;color:var(--muted);}
+.apply-btn{
+  background:linear-gradient(90deg,var(--accent),var(--primary));
+  color:#fff;border:0;padding:8px 12px;border-radius:8px;font-weight:700;text-decoration:none;
+}
+
+/* Footer */
+footer{margin-top:40px;background:#343a40;color:#fff;padding:20px;text-align:center;border-radius:12px 12px 0 0;}
+footer .footer-cta p{font-size:0.95rem;margin-bottom:10px;line-height:1.4;}
+footer .whatsapp-btn{display:inline-block;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:8px;text-decoration:none;transition:transform 0.15s ease;}
+footer .whatsapp-btn:hover{transform:translateY(-3px);}
+
+/* Responsive */
+@media(max-width:520px){
+  .bank-logo{width:56px;height:56px;font-size:0.8rem;}
+  .category-grid{flex-wrap:nowrap;} /* ek hi line me scroll allowed */
+  .category-card{min-width:70px;padding:10px 6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <a class="back" href="index.html">← Back</a>
+  <a class="logo" href="index.html">Credit Line</a>
+</div>
+
+<main class="container">
+  <!-- Heading -->
+  <div class="heading">
+    <h1>Insurance Products</h1>
+    <p>Select your category</p>
+  </div>
+
+  <!-- Categories Buttons -->
+  <div class="category-grid">
+    <a href="#" class="category-card">
+      <img src="https://img.icons8.com/color/48/000000/motorcycle.png" alt="Bike Insurance">
+      <span>Bike</span>
+    </a>
+    <a href="#" class="category-card">
+      <img src="https://img.icons8.com/color/48/000000/car--v1.png" alt="Car Insurance">
+      <span>Car</span>
+    </a>
+    <a href="#" class="category-card">
+      <img src="https://img.icons8.com/color/48/000000/life-insurance.png" alt="Life/Term Insurance">
+      <span>Life/Term</span>
+    </a>
+    <a href="#" class="category-card">
+      <img src="https://img.icons8.com/color/48/000000/medical-insurance.png" alt="Health Insurance">
+      <span>Health</span>
+    </a>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="grid">
+    <article class="card">
+      <div class="bank-logo">BI</div>
+      <div class="card-body">
+        <div class="card-title"><h3>BikeSecure Insurance</h3></div>
+        <div class="card-meta">Comprehensive bike coverage & theft protection</div>
+        <div class="card-footer">
+          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
+          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="bank-logo">CI</div>
+      <div class="card-body">
+        <div class="card-title"><h3>CarShield Insurance</h3></div>
+        <div class="card-meta">Full car protection including accidents & fire</div>
+        <div class="card-footer">
+          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
+          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="bank-logo">LI</div>
+      <div class="card-body">
+        <div class="card-title"><h3>LifeGuard Insurance</h3></div>
+        <div class="card-meta">Term life cover with flexible premium options</div>
+        <div class="card-footer">
+          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
+          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="bank-logo">HI</div>
+      <div class="card-body">
+        <div class="card-title"><h3>HealthPlus Insurance</h3></div>
+        <div class="card-meta">Covers hospitalization & critical illnesses</div>
+        <div class="card-footer">
+          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
+          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="bank-logo">BI</div>
+      <div class="card-body">
+        <div class="card-title"><h3>SuperBike Insurance</h3></div>
+        <div class="card-meta">Premium coverage for sports bikes</div>
+        <div class="card-footer">
+          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
+          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-cta">
+    <p><strong>Need help choosing an insurance plan?</strong><br>
+    Chat with Raj on WhatsApp for guidance and personalized suggestions.</p>
+    <a class="whatsapp-btn" href="https://wa.me/919610841436" target="_blank">Chat on WhatsApp</a>
+  </div>
+  <p style="margin-top:12px; font-size:0.8em; text-align:center;">© 2025 Credit Line</p>
+</footer>
+
+</body>
+</html>

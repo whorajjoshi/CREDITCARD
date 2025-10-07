@@ -38,10 +38,19 @@ header {
 .apply-btn:hover { transform:scale(1.1); box-shadow:0 0 25px #0d6efd; }
 @keyframes glow { 0% { box-shadow:0 0 10px #0d6efd; } 100% { box-shadow:0 0 25px #0d6efd; } }
 
+/* Categories Heading */
+.categories-heading {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 20px 0 10px 0;
+  color: #6610f2;
+}
+
 /* Categories */
 .categories {
   display:grid; grid-template-columns:repeat(6,1fr);
-  gap:12px; padding:0 15px; max-width:1000px; margin:20px auto;
+  gap:12px; padding:0 15px; max-width:1000px; margin:0 auto 30px auto;
 }
 .category {
   background:#fff; border-radius:16px; padding:12px; 
@@ -140,6 +149,9 @@ header {
     <a href="all-products.html" class="apply-btn" target="_blank">All Products</a>
   </div>
 </div>
+
+<!-- Categories Heading -->
+<h2 class="categories-heading">Browse Products by Categories</h2>
 
 <!-- Categories -->
 <section class="categories">

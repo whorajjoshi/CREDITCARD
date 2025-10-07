@@ -70,18 +70,18 @@ header {
 
 /* Categories */
 .categories {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px; padding:0 15px; max-width:1000px; margin:0 auto 30px auto;
+  display:grid; grid-template-columns:repeat(6,1fr);
+  gap:12px; padding:0 15px; max-width:1000px; margin:0 auto 30px auto;
 }
 .category {
-  background:#fff; border-radius:16px; padding:15px; /* reduced padding for smaller height */
+  background:#fff; border-radius:16px; padding:12px; 
   text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:0.4s; cursor:pointer;
   text-decoration:none; color:inherit;
 }
-.category:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
-.category img { width:48px; margin-bottom:8px; transition:0.3s; }
-.category p { font-weight:700; font-size:0.9rem; color:#6610f2; margin:0; }
+.category:hover { transform:translateY(-6px) scale(1.05); box-shadow:0 10px 22px rgba(0,0,0,0.15); }
+.category img { width:48px; margin-bottom:6px; transition:0.3s; }
+.category p { font-weight:700; font-size:0.85rem; color:#6610f2; margin:0; }
 
 /* About Us Section */
 .about-section {
@@ -111,9 +111,10 @@ header {
 @media(max-width:768px){
   header { font-size:1rem; }
   .slideshow-container { height:180px; }
-  .product-grid { grid-template-columns:repeat(4,1fr); }
+  .product-grid { grid-template-columns:repeat(2,1fr); }
   .product-card { padding:15px 5px; }
-  .category { padding:12px; }
+  .categories { grid-template-columns:repeat(3,1fr); }
+  .category { padding:10px; }
   .categories-heading { font-size:1.25rem; }
   .about-text h2 { font-size:0.75rem; }
   .about-text p { font-size:0.55rem; }
@@ -170,9 +171,11 @@ header {
 <!-- Categories -->
 <section class="categories">
   <a href="credit-card.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><p>Credit Card</p></a>
+  <a href="personal-loan.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/wallet.svg"><p>Loan</p></a>
   <a href="demat-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/trending-up.svg"><p>Demat Account</p></a>
+  <a href="saving-account.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/building.svg"><p>Saving Account</p></a>
   <a href="insurance.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shield.svg"><p>Insurance</p></a>
-  <a href="ecommerce.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shopping-cart.svg"><p>Ecommerce</p></a>
+  <a href="ecommerce.html" class="category"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/shopping-cart.svg"><p>Ecommerce Store</p></a>
 </section>
 
 <!-- About Us Section -->

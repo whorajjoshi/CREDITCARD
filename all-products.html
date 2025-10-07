@@ -11,232 +11,146 @@ body { font-family:'Inter', sans-serif; background:#f2f3f7; color:#333; }
 
 /* Header */
 header {
-  position: sticky; top:0; z-index:1000;
+  display:flex; align-items:center; gap:10px;
+  position:sticky; top:0; z-index:1000;
   background: linear-gradient(90deg,#0d6efd,#6610f2);
   color:#fff; text-align:center;
-  padding:14px 10px; font-weight:700; font-size:1.15rem;
+  padding:14px 15px; font-weight:700; font-size:1.1rem;
   box-shadow:0 6px 12px rgba(0,0,0,0.15);
 }
+.back-button {
+  display:flex; align-items:center; justify-content:center;
+  width:32px; height:32px; background:rgba(255,255,255,0.2);
+  border-radius:50%; cursor:pointer; font-weight:bold;
+  transition:0.3s;
+}
+.back-button:hover { background:rgba(255,255,255,0.4); }
 
 /* Search & Filter */
 .search-filter {
-  display:flex; justify-content:space-between;
-  max-width:1000px; margin:20px auto; padding:0 15px;
-  flex-wrap:wrap; gap:10px;
+  max-width:1000px; margin:20px auto; display:flex;
+  gap:10px; padding:0 15px;
+  flex-wrap:wrap;
 }
 .search-filter input, .search-filter select {
-  padding:10px 12px; border-radius:8px; border:1px solid #ccc;
-  font-size:0.95rem; flex:1;
+  flex:1; padding:10px 12px; border-radius:10px; border:1px solid #ccc;
+  font-size:0.9rem;
 }
-.search-filter select { max-width:180px; }
+.search-filter input:focus, .search-filter select:focus { outline:none; border-color:#0d6efd; }
 
-/* Product Grid */
+/* Product Grid Section */
 .product-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  max-width:1000px; margin:0 auto; padding:0 15px 30px 15px;
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:15px; max-width:1000px; margin:0 auto; padding:0 15px;
 }
 .product-card {
   background:#fff; border-radius:16px; box-shadow:0 6px 15px rgba(0,0,0,0.08);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:15px 10px; transition:0.4s;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  padding:25px 10px 15px 10px; position:relative;
+  transition:0.4s; text-decoration:none; color:inherit;
 }
-.product-card:hover { transform:translateY(-4px) scale(1.02); box-shadow:0 10px 18px rgba(0,0,0,0.15); }
-.product-card img { width:50px; height:50px; margin-bottom:8px; }
-.product-card h4 { font-size:0.9rem; color:#0d6efd; font-weight:600; margin-bottom:5px; }
-.product-card .fees {
-  background:#ffdb4d; color:#000; font-weight:700;
-  padding:4px 10px; border-radius:12px; font-size:0.75rem;
-  margin-bottom:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+.product-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+.product-card img { width:42px; height:42px; margin-bottom:8px; }
+.product-card h4 { font-size:0.85rem; color:#0d6efd; font-weight:600; margin:0 0 8px 0; }
+.get-now {
+  background:#0d6efd; color:#fff; padding:8px 18px;
+  border:none; border-radius:25px; cursor:pointer;
+  font-weight:600; font-size:0.8rem; transition:0.3s;
+  margin-top:8px;
 }
-.product-card a.get-now {
-  text-decoration:none; background:#0d6efd; color:#fff;
-  padding:8px 15px; border-radius:20px; font-size:0.8rem;
-  font-weight:600; box-shadow:0 3px 10px rgba(0,0,0,0.15);
-  transition:0.3s;
+.get-now:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+.fees {
+  background:linear-gradient(135deg,#28a745,#20c997);
+  color:#fff; padding:5px 12px; border-radius:20px;
+  font-size:0.8rem; font-weight:700;
+  position:absolute; top:15px; right:15px; z-index:10;
+  box-shadow:0 2px 8px rgba(0,0,0,0.25);
 }
-.product-card a.get-now:hover { transform:scale(1.05); box-shadow:0 5px 15px rgba(0,0,0,0.25); }
 
 /* Responsive */
 @media(max-width:768px){
-  .search-filter { flex-direction:column; }
+  header { font-size:1rem; }
+  .search-filter input, .search-filter select { flex:1 1 100%; }
+  .product-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:480px){
   .product-grid { grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
 <body>
 
-<header>All Products - Credit Line</header>
+<header>
+  <div class="back-button" onclick="history.back()">←</div>
+  <span>All Products</span>
+</header>
 
-<!-- Search and Filter -->
 <div class="search-filter">
-  <input type="text" id="searchInput" placeholder="Search product...">
-  <select id="filterCategory">
-    <option value="all">All Categories</option>
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <select id="categoryFilter">
+    <option value="All">All Categories</option>
     <option value="Credit Card">Credit Card</option>
-    <option value="Loan">Loan</option>
-    <option value="Insurance">Insurance</option>
-    <option value="Saving Account">Saving Account</option>
-    <option value="Demat Account">Demat Account</option>
-    <option value="Ecommerce Store">Ecommerce Store</option>
   </select>
 </div>
 
-<!-- Products -->
-<div class="product-grid" id="productGrid">
-  <!-- Example Product -->
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis MyZone Credit Card">
-    <h4>Axis MyZone Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/iPoFfxB" target="_blank" class="get-now">Get Now</a>
-  </div>
-  
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Platinum Credit Card">
-    <h4>HSBC Platinum Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/vTmc7lo" target="_blank" class="get-now">Get Now</a>
-  </div>
-  
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Flipkart Credit Card Store">
-    <h4>Axis Flipkart Credit Card Store</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/py1x8n8" target="_blank" class="get-now">Get Now</a>
-  </div>
-  
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="SBI Cashback Credit Card">
-    <h4>SBI Cashback Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/ByrcGNl" target="_blank" class="get-now">Get Now</a>
-  </div>
-  
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="FIRSTmoney vy IDFC Bank">
-    <h4>FIRSTmoney vy IDFC Bank</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/b2zwNz1" target="_blank" class="get-now">Get Now</a>
-  </div>
-  
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Privilege Credit Card">
-    <h4>Axis Privilege Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/9QM1NWM" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Mangus Credit Card Store">
-    <h4>Axis Mangus Credit Card Store</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/xa3h0qW" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Indian Oil Credit Card">
-    <h4>Axis Indian Oil Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/CZB3wN7" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Indian Oil Rupay Credit Card">
-    <h4>Axis Indian Oil Rupay Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/j950Iaf" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Airtel Credit Card">
-    <h4>Axis Airtel Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/NjhH30E" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Lic Signature Credit Card">
-    <h4>Axis Lic Signature Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/ICfp9be" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="Axis Lic Platinum Credit Card">
-    <h4>Axis Lic Platinum Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/gDF060J" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Power Credit Card">
-    <h4>IDFC First Power Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/vE2ONcZ" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Power Plus Credit Card">
-    <h4>IDFC First Power Plus Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/4i71wJJ" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Credit Card">
-    <h4>IDFC First Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/45f5N5T" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC First Bank Mayura Credit Card">
-    <h4>IDFC First Bank Mayura Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/fcCnJwp" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Live Plus Credit Card">
-    <h4>HSBC Live Plus Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/vi1XN4i" target="_blank" class="get-now">Get Now</a>
-  </div>
-
-  <div class="product-card" data-category="Credit Card">
-    <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="HSBC Travel One Credit Card">
-    <h4>HSBC Travel One Credit Card</h4>
-    <div class="fees">ZERO FEES</div>
-    <a href="https://bitli.in/sbq9rr7" target="_blank" class="get-now">Get Now</a>
-  </div>
-</div>
+<div class="product-grid" id="productGrid"></div>
 
 <script>
-// Search filter
-const searchInput = document.getElementById('searchInput');
-const filterCategory = document.getElementById('filterCategory');
-const products = document.querySelectorAll('.product-card');
+const products = [
+  { name:'Axis MyZone Credit Card', link:'https://bitli.in/iPoFfxB', category:'Credit Card', fees:'ZERO' },
+  { name:'HSBC Platinum Credit Card', link:'https://bitli.in/vTmc7lo', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Flipkart Credit Card Store', link:'https://bitli.in/py1x8n8', category:'Credit Card', fees:'ZERO' },
+  { name:'SBI Cashback Credit Card', link:'https://bitli.in/ByrcGNl', category:'Credit Card', fees:'ZERO' },
+  { name:'FIRSTmoney vy IDFC Bank', link:'https://bitli.in/b2zwNz1', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Privilege Credit Card', link:'https://bitli.in/9QM1NWM', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Mangus Credit Card Store', link:'https://bitli.in/xa3h0qW', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Indian OIl Credit Card', link:'https://bitli.in/CZB3wN7', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Indian Oil Rupay Credit Card', link:'https://bitli.in/j950Iaf', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Airtel Credit Card', link:'https://bitli.in/NjhH30E', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Lic Signature Credit Card', link:'https://bitli.in/ICfp9be', category:'Credit Card', fees:'ZERO' },
+  { name:'Axis Lic Platinum Credit Card', link:'https://bitli.in/gDF060J', category:'Credit Card', fees:'ZERO' },
+  { name:'IDFC First Power Credit Card', link:'https://bitli.in/vE2ONcZ', category:'Credit Card', fees:'ZERO' },
+  { name:'IDFC First Power Plus Credit Card', link:'https://bitli.in/4i71wJJ', category:'Credit Card', fees:'ZERO' },
+  { name:'IDFC First Credit Card', link:'https://bitli.in/45f5N5T', category:'Credit Card', fees:'ZERO' },
+  { name:'IDFC First Bank Mayura Credit Card', link:'https://bitli.in/fcCnJwp', category:'Credit Card', fees:'ZERO' },
+  { name:'HSBC Live Plus Credit Card', link:'https://bitli.in/vi1XN4i', category:'Credit Card', fees:'ZERO' },
+  { name:'HSBC Travel One Credit Card', link:'https://bitli.in/sbq9rr7', category:'Credit Card', fees:'ZERO' }
+];
 
-function filterProducts(){
-  const searchText = searchInput.value.toLowerCase();
-  const category = filterCategory.value;
+const productGrid = document.getElementById('productGrid');
 
-  products.forEach(prod=>{
-    const title = prod.querySelector('h4').innerText.toLowerCase();
-    const prodCategory = prod.getAttribute('data-category');
-    if((title.includes(searchText)) && (category==='all' || prodCategory===category)){
-      prod.style.display='flex';
-    } else {
-      prod.style.display='none';
-    }
+function displayProducts(list){
+  productGrid.innerHTML='';
+  list.forEach(p=>{
+    const card = document.createElement('div');
+    card.className='product-card';
+    card.innerHTML=`
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <div class="fees">${p.fees}</div>
+      <a href="${p.link}" target="_blank"><button class="get-now">GET NOW</button></a>
+    `;
+    productGrid.appendChild(card);
   });
 }
+displayProducts(products);
 
-searchInput.addEventListener('input', filterProducts);
-filterCategory.addEventListener('change', filterProducts);
+// Search and Filter
+const searchInput=document.getElementById('searchInput');
+const categoryFilter=document.getElementById('categoryFilter');
+
+function filterProducts(){
+  const searchTerm=searchInput.value.toLowerCase();
+  const category=categoryFilter.value;
+  const filtered=products.filter(p=>{
+    return (p.name.toLowerCase().includes(searchTerm)) &&
+           (category==='All' || p.category===category);
+  });
+  displayProducts(filtered);
+}
+
+searchInput.addEventListener('input',filterProducts);
+categoryFilter.addEventListener('change',filterProducts);
 </script>
 
 </body>

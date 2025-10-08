@@ -27,28 +27,32 @@ body{font-family:'Inter',sans-serif;background:var(--page-bg);color:#222;-webkit
 .heading h1{font-size:1.6rem;color:var(--primary);font-weight:800;}
 .heading p{color:var(--muted);margin-top:6px;font-size:0.95rem;}
 
-/* Search & Filters */
 .filters{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px;justify-content:center;}
 .filters select, .filters input{padding:8px 12px;border-radius:8px;border:1px solid #ccc;font-size:0.95rem;}
+.filters button{padding:8px 12px;border-radius:8px;border:none;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;transition:transform 0.15s ease;}
+.filters button:hover{transform:translateY(-2px);}
+.filters-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;width:100%;}
+.filters-row select{flex:1; min-width:140px;}
+.filters-row input{flex:2; min-width:200px;}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
-.card{background:var(--card-bg);border-radius:var(--radius);padding:14px;box-shadow:0 6px 20px rgba(20,20,40,0.06);display:flex;gap:12px;align-items:flex-start;transition:transform .18s ease,box-shadow .18s ease;}
+.grid{display:grid;grid-template-columns:1fr;gap:16px;}
+.card{background:var(--card-bg);border-radius:var(--radius);padding:14px;box-shadow:0 6px 20px rgba(20,20,40,0.06);display:flex;gap:12px;align-items:flex-start;transition:transform .18s ease,box-shadow .18s ease;flex-direction:row;}
 .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(20,20,40,0.09);}
-.bank-logo{width:64px;height:64px;border-radius:10px;background:#f1f3f7;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);font-size:0.85rem;flex-shrink:0;}
+.bank-logo{width:64px;height:64px;border-radius:12px;background:#f1f3f7;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);font-size:0.85rem;flex-shrink:0;}
 .card-body{flex:1;display:flex;flex-direction:column;gap:6px;}
 .card-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
 .card-title h3{font-size:1rem;margin:0;font-weight:700;color:#111;}
 .card-meta{font-size:0.88rem;color:var(--muted);margin-top:4px;}
-.card-footer{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
-.fee{font-size:0.95rem;font-weight:700;color:#111;}
-.elig{font-size:0.85rem;color:var(--muted);}
+.card-docs{font-size:0.85rem;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-start;}
+.card-docs span{background:#eef2ff;color:var(--primary);padding:4px 8px;border-radius:6px;font-weight:600;}
+.card-footer{margin-top:10px;display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap;width:100%;}
 .apply-btn{background:linear-gradient(90deg,var(--accent),var(--primary));color:#fff;border:0;padding:8px 12px;border-radius:8px;font-weight:700;text-decoration:none;}
 
 footer{margin-top:40px;background:#343a40;color:#fff;padding:20px;text-align:center;border-radius:12px 12px 0 0;}
 footer .footer-cta p{font-size:0.95rem;margin-bottom:10px;line-height:1.4;}
 footer .whatsapp-btn{display:inline-block;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:8px;text-decoration:none;transition:transform 0.15s ease;}
 footer .whatsapp-btn:hover{transform:translateY(-3px);}
-@media(max-width:520px){.bank-logo{width:56px;height:56px;font-size:0.8rem;}.filters{flex-direction:column;align-items:center;}}
+@media(max-width:520px){.bank-logo{width:56px;height:56px;font-size:0.8rem;}.card{flex-direction:column;align-items:flex-start;}.card-footer{flex-direction:row;justify-content:space-between;width:100%;}.apply-btn{margin-left:0;width:100%;}}
 </style>
 </head>
 <body>
@@ -64,28 +68,25 @@ footer .whatsapp-btn:hover{transform:translateY(-3px);}
     <p>Compare top personal loans & easy apply</p>
   </div>
 
-  <!-- Filters -->
   <div class="filters">
-    <select id="employmentFilter">
-      <option value="all">All Employment Types</option>
-      <option value="salaried">Salaried</option>
-      <option value="self-employed">Self Employed</option>
-      <option value="student">Student</option>
-    </select>
-
-    <select id="interestFilter">
-      <option value="all">Sort by Interest Rate</option>
-      <option value="low">Low to High</option>
-      <option value="high">High to Low</option>
-    </select>
-
-    <input type="text" id="searchInput" placeholder="Search by product name...">
+    <div class="filters-row">
+      <select id="employmentFilter">
+        <option value="all">All Employment Types</option>
+        <option value="salaried">Salaried</option>
+        <option value="self-employed">Self Employed</option>
+        <option value="student">Student</option>
+      </select>
+      <select id="interestFilter">
+        <option value="all">Sort by Interest Rate</option>
+        <option value="low">Low to High</option>
+        <option value="high">High to Low</option>
+      </select>
+      <input type="text" id="searchInput" placeholder="Search by product name...">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
   </div>
 
-  <!-- Cards Grid -->
-  <section class="grid" id="loanGrid">
-    <!-- Cards will be dynamically added here -->
-  </section>
+  <section class="grid" id="loanGrid"></section>
 </main>
 
 <footer>
@@ -125,26 +126,30 @@ const grid = document.getElementById('loanGrid');
 const employmentFilter = document.getElementById('employmentFilter');
 const interestFilter = document.getElementById('interestFilter');
 const searchInput = document.getElementById('searchInput');
+const resetBtn = document.getElementById('resetFilters');
 
 function renderLoans(loansToRender){
   grid.innerHTML = '';
   loansToRender.forEach(loan => {
     const card = document.createElement('article');
     card.className = 'card';
-
     const initials = loan.name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-
     card.innerHTML = `
       <div class="bank-logo">${initials}</div>
       <div class="card-body">
         <div class="card-title"><h3>${loan.name}</h3></div>
+        <div class="card-docs">
+          <span>PAN Card</span>
+          <span>KYC Documents</span>
+          <span>Other Docs</span>
+        </div>
         <div class="card-meta">Interest Rate: ${loan.interest}% p.a. | Approval: ${loan.approval} | Amount: ${loan.amount}</div>
         <div class="card-footer">
+          <div style="flex:1"></div>
           <a class="apply-btn" href="${loan.link}" target="_blank" rel="noopener">Apply Now</a>
         </div>
       </div>
     `;
-
     grid.appendChild(card);
   });
 }
@@ -154,27 +159,22 @@ function filterAndSearch(){
   const empVal = employmentFilter.value;
   const interestVal = interestFilter.value;
   const searchVal = searchInput.value.toLowerCase();
-
-  if(empVal !== 'all'){
-    filtered = filtered.filter(loan => loan.employment.toLowerCase().includes(empVal));
-  }
-
-  if(searchVal){
-    filtered = filtered.filter(loan => loan.name.toLowerCase().includes(searchVal));
-  }
-
-  if(interestVal==='low'){
-    filtered.sort((a,b)=>a.interest-b.interest);
-  } else if(interestVal==='high'){
-    filtered.sort((a,b)=>b.interest-a.interest);
-  }
-
+  if(empVal !== 'all') filtered = filtered.filter(loan => loan.employment.toLowerCase().includes(empVal));
+  if(searchVal) filtered = filtered.filter(loan => loan.name.toLowerCase().includes(searchVal));
+  if(interestVal==='low') filtered.sort((a,b)=>a.interest-b.interest);
+  else if(interestVal==='high') filtered.sort((a,b)=>b.interest-a.interest);
   renderLoans(filtered);
 }
 
 employmentFilter.addEventListener('change', filterAndSearch);
 interestFilter.addEventListener('change', filterAndSearch);
 searchInput.addEventListener('input', filterAndSearch);
+resetBtn.addEventListener('click', ()=>{
+  employmentFilter.value='all';
+  interestFilter.value='all';
+  searchInput.value='';
+  renderLoans(loans);
+});
 
 renderLoans(loans);
 </script>

@@ -45,7 +45,7 @@ header {
 }
 .categories h2 {
   grid-column:1/-1; text-align:center; color:#6610f2; margin-bottom:12px;
-  font-size:1rem; /* default desktop font size */
+  font-size:1rem;
 }
 .category {
   background:#fff; border-radius:16px; padding:12px; 
@@ -211,67 +211,16 @@ header {
 <section class="review-section">
   <h2>Our Happy Customers</h2>
   <div class="review-slider" id="reviewSlider">
-    <!-- 10 demo reviews -->
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User1">
-      <h4>Ravi Sharma</h4>
-      <p>Excellent service and quick response!</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User2">
-      <h4>Pooja Mehta</h4>
-      <p>Very satisfied with my new credit card.</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="User3">
-      <h4>Aditya Singh</h4>
-      <p>Loan application process was smooth!</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="User4">
-      <h4>Neha Kapoor</h4>
-      <p>Highly recommend their services!</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="User5">
-      <h4>Manoj Kumar</h4>
-      <p>Great customer support and guidance.</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="User6">
-      <h4>Sneha Jain</h4>
-      <p>Fast approvals and friendly staff!</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="User7">
-      <h4>Vikram Verma</h4>
-      <p>Very reliable platform for financial products.</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/women/8.jpg" alt="User8">
-      <h4>Shreya Rao</h4>
-      <p>Quick and easy process, highly recommend!</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="User9">
-      <h4>Rohit Gupta</h4>
-      <p>Excellent guidance for all financial needs.</p>
-      <div class="stars">★★★★★</div>
-    </div>
-    <div class="review-card">
-      <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="User10">
-      <h4>Kavita Singh</h4>
-      <p>Best platform to apply for loans and credit cards!</p>
-      <div class="stars">★★★★★</div>
-    </div>
+    <div class="review-card"><img src="rphoto1.jpg" alt="User1"><h4>Ravi Sharma</h4><p>Excellent service and quick response!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto2.jpg" alt="User2"><h4>Pooja Mehta</h4><p>Very satisfied with my new credit card.</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto3.jpg" alt="User3"><h4>Aditya Singh</h4><p>Loan application process was smooth!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto4.jpg" alt="User4"><h4>Neha Kapoor</h4><p>Highly recommend their services!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto5.jpg" alt="User5"><h4>Manoj Kumar</h4><p>Great customer support and guidance.</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto6.jpg" alt="User6"><h4>Sneha Jain</h4><p>Fast approvals and friendly staff!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto7.jpg" alt="User7"><h4>Vikram Verma</h4><p>Very reliable platform for financial products.</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto8.jpg" alt="User8"><h4>Shreya Rao</h4><p>Quick and easy process, highly recommend!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto9.jpg" alt="User9"><h4>Rohit Gupta</h4><p>Excellent guidance for all financial needs.</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto10.jpg" alt="User10"><h4>Kavita Singh</h4><p>Best platform to apply for loans and credit cards!</p><div class="stars">★★★★★</div></div>
   </div>
 </section>
 
@@ -307,7 +256,7 @@ showSlides();
 const reviewSlider = document.getElementById('reviewSlider');
 let scrollAmount = 0;
 function autoScrollReviews(){
-  scrollAmount += 220; // card width + gap
+  scrollAmount += 220;
   if(scrollAmount >= reviewSlider.scrollWidth) scrollAmount = 0;
   reviewSlider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
   setTimeout(autoScrollReviews, 3000);

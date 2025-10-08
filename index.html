@@ -38,6 +38,29 @@ header {
 .apply-btn:hover { transform:scale(1.1); box-shadow:0 0 25px #0d6efd; }
 @keyframes glow { 0% { box-shadow:0 0 10px #0d6efd; } 100% { box-shadow:0 0 25px #0d6efd; } }
 
+/* Play/Pause Button */
+.play-pause-btn {
+  position:absolute; top:15px; right:15px;
+  background:#fff; color:#0d6efd; border:none; border-radius:50%;
+  width:40px; height:40px; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  z-index:10;
+}
+.play-pause-btn:hover { transform:scale(1.1); }
+
+/* Slide Indicators (Dots) */
+.dots-container {
+  position:absolute; bottom:15px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px;
+  z-index:10;
+}
+.dot {
+  width:12px; height:12px; border-radius:50%;
+  background:#ddd; cursor:pointer;
+  transition:0.3s;
+}
+.dot.active { background:#0d6efd; }
+
 /* Categories */
 .categories {
   display:grid; grid-template-columns:repeat(6,1fr);
@@ -171,6 +194,12 @@ header {
     <a href="#"><img src="slide4.png" alt="All Products"></a>
     <a href="#" class="apply-btn">All Products</a>
   </div>
+
+  <!-- Play/Pause Button -->
+  <button class="play-pause-btn" id="playPauseBtn">❚❚</button>
+
+  <!-- Slide Indicators -->
+  <div class="dots-container" id="dotsContainer"></div>
 </div>
 
 <!-- Categories -->
@@ -243,14 +272,42 @@ header {
 // Slideshow
 let slideIndex=0;
 const slides=document.getElementsByClassName("slide");
-function showSlides(){
-  for(let i=0;i<slides.length;i++) slides[i].style.display="none";
+let playing = true;
+let slideInterval;
+
+const dotsContainer = document.getElementById('dotsContainer');
+for(let i=0;i<slides.length;i++){
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  dot.addEventListener('click', ()=>{ slideIndex=i; showSlides(true); });
+  dotsContainer.appendChild(dot);
+}
+
+function showSlides(skipNext=false){
+  for(let i=0;i<slides.length;i++){
+    slides[i].style.display="none";
+    dotsContainer.children[i].classList.remove('active');
+  }
   slideIndex++;
   if(slideIndex>slides.length) slideIndex=1;
   slides[slideIndex-1].style.display="block";
-  setTimeout(showSlides,4000);
+  dotsContainer.children[slideIndex-1].classList.add('active');
+  if(!skipNext) slideInterval=setTimeout(showSlides,4000);
 }
 showSlides();
+
+// Play/Pause Button
+const playPauseBtn = document.getElementById('playPauseBtn');
+playPauseBtn.addEventListener('click', ()=>{
+  if(playing){
+    clearTimeout(slideInterval);
+    playPauseBtn.textContent = "▶";
+  } else {
+    showSlides(true);
+    playPauseBtn.textContent = "❚❚";
+  }
+  playing = !playing;
+});
 
 // Auto Slide Review Section
 const reviewSlider = document.getElementById('reviewSlider');

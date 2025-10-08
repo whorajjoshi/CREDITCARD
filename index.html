@@ -6,10 +6,11 @@
 <title>Credit Line - OnlineHub India</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
+/* ====== Basic Reset ====== */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Inter', sans-serif; background:#f2f3f7; color:#333; }
 
-/* Header */
+/* ====== Header ====== */
 header {
   position: sticky; top:0; z-index:1000;
   background: linear-gradient(90deg,#0d6efd,#6610f2);
@@ -18,7 +19,7 @@ header {
   box-shadow:0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Slideshow */
+/* ====== Slideshow ====== */
 .slideshow-container {
   position: relative; max-width:1000px; height:220px;
   margin:10px auto; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2);
@@ -38,30 +39,24 @@ header {
 .apply-btn:hover { transform:scale(1.1); box-shadow:0 0 25px #0d6efd; }
 @keyframes glow { 0% { box-shadow:0 0 10px #0d6efd; } 100% { box-shadow:0 0 25px #0d6efd; } }
 
-/* Play/Pause Button */
-.play-pause-btn {
-  position:absolute; top:15px; right:15px;
-  background:#fff; color:#0d6efd; border:none; border-radius:50%;
-  width:40px; height:40px; font-weight:700; cursor:pointer;
-  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);
-  z-index:10;
-}
-.play-pause-btn:hover { transform:scale(1.1); }
-
-/* Slide Indicators (Dots) */
-.dots-container {
-  position:absolute; bottom:15px; left:50%; transform:translateX(-50%);
-  display:flex; gap:8px;
-  z-index:10;
+/* ====== Dots + Play/Pause ====== */
+.slideshow-controls {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:15px; z-index:10;
 }
 .dot {
   width:12px; height:12px; border-radius:50%;
-  background:#ddd; cursor:pointer;
-  transition:0.3s;
+  background:#ddd; cursor:pointer; transition:0.3s;
 }
 .dot.active { background:#0d6efd; }
+.play-pause-btn {
+  background:#fff; color:#0d6efd; border:none; border-radius:50%;
+  width:40px; height:40px; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+.play-pause-btn:hover { transform:scale(1.1); }
 
-/* Categories */
+/* ====== Categories ====== */
 .categories {
   display:grid; grid-template-columns:repeat(6,1fr);
   gap:12px; padding:0 15px; max-width:1000px; margin:20px auto;
@@ -80,7 +75,7 @@ header {
 .category img { width:48px; margin-bottom:6px; transition:0.3s; }
 .category p { font-weight:700; font-size:0.85rem; color:#6610f2; margin:0; }
 
-/* Product Grid Section */
+/* ====== Product Grid Section ====== */
 .product-section {
   background: linear-gradient(145deg,#0d6efd,#6610f2);
   padding:15px 0 25px 0; 
@@ -109,7 +104,7 @@ header {
 .product-card img { width:42px; height:42px; margin-bottom:8px; transition:0.3s; }
 .product-card h4 { font-size:0.85rem; color:#0d6efd; font-weight:600; margin:0; }
 
-/* Review Section */
+/* ====== Review Section ====== */
 .review-section {
   background: linear-gradient(135deg,#cce0ff,#99c2ff);
   padding:30px 15px;
@@ -136,7 +131,7 @@ header {
 .review-card p { font-size:0.75rem; color:#333; margin-bottom:5px; }
 .review-card .stars { color:#FFD700; font-size:0.8rem; }
 
-/* About Us Section */
+/* ====== About Section ====== */
 .about-section {
   background: linear-gradient(135deg, #0d6efd, #6610f2);
   padding:20px 15px;
@@ -149,7 +144,7 @@ header {
 .about-text h2 { font-size:0.8rem; font-weight:800; margin-bottom:5px; }
 .about-text p { font-size:0.6rem; line-height:1.4; margin:0; }
 
-/* WhatsApp Button */
+/* ====== WhatsApp ====== */
 .whatsapp-button {
   position:fixed; bottom:20px; right:20px; width:55px; height:55px;
   z-index:1000; border-radius:50%; background:#25D366;
@@ -160,7 +155,7 @@ header {
 .whatsapp-button img { width:32px; height:32px; }
 @keyframes pulse { 0% { transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,0.3); } 50% { transform:scale(1.1); box-shadow:0 6px 18px rgba(0,0,0,0.4); } 100% { transform:scale(1); box-shadow:0 4px 12px rgba(0,0,0,0.3); } }
 
-/* Responsive */
+/* ====== Responsive ====== */
 @media(max-width:768px){
   header { font-size:1rem; }
   .slideshow-container { height:180px; }
@@ -178,28 +173,16 @@ header {
 
 <!-- Slideshow -->
 <div class="slideshow-container">
-  <div class="slide">
-    <a href="#"><img src="slide1.png" alt="Slide1"></a>
-    <a href="#" class="apply-btn">Apply Now</a>
-  </div>
-  <div class="slide">
-    <a href="#"><img src="slide2.png" alt="Slide2"></a>
-    <a href="#" class="apply-btn">Apply Now</a>
-  </div>
-  <div class="slide">
-    <a href="#"><img src="slide3.png" alt="Slide3"></a>
-    <a href="#" class="apply-btn">Apply Now</a>
-  </div>
-  <div class="slide">
-    <a href="#"><img src="slide4.png" alt="All Products"></a>
-    <a href="#" class="apply-btn">All Products</a>
-  </div>
+  <div class="slide"><a href="#"><img src="slide1.png" alt="Slide1"></a><a href="#" class="apply-btn">Apply Now</a></div>
+  <div class="slide"><a href="#"><img src="slide2.png" alt="Slide2"></a><a href="#" class="apply-btn">Apply Now</a></div>
+  <div class="slide"><a href="#"><img src="slide3.png" alt="Slide3"></a><a href="#" class="apply-btn">Apply Now</a></div>
+  <div class="slide"><a href="#"><img src="slide4.png" alt="All Products"></a><a href="#" class="apply-btn">All Products</a></div>
 
-  <!-- Play/Pause Button -->
-  <button class="play-pause-btn" id="playPauseBtn">❚❚</button>
-
-  <!-- Slide Indicators -->
-  <div class="dots-container" id="dotsContainer"></div>
+  <!-- Dots + Play/Pause -->
+  <div class="slideshow-controls">
+    <button class="play-pause-btn" id="playPauseBtn">❚❚</button>
+    <div id="dotsContainer" style="display:flex; gap:8px;"></div>
+  </div>
 </div>
 
 <!-- Categories -->
@@ -217,22 +200,10 @@ header {
 <section class="product-section">
   <h2>Apply for Our Trending Products</h2>
   <div class="product-grid">
-    <a href="https://sales.gromo.in/kw/V-aqzOog-K" target="_blank" class="product-card">
-      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="KIWI Credit Card">
-      <h4>KIWI Credit Card</h4>
-    </a>
-    <a href="https://sales.gromo.in/if/V-aqzOog-K" target="_blank" class="product-card">
-      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="POP Credit Card">
-      <h4>POP Credit Card</h4>
-    </a>
-    <a href="https://sales.gromo.in/yp/V-aqzOog-K" target="_blank" class="product-card">
-      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="IDFC Credit Card">
-      <h4>IDFC Credit Card</h4>
-    </a>
-    <a href="all-products.html" class="product-card">
-      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/list.svg" alt="All Products">
-      <h4>All Products</h4>
-    </a>
+    <a href="#" class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>KIWI Credit Card</h4></a>
+    <a href="#" class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>POP Credit Card</h4></a>
+    <a href="#" class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg"><h4>IDFC Credit Card</h4></a>
+    <a href="#" class="product-card"><img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/list.svg"><h4>All Products</h4></a>
   </div>
 </section>
 
@@ -240,46 +211,35 @@ header {
 <section class="review-section">
   <h2>Our Happy Customers</h2>
   <div class="review-slider" id="reviewSlider">
-    <div class="review-card"><img src="rphoto1.jpeg" alt="User1"><h4>Laxman Roat</h4><p>Excellent service and quick response!</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto2.jpeg" alt="User2"><h4>Goutam Roat</h4><p>Very satisfied with my new credit card.</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto3.png" alt="User3"><h4>Rahul Kalal</h4><p>Loan application process was smooth!</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto4.png" alt="User4"><h4>Anuj Punjot</h4><p>Highly recommend their services!</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto5.png" alt="User5"><h4>Vijay Yadav</h4><p>Great customer support and guidance.</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto6.png" alt="User6"><h4>Rajnihar Kalal</h4><p>Fast approvals and friendly staff!</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto7.png" alt="User7"><h4>Manohar Ahari</h4><p>Very reliable platform for financial products.</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto8.png" alt="User8"><h4>Anjali Yadav</h4><p>Quick and easy process, highly recommend!</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto9.png" alt="User9"><h4>Archna Damor</h4><p>Excellent guidance for all financial needs.</p><div class="stars">★★★★★</div></div>
-    <div class="review-card"><img src="rphoto10.png" alt="User10"><h4>Lokesh Patidar</h4><p>Best platform to apply for loans and credit cards!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto1.jpeg"><h4>Laxman Roat</h4><p>Excellent service and quick response!</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto2.jpeg"><h4>Goutam Roat</h4><p>Very satisfied with my new credit card.</p><div class="stars">★★★★★</div></div>
+    <div class="review-card"><img src="rphoto3.png"><h4>Rahul Kalal</h4><p>Loan application process was smooth!</p><div class="stars">★★★★★</div></div>
   </div>
 </section>
 
-<!-- About Us Section -->
+<!-- About Section -->
 <section class="about-section">
   <div class="about-text">
     <h2>Credit Line – Your Smart Financial Companion</h2>
-    <p>
-      Effortlessly secure the best credit cards, loans, and savings accounts with expert guidance from OnlineHub India. Trusted across Rajasthan for fast, simple, and reliable financial solutions, led by Raj Joshi.
-    </p>
+    <p>Effortlessly secure the best credit cards, loans, and savings accounts with expert guidance from OnlineHub India. Trusted across Rajasthan for fast, simple, and reliable financial solutions, led by Raj Joshi.</p>
   </div>
 </section>
 
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919610841436" class="whatsapp-button" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-</a>
+<!-- WhatsApp -->
+<a href="https://wa.me/919610841436" class="whatsapp-button" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
 
+<!-- ====== Scripts ====== -->
 <script>
-// Slideshow
 let slideIndex=0;
 const slides=document.getElementsByClassName("slide");
-let playing = true;
+let playing=true;
 let slideInterval;
 
-const dotsContainer = document.getElementById('dotsContainer');
+const dotsContainer=document.getElementById('dotsContainer');
 for(let i=0;i<slides.length;i++){
-  const dot = document.createElement('div');
+  const dot=document.createElement('div');
   dot.classList.add('dot');
-  dot.addEventListener('click', ()=>{ slideIndex=i; showSlides(true); });
+  dot.addEventListener('click',()=>{ slideIndex=i; showSlides(true); });
   dotsContainer.appendChild(dot);
 }
 
@@ -296,27 +256,32 @@ function showSlides(skipNext=false){
 }
 showSlides();
 
-// Play/Pause Button
-const playPauseBtn = document.getElementById('playPauseBtn');
-playPauseBtn.addEventListener('click', ()=>{
-  if(playing){
-    clearTimeout(slideInterval);
-    playPauseBtn.textContent = "▶";
-  } else {
-    showSlides(true);
-    playPauseBtn.textContent = "❚❚";
-  }
-  playing = !playing;
+const playPauseBtn=document.getElementById('playPauseBtn');
+playPauseBtn.addEventListener('click',()=>{
+  if(playing){ clearTimeout(slideInterval); playPauseBtn.textContent="▶"; }
+  else{ showSlides(true); playPauseBtn.textContent="❚❚"; }
+  playing=!playing;
 });
 
-// Auto Slide Review Section
-const reviewSlider = document.getElementById('reviewSlider');
-let scrollAmount = 0;
+// Swipe support
+let startX=0, endX=0;
+const slideshowContainer=document.querySelector('.slideshow-container');
+slideshowContainer.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; });
+slideshowContainer.addEventListener('touchmove', e=>{ endX=e.touches[0].clientX; });
+slideshowContainer.addEventListener('touchend', e=>{
+  if(startX-endX>50){ slideIndex++; if(slideIndex>slides.length) slideIndex=1; showSlides(true); }
+  else if(endX-startX>50){ slideIndex--; if(slideIndex<1) slideIndex=slides.length; showSlides(true); }
+  startX=0; endX=0;
+});
+
+// Review auto-scroll
+const reviewSlider=document.getElementById('reviewSlider');
+let scrollAmount=0;
 function autoScrollReviews(){
-  scrollAmount += 220;
-  if(scrollAmount >= reviewSlider.scrollWidth) scrollAmount = 0;
-  reviewSlider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-  setTimeout(autoScrollReviews, 3000);
+  scrollAmount+=220;
+  if(scrollAmount>=reviewSlider.scrollWidth) scrollAmount=0;
+  reviewSlider.scrollTo({ left:scrollAmount, behavior:'smooth' });
+  setTimeout(autoScrollReviews,3000);
 }
 autoScrollReviews();
 </script>

@@ -6,7 +6,6 @@
   <title>Demat Accounts — Credit Line</title>
   <meta name="description" content="Compare and apply for top Demat accounts — features, fees & eligibility. Choose the best Demat account for you." />
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -95,8 +94,15 @@
     .bank-logo{
       width:64px; height:64px; border-radius:10px; background:#f1f3f7;
       display:flex; align-items:center; justify-content:center;
-      font-weight:700; color:var(--muted); font-size:0.85rem;
       flex-shrink:0;
+      overflow: hidden; /* For images */
+    }
+    /* Style for the logo image */
+    .bank-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Ensures the image fits inside the box */
+        padding: 5px; /* Optional: add a little padding around the logo */
     }
 
     .card-body{
@@ -172,25 +178,23 @@
 </head>
 <body>
 
-  <!-- Topbar -->
   <div class="topbar">
     <a class="back" href="index.html" title="Back to home">← Back</a>
     <a class="logo" href="index.html">Credit Line</a>
   </div>
 
   <main class="container">
-    <!-- Heading -->
     <div class="heading">
       <h1>Demat Accounts</h1>
       <p>Compare top Demat accounts — features & easy apply</p>
     </div>
 
-    <!-- Cards Grid -->
     <section class="grid">
 
-      <!-- Upstox -->
       <article class="card">
-        <div class="bank-logo">UP</div>
+        <div class="bank-logo">
+            <img src="c1.png" alt="Upstox Logo">
+        </div>
         <div class="card-body">
           <div class="card-title">
             <h3>Upstox Demat Account</h3>
@@ -206,15 +210,16 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+              <a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Angel One -->
       <article class="card">
-        <div class="bank-logo">AO</div>
+        <div class="bank-logo">
+            <img src="c2.png" alt="Angel One Logo">
+        </div>
         <div class="card-body">
           <div class="card-title">
             <h3>Angel One Demat Account</h3>
@@ -230,15 +235,16 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+              <a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Appreciate -->
       <article class="card">
-        <div class="bank-logo">AD</div>
+        <div class="bank-logo">
+            <img src="c3.png" alt="Appreciate Logo">
+        </div>
         <div class="card-body">
           <div class="card-title">
             <h3>Appreciate Demat Account</h3>
@@ -254,7 +260,85 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
+              <a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      
+      <article class="card">
+        <div class="bank-logo">
+            <img src="c4.png" alt="Angel One New Logo">
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Angel One Demat (New)</h3>
+          </div>
+          <div class="card-meta">100% Digital & Paperless, Easy UPI Funding</div>
+          <div class="tag-row">
+            <div class="tag">Free A/c Opening</div>
+            <div class="tag">Free AMC (1st Yr)</div>
+            <div class="tag">Rs.0 Brokerage*</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Fee: ₹0 Brokerage*</div>
+              <div class="elig">Digital Process, Easy Funding</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://leads.goldenteam.in/?h=cng1a3hBZzFLOUNsL3VpblhhUmVXZz09" target="_blank" rel="noopener">Apply Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="bank-logo">
+            <img src="c5.png" alt="5paisa Logo">
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>5paisa Demat Account</h3>
+          </div>
+          <div class="card-meta">Flat brokerage, one-click order placement</div>
+          <div class="tag-row">
+            <div class="tag">Low Brokerage</div>
+            <div class="tag">Flat ₹20/Order</div>
+            <div class="tag">Live Tracking</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Flat ₹20/Order</div>
+              <div class="elig">100% Digital & Paperless</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://leads.banksathi.com/?h=MXlKRkFPSUt1K1RycCsvY3N4bndEdz09" target="_blank" rel="noopener">Apply Now</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="bank-logo">
+            <img src="c6.png" alt="Bajaj Finserv Securities Logo">
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Bajaj Finserv Securities</h3>
+          </div>
+          <div class="card-meta">Wide product portfolio, Lowest MTF</div>
+          <div class="tag-row">
+            <div class="tag">Free Demat A/c*</div>
+            <div class="tag">Low MTF Rate</div>
+            <div class="tag">Flat ₹20/Order</div>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="fee">Flat ₹20/- per Order</div>
+              <div class="elig">Seamless Trading (Web/App)</div>
+            </div>
+            <div>
+              <a class="apply-btn" href="https://leads.banksathi.com/?h=VzJZYjlKRTRwSUhxVEdUQmFVS2FDdz09" target="_blank" rel="noopener">Apply Now</a>
             </div>
           </div>
         </div>
@@ -263,7 +347,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-cta">
       <p><strong>Need help choosing a card?</strong><br>

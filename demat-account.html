@@ -1,11 +1,11 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Demat Accounts — Credit Line</title>
   <meta name="description" content="Compare and apply for top Demat accounts — features, fees & eligibility. Choose the best Demat account for you." />
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -23,10 +23,8 @@
       background:var(--page-bg);
       color:#222;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-osx-font-smoothing:grayscale;
+      -moz-osx-font-smoothing:grayscale;
     }
-
-    /* Top header / back */
     .topbar{
       background:linear-gradient(90deg,var(--accent),var(--primary));
       color:#fff;
@@ -49,14 +47,11 @@
       color:#fff;
       font-weight:600;
     }
-
     .container{
       max-width:1100px;
       margin:24px auto;
       padding:0 18px 60px;
     }
-
-    /* Heading */
     .heading {
       text-align:center;
       margin-bottom:14px;
@@ -71,14 +66,11 @@
       margin-top:6px;
       font-size:0.95rem;
     }
-
-    /* Cards grid */
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:16px;
     }
-
     .card{
       background:var(--card-bg);
       border-radius:var(--radius);
@@ -88,23 +80,21 @@
       gap:12px;
       align-items:flex-start;
       transition:transform .18s ease,box-shadow .18s ease;
+      position: relative;
     }
     .card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(20,20,40,0.09); }
-
     .bank-logo{
       width:64px; height:64px; border-radius:10px; background:#f1f3f7;
       display:flex; align-items:center; justify-content:center;
       flex-shrink:0;
-      overflow: hidden; /* For images */
+      overflow: hidden;
     }
-    /* Style for the logo image */
     .bank-logo img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* Ensures the image fits inside the box */
-        padding: 5px; /* Optional: add a little padding around the logo */
+        object-fit: contain;
+        padding: 5px;
     }
-
     .card-body{
       flex:1;
       display:flex;
@@ -119,37 +109,34 @@
     }
     .card-title h3{ font-size:1rem; margin:0; font-weight:700; color:#111; }
     .card-meta{ font-size:0.88rem; color:var(--muted); margin-top:4px; }
-
     .tag-row{
       display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;
     }
     .tag{ background:#eef2ff; color:var(--primary); padding:6px 8px; border-radius:8px; font-size:0.8rem; font-weight:600; }
-
     .card-footer{
       margin-top:10px;
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:12px;
+      flex-wrap: wrap;
     }
-    /* Grouping fee and eligibility text */
-    .fee-details {
-        flex: 1; /* Allows this container to take up maximum space */
-    }
+    .fee-details { flex:1; display:flex; flex-direction: column; }
     .fee{ font-size:0.95rem; font-weight:700; color:#111; }
     .elig{ font-size:0.85rem; color:var(--muted); }
-
-    /* Button Styling */
     .apply-btn{
       background:linear-gradient(90deg,var(--accent),var(--primary));
       color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none;
-      font-size: 0.9rem; 
-      min-width: 75px; 
-      text-align: center;
-      flex-shrink: 0; /* Prevents button from shrinking on large screens */
+      font-size: 0.9rem; min-width: 75px; text-align: center; flex-shrink: 0;
     }
-
-    /* Footer */
+    /* Compare checkbox */
+    .compare-checkbox {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        transform: scale(1.2);
+        cursor: pointer;
+    }
     footer{
       margin-top:40px;
       background:#343a40;
@@ -158,13 +145,11 @@
       text-align:center;
       border-radius:12px 12px 0 0;
     }
-
     footer .footer-cta p{
       font-size:0.95rem;
       margin-bottom:10px;
       line-height:1.4;
     }
-
     footer .whatsapp-btn{
       display:inline-block;
       background:#25D366;
@@ -175,40 +160,76 @@
       text-decoration:none;
       transition:transform 0.15s ease;
     }
+    footer .whatsapp-btn:hover{ transform:translateY(-3px); }
 
-    footer .whatsapp-btn:hover{
-      transform:translateY(-3px);
-    }
-
-    /* Mobile specific adjustments (max-width: 520px) */
+    /* Mobile adjustments */
     @media(max-width:520px){
       .bank-logo{ width:56px; height:56px; }
       .card-title h3 { font-size: 0.95rem; }
-      
-      .card-footer {
-          /* Change to a column layout on small screens */
-          flex-direction: column;
-          align-items: stretch; /* Stretch content to full width */
-          gap: 6px; 
-      }
-      
-      .fee-details {
-          /* Make fee and eligibility display together */
-          order: 1; /* Place details above the button */
-      }
-      
-      .fee, .elig { 
-          text-align: left; /* Align text to the left */
-          margin-bottom: 2px;
-      }
-      
-      .apply-btn { 
-          order: 2; /* Place button below the details */
-          padding: 10px; /* Bigger tap target */
-          font-size: 0.95rem; 
-          width: 100%; /* Full width button for mobile */
-          min-width: unset; 
-      }
+      .card-footer { flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: nowrap; }
+      .fee-details { order: 0; }
+      .apply-btn { order: 1; }
+    }
+
+    /* Floating compare button */
+    #compare-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg,var(--accent),var(--primary));
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+      z-index: 200;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    /* Modal styles */
+    #compare-modal {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+      display:none;
+      justify-content:center; align-items:center;
+      z-index:300;
+    }
+    #compare-modal .modal-content {
+      background:#fff;
+      border-radius:12px;
+      padding:20px;
+      max-width:95%;
+      overflow-x:auto;
+      max-height:90%;
+    }
+    #compare-modal .modal-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    #compare-modal .modal-header h3 { margin:0; }
+    #compare-modal .close-btn {
+      cursor:pointer;
+      font-size:1.3rem;
+      font-weight:bold;
+      background:none; border:none;
+    }
+    #compare-modal table {
+      width:100%;
+      border-collapse: collapse;
+      min-width: 400px;
+    }
+    #compare-modal th, #compare-modal td {
+      border:1px solid #ddd;
+      padding:8px;
+      text-align:left;
+    }
+    #compare-modal th {
+      background:#f1f3f7;
     }
   </style>
 </head>
@@ -227,161 +248,90 @@
 
     <section class="grid">
 
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c1.png" alt="Upstox Logo">
-        </div>
+      <article class="card" data-name="Upstox Demat Account" data-fee="Account Fee ₹0" data-brokerage="Zero brokerage on equity delivery, easy trading" data-elig="Eligibility: Age 18+, PAN & KYC">
+        <input type="checkbox" class="compare-checkbox">
+        <div class="bank-logo"><img src="c1.png" alt="Upstox Logo"></div>
         <div class="card-body">
-          <div class="card-title">
-            <h3>Upstox Demat Account</h3>
-          </div>
+          <div class="card-title"><h3>Upstox Demat Account</h3></div>
           <div class="card-meta">Zero brokerage on equity delivery, easy trading</div>
-          <div class="tag-row">
-            <div class="tag">Zero Brokerage</div>
-            <div class="tag">Trading</div>
-          </div>
+          <div class="tag-row"><div class="tag">Zero Brokerage</div><div class="tag">Trading</div></div>
           <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Account Fee ₹0</div>
-              <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
-            </div>
+            <div class="fee-details"><div class="fee">Account Fee ₹0</div><div class="elig">Eligibility: Age 18+, PAN & KYC</div></div>
+            <div><a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply</a></div>
           </div>
         </div>
       </article>
 
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c2.png" alt="Angel One Logo">
-        </div>
+      <article class="card" data-name="Angel One Demat Account" data-fee="Account Fee ₹0" data-brokerage="User-friendly platform, low brokerage" data-elig="Eligibility: Age 18+, PAN & KYC">
+        <input type="checkbox" class="compare-checkbox">
+        <div class="bank-logo"><img src="c2.jpg" alt="Angel One Logo"></div>
         <div class="card-body">
-          <div class="card-title">
-            <h3>Angel One Demat Account</h3>
-          </div>
+          <div class="card-title"><h3>Angel One Demat Account</h3></div>
           <div class="card-meta">User-friendly platform, low brokerage</div>
-          <div class="tag-row">
-            <div class="tag">Low Brokerage</div>
-            <div class="tag">Platform</div>
-          </div>
+          <div class="tag-row"><div class="tag">Low Brokerage</div><div class="tag">Platform</div></div>
           <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Account Fee ₹0</div>
-              <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
-            </div>
+            <div class="fee-details"><div class="fee">Account Fee ₹0</div><div class="elig">Eligibility: Age 18+, PAN & KYC</div></div>
+            <div><a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply</a></div>
           </div>
         </div>
       </article>
 
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c3.png" alt="Appreciate Logo">
-        </div>
+      <article class="card" data-name="Appreciate Demat Account" data-fee="Account Fee ₹0" data-brokerage="Best for beginners, easy account opening" data-elig="Eligibility: Age 18+, PAN & KYC">
+        <input type="checkbox" class="compare-checkbox">
+        <div class="bank-logo"><img src="c3.png" alt="Appreciate Logo"></div>
         <div class="card-body">
-          <div class="card-title">
-            <h3>Appreciate Demat Account</h3>
-          </div>
+          <div class="card-title"><h3>Appreciate Demat Account</h3></div>
           <div class="card-meta">Best for beginners, easy account opening</div>
-          <div class="tag-row">
-            <div class="tag">Beginner Friendly</div>
-            <div class="tag">Easy Opening</div>
-          </div>
+          <div class="tag-row"><div class="tag">Beginner Friendly</div><div class="tag">Easy Opening</div></div>
           <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Account Fee ₹0</div>
-              <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
-            </div>
-          </div>
-        </div>
-      </article>
-      
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c4.png" alt="Angel One New Logo">
-        </div>
-        <div class="card-body">
-          <div class="card-title">
-            <h3>Angel One Demat (New)</h3>
-          </div>
-          <div class="card-meta">100% Digital & Paperless, Easy UPI Funding</div>
-          <div class="tag-row">
-            <div class="tag">Free A/c Opening</div>
-            <div class="tag">Free AMC (1st Yr)</div>
-            <div class="tag">Rs.0 Brokerage*</div>
-          </div>
-          <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Fee: ₹0 Brokerage*</div>
-              <div class="elig">Digital Process, Easy Funding</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://leads.goldenteam.in/?h=cng1a3hBZzFLOUNsL3VpblhhUmVXZz09" target="_blank" rel="noopener">Apply</a>
-            </div>
+            <div class="fee-details"><div class="fee">Account Fee ₹0</div><div class="elig">Eligibility: Age 18+, PAN & KYC</div></div>
+            <div><a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply</a></div>
           </div>
         </div>
       </article>
 
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c5.png" alt="5paisa Logo">
-        </div>
+      <article class="card" data-name="5paisa Demat Account" data-fee="Flat ₹20/Order" data-brokerage="Flat brokerage, one-click order placement" data-elig="100% Digital & Paperless">
+        <input type="checkbox" class="compare-checkbox">
+        <div class="bank-logo"><img src="c5.jfif" alt="5paisa Logo"></div>
         <div class="card-body">
-          <div class="card-title">
-            <h3>5paisa Demat Account</h3>
-          </div>
+          <div class="card-title"><h3>5paisa Demat Account</h3></div>
           <div class="card-meta">Flat brokerage, one-click order placement</div>
-          <div class="tag-row">
-            <div class="tag">Low Brokerage</div>
-            <div class="tag">Flat ₹20/Order</div>
-            <div class="tag">Live Tracking</div>
-          </div>
+          <div class="tag-row"><div class="tag">Low Brokerage</div><div class="tag">Flat ₹20/Order</div><div class="tag">Live Tracking</div></div>
           <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Flat ₹20/Order</div>
-              <div class="elig">100% Digital & Paperless</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://leads.banksathi.com/?h=MXlKRkFPSUt1K1RycCsvY3N4bndEdz09" target="_blank" rel="noopener">Apply</a>
-            </div>
+            <div class="fee-details"><div class="fee">Flat ₹20/Order</div><div class="elig">100% Digital & Paperless</div></div>
+            <div><a class="apply-btn" href="https://leads.banksathi.com/?h=MXlKRkFPSUt1K1RycCsvY3N4bndEdz09" target="_blank" rel="noopener">Apply</a></div>
           </div>
         </div>
       </article>
 
-      <article class="card">
-        <div class="bank-logo">
-            <img src="c6.png" alt="Bajaj Finserv Securities Logo">
-        </div>
+      <article class="card" data-name="Bajaj Finserv Securities" data-fee="Flat ₹20/- per Order" data-brokerage="Wide product portfolio, Lowest MTF" data-elig="Seamless Trading (Web/App)">
+        <input type="checkbox" class="compare-checkbox">
+        <div class="bank-logo"><img src="c6.jfif" alt="Bajaj Finserv Securities Logo"></div>
         <div class="card-body">
-          <div class="card-title">
-            <h3>Bajaj Finserv Securities</h3>
-          </div>
+          <div class="card-title"><h3>Bajaj Finserv Securities</h3></div>
           <div class="card-meta">Wide product portfolio, Lowest MTF</div>
-          <div class="tag-row">
-            <div class="tag">Free Demat A/c*</div>
-            <div class="tag">Low MTF Rate</div>
-            <div class="tag">Flat ₹20/Order</div>
-          </div>
+          <div class="tag-row"><div class="tag">Free Demat A/c*</div><div class="tag">Low MTF Rate</div><div class="tag">Flat ₹20/Order</div></div>
           <div class="card-footer">
-            <div class="fee-details">
-              <div class="fee">Flat ₹20/- per Order</div>
-              <div class="elig">Seamless Trading (Web/App)</div>
-            </div>
-            <div>
-              <a class="apply-btn" href="https://leads.banksathi.com/?h=VzJZYjlKRTRwSUhxVEdUQmFVS2FDdz09" target="_blank" rel="noopener">Apply</a>
-            </div>
+            <div class="fee-details"><div class="fee">Flat ₹20/- per Order</div><div class="elig">Seamless Trading (Web/App)</div></div>
+            <div><a class="apply-btn" href="https://leads.banksathi.com/?h=VzJZYjlKRTRwSUhxVEdUQmFVS2FDdz09" target="_blank" rel="noopener">Apply</a></div>
           </div>
         </div>
       </article>
 
     </section>
   </main>
+
+  <button id="compare-btn">Compare Now</button>
+
+  <div id="compare-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Comparison Table</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <table id="compare-table"></table>
+    </div>
+  </div>
 
   <footer>
     <div class="footer-cta">
@@ -391,6 +341,51 @@
     </div>
     <p style="margin-top:12px; font-size:0.8em; text-align:center;">© 2025 Credit Line</p>
   </footer>
+
+  <script>
+    const compareCheckboxes = document.querySelectorAll('.compare-checkbox');
+    const compareBtn = document.getElementById('compare-btn');
+    const compareModal = document.getElementById('compare-modal');
+    const compareTable = document.getElementById('compare-table');
+    const closeBtn = document.querySelector('.close-btn');
+
+    function updateCompareButton() {
+      const selected = Array.from(compareCheckboxes).filter(cb => cb.checked);
+      compareBtn.style.display = selected.length >= 2 ? 'block' : 'none';
+    }
+
+    compareCheckboxes.forEach(cb => cb.addEventListener('change', updateCompareButton));
+
+    compareBtn.addEventListener('click', () => {
+      const selected = Array.from(compareCheckboxes).filter(cb => cb.checked);
+      if(selected.length < 2) return;
+
+      let header = '<tr><th>Feature</th>';
+      selected.forEach(cb => {
+        const card = cb.closest('.card');
+        header += `<th>${card.dataset.name}</th>`;
+      });
+      header += '</tr>';
+
+      let feeRow = '<tr><td>Fee</td>';
+      selected.forEach(cb => feeRow += `<td>${cb.closest('.card').dataset.fee}</td>`);
+      feeRow += '</tr>';
+
+      let brokerageRow = '<tr><td>Brokerage/Details</td>';
+      selected.forEach(cb => brokerageRow += `<td>${cb.closest('.card').dataset.brokerage}</td>`);
+      brokerageRow += '</tr>';
+
+      let eligRow = '<tr><td>Eligibility</td>';
+      selected.forEach(cb => eligRow += `<td>${cb.closest('.card').dataset.elig}</td>`);
+      eligRow += '</tr>';
+
+      compareTable.innerHTML = header + feeRow + brokerageRow + eligRow;
+      compareModal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => compareModal.style.display = 'none');
+    compareModal.addEventListener('click', e => { if(e.target === compareModal) compareModal.style.display = 'none'; });
+  </script>
 
 </body>
 </html>

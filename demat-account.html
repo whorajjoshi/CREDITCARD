@@ -132,6 +132,10 @@
       align-items:center;
       gap:12px;
     }
+    /* Grouping fee and eligibility text */
+    .fee-details {
+        flex: 1; /* Allows this container to take up maximum space */
+    }
     .fee{ font-size:0.95rem; font-weight:700; color:#111; }
     .elig{ font-size:0.85rem; color:var(--muted); }
 
@@ -139,10 +143,10 @@
     .apply-btn{
       background:linear-gradient(90deg,var(--accent),var(--primary));
       color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none;
-      /* New style for better mobile fit */
       font-size: 0.9rem; 
       min-width: 75px; 
       text-align: center;
+      flex-shrink: 0; /* Prevents button from shrinking on large screens */
     }
 
     /* Footer */
@@ -176,15 +180,35 @@
       transform:translateY(-3px);
     }
 
-    /* Mobile specific adjustments */
+    /* Mobile specific adjustments (max-width: 520px) */
     @media(max-width:520px){
       .bank-logo{ width:56px; height:56px; }
-      /* Reduce font size of card title for small screens */
       .card-title h3 { font-size: 0.95rem; }
-      /* Make card-footer elements wrap or adjust if needed */
-      .card-footer { flex-direction: column; align-items: flex-end; gap: 4px; }
-      .fee, .elig { text-align: right; }
-      .apply-btn { padding: 6px 10px; font-size: 0.85rem; min-width: 70px; }
+      
+      .card-footer {
+          /* Change to a column layout on small screens */
+          flex-direction: column;
+          align-items: stretch; /* Stretch content to full width */
+          gap: 6px; 
+      }
+      
+      .fee-details {
+          /* Make fee and eligibility display together */
+          order: 1; /* Place details above the button */
+      }
+      
+      .fee, .elig { 
+          text-align: left; /* Align text to the left */
+          margin-bottom: 2px;
+      }
+      
+      .apply-btn { 
+          order: 2; /* Place button below the details */
+          padding: 10px; /* Bigger tap target */
+          font-size: 0.95rem; 
+          width: 100%; /* Full width button for mobile */
+          min-width: unset; 
+      }
     }
   </style>
 </head>
@@ -217,7 +241,7 @@
             <div class="tag">Trading</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Account Fee ₹0</div>
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
@@ -242,7 +266,7 @@
             <div class="tag">Platform</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Account Fee ₹0</div>
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
@@ -267,7 +291,7 @@
             <div class="tag">Easy Opening</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Account Fee ₹0</div>
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
@@ -293,7 +317,7 @@
             <div class="tag">Rs.0 Brokerage*</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Fee: ₹0 Brokerage*</div>
               <div class="elig">Digital Process, Easy Funding</div>
             </div>
@@ -319,7 +343,7 @@
             <div class="tag">Live Tracking</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Flat ₹20/Order</div>
               <div class="elig">100% Digital & Paperless</div>
             </div>
@@ -345,7 +369,7 @@
             <div class="tag">Flat ₹20/Order</div>
           </div>
           <div class="card-footer">
-            <div>
+            <div class="fee-details">
               <div class="fee">Flat ₹20/- per Order</div>
               <div class="elig">Seamless Trading (Web/App)</div>
             </div>

@@ -127,6 +127,13 @@ const loans = [
   {name:"mPokket Personal Loan",link:"https://loan.gromo.in/mp/V-aqzOog-K",employment:"student,salaried,self-employed",interest:24,approval:"Good",amount:"upto 20000"}
 ];
 
+// Reverse order image sources as provided
+const imageSources = [
+  "l21.png","l20.png","l19.png","l18.png","l17.png","l16.jfif","l15.jfif","l14.png",
+  "l13.jfif","l12.jfif","l11.png","l10.jfif","l9.jfif","l8.png","l7.jfif","l6.png",
+  "l5.svg","l4.jpg","l3.jpg","l2.png","l1.svg"
+];
+
 const grid = document.getElementById('loanGrid');
 const employmentFilter = document.getElementById('employmentFilter');
 const interestFilter = document.getElementById('interestFilter');
@@ -138,7 +145,7 @@ function renderLoans(loansToRender){
   loansToRender.forEach((loan, idx) => {
     const card = document.createElement('article');
     card.className = 'card';
-    const imgSrc = `l${idx+1}.png`; // Auto numbering images
+    const imgSrc = imageSources[idx] || "l1.svg"; // fallback if more products than images
     card.innerHTML = `
       <div class="bank-logo"><img src="${imgSrc}" alt="${loan.name} Logo"></div>
       <div class="card-body">

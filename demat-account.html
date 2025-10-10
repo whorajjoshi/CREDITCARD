@@ -23,7 +23,7 @@
       background:var(--page-bg);
       color:#222;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      -moz-osx-osx-font-smoothing:grayscale;
     }
 
     /* Top header / back */
@@ -135,9 +135,14 @@
     .fee{ font-size:0.95rem; font-weight:700; color:#111; }
     .elig{ font-size:0.85rem; color:var(--muted); }
 
+    /* Button Styling */
     .apply-btn{
       background:linear-gradient(90deg,var(--accent),var(--primary));
       color:#fff; border:0; padding:8px 12px; border-radius:8px; font-weight:700; text-decoration:none;
+      /* New style for better mobile fit */
+      font-size: 0.9rem; 
+      min-width: 75px; 
+      text-align: center;
     }
 
     /* Footer */
@@ -171,8 +176,15 @@
       transform:translateY(-3px);
     }
 
+    /* Mobile specific adjustments */
     @media(max-width:520px){
-      .bank-logo{ width:56px; height:56px; font-size:0.8rem; }
+      .bank-logo{ width:56px; height:56px; }
+      /* Reduce font size of card title for small screens */
+      .card-title h3 { font-size: 0.95rem; }
+      /* Make card-footer elements wrap or adjust if needed */
+      .card-footer { flex-direction: column; align-items: flex-end; gap: 4px; }
+      .fee, .elig { text-align: right; }
+      .apply-btn { padding: 6px 10px; font-size: 0.85rem; min-width: 70px; }
     }
   </style>
 </head>
@@ -210,7 +222,7 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://sales.gromo.in/up/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>
@@ -235,7 +247,7 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://sales.gromo.in/ao/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>
@@ -260,7 +272,7 @@
               <div class="elig">Eligibility: Age 18+, PAN & KYC</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://sales.gromo.in/aw/V-aqzOog-K" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>
@@ -286,7 +298,7 @@
               <div class="elig">Digital Process, Easy Funding</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://leads.goldenteam.in/?h=cng1a3hBZzFLOUNsL3VpblhhUmVXZz09" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://leads.goldenteam.in/?h=cng1a3hBZzFLOUNsL3VpblhhUmVXZz09" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>
@@ -312,7 +324,7 @@
               <div class="elig">100% Digital & Paperless</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://leads.banksathi.com/?h=MXlKRkFPSUt1K1RycCsvY3N4bndEdz09" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://leads.banksathi.com/?h=MXlKRkFPSUt1K1RycCsvY3N4bndEdz09" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>
@@ -338,7 +350,7 @@
               <div class="elig">Seamless Trading (Web/App)</div>
             </div>
             <div>
-              <a class="apply-btn" href="https://leads.banksathi.com/?h=VzJZYjlKRTRwSUhxVEdUQmFVS2FDdz09" target="_blank" rel="noopener">Apply Now</a>
+              <a class="apply-btn" href="https://leads.banksathi.com/?h=VzJZYjlKRTRwSUhxVEdUQmFVS2FDdz09" target="_blank" rel="noopener">Apply</a>
             </div>
           </div>
         </div>

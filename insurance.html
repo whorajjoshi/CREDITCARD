@@ -40,75 +40,75 @@ body{font-family:'Inter',sans-serif;background:var(--page-bg);color:#222;-webkit
 }
 
 /* Container */
-.container{max-width:1100px;margin:24px auto;padding:0 18px 60px;}
+.container{max-width:800px;margin:24px auto;padding:0 18px 60px;}
 
 /* Heading */
-.heading{text-align:center;margin-bottom:14px;}
-.heading h1{font-size:1.6rem;color:var(--primary);font-weight:800;}
-.heading p{color:var(--muted);margin-top:6px;font-size:0.95rem;}
+.heading{text-align:center;margin-bottom:20px;}
+.heading h1{font-size:1.8rem;color:var(--primary);font-weight:800;}
+.heading p{color:var(--muted);margin-top:10px;font-size:1rem;line-height:1.6;}
 
-/* Categories Buttons */
-.category-grid{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  margin:10px 0 25px 0;
-  padding:0 5px;
-}
-.category-card{
+/* Notice Box */
+.notice-box{
   background:#fff;
-  border-radius:16px;
-  padding:12px 8px;
+  padding:20px;
+  border-radius:var(--radius);
+  box-shadow:0 6px 20px rgba(20,20,40,0.06);
+  margin-top:20px;
   text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  cursor:pointer;
-  transition:0.3s;
+}
+.notice-box strong{color:var(--primary);}
+.notice-box p{color:#333;font-size:1rem;line-height:1.6;}
+
+/* Form */
+.form-card{
+  background:#fff;
+  margin-top:30px;
+  padding:20px;
+  border-radius:var(--radius);
+  box-shadow:0 6px 20px rgba(20,20,40,0.06);
+}
+.form-card h2{
+  text-align:center;
+  color:var(--primary);
+  font-size:1.4rem;
+  margin-bottom:18px;
+  font-weight:800;
+}
+.form-group{
   display:flex;
   flex-direction:column;
-  align-items:center;
-  flex:1;
-  min-width:80px;
-  text-decoration:none;
-  color:#000;
+  gap:6px;
+  margin-bottom:14px;
 }
-.category-card:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,0.15);}
-.category-card img{width:36px;height:36px;margin-bottom:6px;}
-
-/* Product Grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:16px;
+.form-group label{
+  font-size:0.9rem;
+  font-weight:600;
+  color:#444;
 }
-.card{
-  background:var(--card-bg);
-  border-radius:var(--radius);
-  padding:14px;
-  box-shadow:0 6px 20px rgba(20,20,40,0.06);
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  transition:transform .18s ease,box-shadow .18s ease;
+.form-group input, .form-group select{
+  padding:10px;
+  font-size:1rem;
+  border:1px solid #ccc;
+  border-radius:8px;
+  outline:none;
+  transition:border-color 0.2s ease;
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(20,20,40,0.09);}
-.bank-logo{
-  width:64px;height:64px;border-radius:10px;background:#f1f3f7;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;color:var(--muted);font-size:0.85rem;flex-shrink:0;
+.form-group input:focus, .form-group select:focus{
+  border-color:var(--primary);
 }
-.card-body{flex:1;display:flex;flex-direction:column;gap:6px;}
-.card-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
-.card-title h3{font-size:1rem;margin:0;font-weight:700;color:#111;}
-.card-meta{font-size:0.88rem;color:var(--muted);margin-top:4px;}
-.card-footer{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
-.fee{font-size:0.95rem;font-weight:700;color:#111;}
-.elig{font-size:0.85rem;color:var(--muted);}
-.apply-btn{
+.submit-btn{
+  width:100%;
   background:linear-gradient(90deg,var(--accent),var(--primary));
-  color:#fff;border:0;padding:8px 12px;border-radius:8px;font-weight:700;text-decoration:none;
+  color:#fff;
+  padding:12px;
+  font-size:1rem;
+  font-weight:700;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:transform 0.15s ease;
 }
+.submit-btn:hover{transform:translateY(-2px);}
 
 /* Footer */
 footer{margin-top:40px;background:#343a40;color:#fff;padding:20px;text-align:center;border-radius:12px 12px 0 0;}
@@ -118,9 +118,9 @@ footer .whatsapp-btn:hover{transform:translateY(-3px);}
 
 /* Responsive */
 @media(max-width:520px){
-  .bank-logo{width:56px;height:56px;font-size:0.8rem;}
-  .category-grid{flex-wrap:nowrap;} /* ek hi line me scroll allowed */
-  .category-card{min-width:70px;padding:10px 6px;}
+  .heading h1{font-size:1.4rem;}
+  .notice-box p{font-size:0.95rem;}
+  .form-group input, .form-group select{font-size:0.95rem;}
 }
 </style>
 </head>
@@ -135,92 +135,42 @@ footer .whatsapp-btn:hover{transform:translateY(-3px);}
 <main class="container">
   <!-- Heading -->
   <div class="heading">
-    <h1>Insurance Products</h1>
-    <p>Select your category</p>
+    <h1>Insurance Services</h1>
+    <p>🎉 हमारी <strong>Insurance Services</strong> इस Diwali पर लॉन्च होने वाली हैं!<br>  
+    अगर आपको अभी Insurance चाहिए, तो नीचे फॉर्म भरें — हमारे Advisor आपसे संपर्क करेंगे।</p>
   </div>
 
-  <!-- Categories Buttons -->
-  <div class="category-grid">
-    <a href="#" class="category-card">
-      <img src="https://img.icons8.com/color/48/000000/motorcycle.png" alt="Bike Insurance">
-      <span>Bike</span>
-    </a>
-    <a href="#" class="category-card">
-      <img src="https://img.icons8.com/color/48/000000/car--v1.png" alt="Car Insurance">
-      <span>Car</span>
-    </a>
-    <a href="#" class="category-card">
-      <img src="https://img.icons8.com/color/48/000000/life-insurance.png" alt="Life/Term Insurance">
-      <span>Life/Term</span>
-    </a>
-    <a href="#" class="category-card">
-      <img src="https://img.icons8.com/color/48/000000/medical-insurance.png" alt="Health Insurance">
-      <span>Health</span>
-    </a>
+  <!-- Notice -->
+  <div class="notice-box">
+    <p>✅ सभी प्रकार के <strong>Bike, Car, Life/Term और Health Insurance</strong> जल्द ही लाइव होंगे।<br>
+    📲 अभी Insurance लेने के लिए हमारे Advisor से बात करें!</p>
   </div>
 
-  <!-- Product Grid -->
-  <section class="grid">
-    <article class="card">
-      <div class="bank-logo">BI</div>
-      <div class="card-body">
-        <div class="card-title"><h3>BikeSecure Insurance</h3></div>
-        <div class="card-meta">Comprehensive bike coverage & theft protection</div>
-        <div class="card-footer">
-          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
-          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
-        </div>
+  <!-- Lead Form -->
+  <div class="form-card">
+    <h2>Insurance Advisor से बात करें</h2>
+    <form id="insuranceForm">
+      <div class="form-group">
+        <label for="name">पूरा नाम *</label>
+        <input type="text" id="name" required placeholder="अपना नाम लिखें">
       </div>
-    </article>
-
-    <article class="card">
-      <div class="bank-logo">CI</div>
-      <div class="card-body">
-        <div class="card-title"><h3>CarShield Insurance</h3></div>
-        <div class="card-meta">Full car protection including accidents & fire</div>
-        <div class="card-footer">
-          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
-          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
-        </div>
+      <div class="form-group">
+        <label for="phone">मोबाइल नंबर *</label>
+        <input type="tel" id="phone" required placeholder="10 अंकों का नंबर">
       </div>
-    </article>
-
-    <article class="card">
-      <div class="bank-logo">LI</div>
-      <div class="card-body">
-        <div class="card-title"><h3>LifeGuard Insurance</h3></div>
-        <div class="card-meta">Term life cover with flexible premium options</div>
-        <div class="card-footer">
-          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
-          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
-        </div>
+      <div class="form-group">
+        <label for="type">Insurance का प्रकार *</label>
+        <select id="type" required>
+          <option value="">चुनें</option>
+          <option>Bike Insurance</option>
+          <option>Car Insurance</option>
+          <option>Life / Term Insurance</option>
+          <option>Health Insurance</option>
+        </select>
       </div>
-    </article>
-
-    <article class="card">
-      <div class="bank-logo">HI</div>
-      <div class="card-body">
-        <div class="card-title"><h3>HealthPlus Insurance</h3></div>
-        <div class="card-meta">Covers hospitalization & critical illnesses</div>
-        <div class="card-footer">
-          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
-          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="bank-logo">BI</div>
-      <div class="card-body">
-        <div class="card-title"><h3>SuperBike Insurance</h3></div>
-        <div class="card-meta">Premium coverage for sports bikes</div>
-        <div class="card-footer">
-          <div><div class="fee">Joining Fee ₹0</div><div class="elig">Annual Fee ₹0</div></div>
-          <div><a class="apply-btn" href="#" target="_blank">Get Now</a></div>
-        </div>
-      </div>
-    </article>
-  </section>
+      <button type="submit" class="submit-btn">WhatsApp पर Submit करें</button>
+    </form>
+  </div>
 </main>
 
 <!-- Footer -->
@@ -232,6 +182,21 @@ footer .whatsapp-btn:hover{transform:translateY(-3px);}
   </div>
   <p style="margin-top:12px; font-size:0.8em; text-align:center;">© 2025 Credit Line</p>
 </footer>
+
+<script>
+// WhatsApp form submit
+document.getElementById("insuranceForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const type = document.getElementById("type").value.trim();
+
+  const message = `📄 *Insurance Request*\n👤 नाम: ${name}\n📞 मोबाइल: ${phone}\n🛡️ प्रकार: ${type}\n\nकृपया संपर्क करें।`;
+  const whatsappNumber = "919610841436"; // ← yahan aap apna number daal sakte ho
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+});
+</script>
 
 </body>
 </html>

@@ -110,6 +110,67 @@ header {
 .product-card img { width:42px; height:42px; margin-bottom:8px; transition:0.3s; }
 .product-card h4 { font-size:0.85rem; color:#0d6efd; font-weight:600; margin:0; }
 
+/* 📌 Banner Section */
+.banner-section {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 25px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-img {
+  width: 95%;
+  max-width: 1000px;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.02);
+}
+
+/* Apply Now Button */
+.apply-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.apply-btn:hover {
+  background: linear-gradient(90deg, #ee0979, #ff6a00);
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .banner-img {
+    max-height: 180px;
+  }
+  .apply-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
 /* Review Section */
 .review-section {
   background: linear-gradient(135deg,#cce0ff,#99c2ff);
@@ -225,6 +286,14 @@ border-bottom-right-radius: 0;  /* Bottom straight */
     </a>
   </div>
 </section>
+<!-- 🔹 Banner Section Start -->
+<section class="banner-section">
+  <a href="https://your-affiliate-link.com" target="_blank">
+    <img src="b1.jpg" alt="Offer Banner" class="banner-img">
+    <button class="apply-btn">Apply Now</button>
+  </a>
+</section>
+<!-- 🔹 Banner Section End -->
 
 <!-- Review Section -->
 <section class="review-section">

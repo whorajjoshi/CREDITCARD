@@ -6,76 +6,85 @@
 <title>All Products - Credit Line</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter', sans-serif; background:#f2f3f7; color:#333; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter', sans-serif; background:#f7f8fc; color:#333; }
 
-/* Header */
-header {
-  display:flex; align-items:center; gap:10px;
-  position:sticky; top:0; z-index:1000;
-  background: linear-gradient(90deg,#0d6efd,#6610f2);
-  color:#fff; text-align:center;
-  padding:14px 15px; font-weight:700; font-size:1.1rem;
-  box-shadow:0 6px 12px rgba(0,0,0,0.15);
-}
-.back-button {
-  display:flex; align-items:center; justify-content:center;
-  width:32px; height:32px; background:rgba(255,255,255,0.2);
-  border-radius:50%; cursor:pointer; font-weight:bold;
-  transition:0.3s;
-}
-.back-button:hover { background:rgba(255,255,255,0.4); }
+  /* Header */
+  header {
+    display:flex; align-items:center; gap:10px;
+    position:sticky; top:0; z-index:1000;
+    background: linear-gradient(90deg,#0d6efd,#6610f2);
+    color:#fff; padding:14px 15px; font-weight:700; font-size:1.1rem;
+    box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  }
+  .back-button {
+    display:flex; align-items:center; justify-content:center;
+    width:32px; height:32px; background:rgba(255,255,255,0.2);
+    border-radius:50%; cursor:pointer; transition:0.3s;
+  }
+  .back-button:hover { background:rgba(255,255,255,0.4); }
 
-/* Search & Filter */
-.search-filter {
-  max-width:1000px; margin:20px auto; display:flex;
-  gap:10px; padding:0 15px;
-  flex-wrap:wrap;
-}
-.search-filter input, .search-filter select {
-  flex:1; padding:10px 12px; border-radius:10px; border:1px solid #ccc;
-  font-size:0.9rem;
-}
-.search-filter input:focus, .search-filter select:focus { outline:none; border-color:#0d6efd; }
+  /* Search */
+  .search-filter {
+    max-width:600px; margin:15px auto; display:flex; gap:10px;
+    padding:0 15px; flex-wrap:wrap;
+  }
+  .search-filter input, .search-filter select {
+    flex:1; padding:10px 12px; border-radius:12px; border:1px solid #ccc;
+    font-size:0.95rem; background:#fff;
+  }
+  .search-filter input:focus, .search-filter select:focus {
+    outline:none; border-color:#0d6efd;
+  }
 
-/* Product Grid Section */
-.product-grid {
-  display:grid; grid-template-columns:repeat(2,1fr);
-  gap:15px; max-width:1000px; margin:0 auto; padding:0 15px;
-}
-.product-card {
-  background:#fff; border-radius:16px; box-shadow:0 6px 15px rgba(0,0,0,0.08);
-  display:flex; flex-direction:column; align-items:center; text-align:center;
-  padding:25px 10px 15px 10px; position:relative;
-  transition:0.4s; text-decoration:none; color:inherit;
-}
-.product-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
-.product-card img { width:42px; height:42px; margin-bottom:8px; }
-.product-card h4 { font-size:0.85rem; color:#0d6efd; font-weight:600; margin:0 0 8px 0; }
-.get-now {
-  background:#0d6efd; color:#fff; padding:8px 18px;
-  border:none; border-radius:25px; cursor:pointer;
-  font-weight:600; font-size:0.8rem; transition:0.3s;
-  margin-top:8px;
-}
-.get-now:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
-.fees {
-  background:linear-gradient(135deg,#28a745,#20c997);
-  color:#fff; padding:5px 12px; border-radius:20px;
-  font-size:0.8rem; font-weight:700;
-  position:absolute; top:15px; right:15px; z-index:10;
-  box-shadow:0 2px 8px rgba(0,0,0,0.25);
-}
+  /* Product List */
+  .product-grid {
+    display:flex; flex-direction:column;
+    gap:12px; max-width:600px; margin:0 auto; padding:0 15px 20px;
+  }
+  .product-card {
+    background:#fff; border-radius:14px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 15px; box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    transition:0.3s;
+  }
+  .product-card:hover {
+    transform:scale(1.02);
+    box-shadow:0 6px 16px rgba(0,0,0,0.1);
+  }
+  .product-info {
+    display:flex; align-items:center; gap:14px;
+  }
+  .product-card img {
+    width:40px; height:40px;
+  }
+  /* 🎨 Product Name Color */
+  .product-card h4 {
+    font-size:0.95rem; font-weight:600;
+    background: linear-gradient(90deg, #0d6efd, #6610f2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition:0.3s;
+  }
+  .product-card:hover h4 {
+    background: linear-gradient(90deg, #6610f2, #0d6efd);
+  }
 
-/* Responsive */
-@media(max-width:768px){
-  header { font-size:1rem; }
-  .search-filter input, .search-filter select { flex:1 1 100%; }
-  .product-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media(max-width:480px){
-  .product-grid { grid-template-columns:repeat(2,1fr); }
-}
+  .get-now {
+    background:#0d6efd; color:#fff;
+    padding:8px 14px; border:none;
+    border-radius:25px; cursor:pointer;
+    font-weight:600; font-size:0.8rem;
+    transition:0.3s;
+  }
+  .get-now:hover {
+    background:#004aad;
+  }
+
+  @media(max-width:480px){
+    .product-card h4 { font-size:0.9rem; }
+    .get-now { padding:7px 12px; font-size:0.75rem; }
+  }
 </style>
 </head>
 <body>
@@ -97,60 +106,67 @@ header {
 
 <script>
 const products = [
-  { name:'Axis MyZone Credit Card', link:'https://bitli.in/iPoFfxB', category:'Credit Card', fees:'ZERO' },
-  { name:'HSBC Platinum Credit Card', link:'https://bitli.in/vTmc7lo', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Flipkart Credit Card Store', link:'https://bitli.in/py1x8n8', category:'Credit Card', fees:'ZERO' },
-  { name:'SBI Cashback Credit Card', link:'https://bitli.in/ByrcGNl', category:'Credit Card', fees:'ZERO' },
-  { name:'FIRSTmoney vy IDFC Bank', link:'https://bitli.in/b2zwNz1', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Privilege Credit Card', link:'https://bitli.in/9QM1NWM', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Mangus Credit Card Store', link:'https://bitli.in/xa3h0qW', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Indian OIl Credit Card', link:'https://bitli.in/CZB3wN7', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Indian Oil Rupay Credit Card', link:'https://bitli.in/j950Iaf', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Airtel Credit Card', link:'https://bitli.in/NjhH30E', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Lic Signature Credit Card', link:'https://bitli.in/ICfp9be', category:'Credit Card', fees:'ZERO' },
-  { name:'Axis Lic Platinum Credit Card', link:'https://bitli.in/gDF060J', category:'Credit Card', fees:'ZERO' },
-  { name:'IDFC First Power Credit Card', link:'https://bitli.in/vE2ONcZ', category:'Credit Card', fees:'ZERO' },
-  { name:'IDFC First Power Plus Credit Card', link:'https://bitli.in/4i71wJJ', category:'Credit Card', fees:'ZERO' },
-  { name:'IDFC First Credit Card', link:'https://bitli.in/45f5N5T', category:'Credit Card', fees:'ZERO' },
-  { name:'IDFC First Bank Mayura Credit Card', link:'https://bitli.in/fcCnJwp', category:'Credit Card', fees:'ZERO' },
-  { name:'HSBC Live Plus Credit Card', link:'https://bitli.in/vi1XN4i', category:'Credit Card', fees:'ZERO' },
-  { name:'HSBC Travel One Credit Card', link:'https://bitli.in/sbq9rr7', category:'Credit Card', fees:'ZERO' }
+  { name:'Axis MyZone Credit Card', link:'https://bitli.in/iPoFfxB', category:'Credit Card' },
+  { name:'HSBC Platinum Credit Card', link:'https://bitli.in/vTmc7lo', category:'Credit Card' },
+  { name:'Axis Flipkart Credit Card Store', link:'https://bitli.in/py1x8n8', category:'Credit Card' },
+  { name:'SBI Cashback Credit Card', link:'https://bitli.in/ByrcGNl', category:'Credit Card' },
+  { name:'FIRSTmoney vy IDFC Bank', link:'https://bitli.in/b2zwNz1', category:'Credit Card' },
+  { name:'Axis Privilege Credit Card', link:'https://bitli.in/9QM1NWM', category:'Credit Card' },
+  { name:'Axis Mangus Credit Card Store', link:'https://bitli.in/xa3h0qW', category:'Credit Card' },
+  { name:'Axis Indian OIl Credit Card', link:'https://bitli.in/CZB3wN7', category:'Credit Card' },
+  { name:'Axis Indian Oil Rupay Credit Card', link:'https://bitli.in/j950Iaf', category:'Credit Card' },
+  { name:'Axis Airtel Credit Card', link:'https://bitli.in/NjhH30E', category:'Credit Card' },
+  { name:'Axis Lic Signature Credit Card', link:'https://bitli.in/ICfp9be', category:'Credit Card' },
+  { name:'Axis Lic Platinum Credit Card', link:'https://bitli.in/gDF060J', category:'Credit Card' },
+  { name:'IDFC First Power Credit Card', link:'https://bitli.in/vE2ONcZ', category:'Credit Card' },
+  { name:'IDFC First Power Plus Credit Card', link:'https://bitli.in/4i71wJJ', category:'Credit Card' },
+  { name:'IDFC First Credit Card', link:'https://bitli.in/45f5N5T', category:'Credit Card' },
+  { name:'IDFC First Bank Mayura Credit Card', link:'https://bitli.in/fcCnJwp', category:'Credit Card' },
+  { name:'HSBC Live Plus Credit Card', link:'https://bitli.in/vi1XN4i', category:'Credit Card' },
+  { name:'HSBC Travel One Credit Card', link:'https://bitli.in/sbq9rr7', category:'Credit Card' }
 ];
 
 const productGrid = document.getElementById('productGrid');
 
-function displayProducts(list){
-  productGrid.innerHTML='';
-  list.forEach(p=>{
-    const card = document.createElement('div');
-    card.className='product-card';
-    card.innerHTML=`
-      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="${p.name}">
-      <h4>${p.name}</h4>
-      <div class="fees">${p.fees}</div>
-      <a href="${p.link}" target="_blank"><button class="get-now">GET NOW</button></a>
-    `;
-    productGrid.appendChild(card);
-  });
+function createCard(product){
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <div class="product-info">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/credit-card.svg" alt="${product.name}">
+      <h4>${product.name}</h4>
+    </div>
+    <a href="${product.link}" target="_blank">
+      <button class="get-now">Apply</button>
+    </a>
+  `;
+  return card;
 }
-displayProducts(products);
 
-// Search and Filter
+function displayProducts(list){
+  productGrid.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+  list.forEach(p => fragment.appendChild(createCard(p)));
+  productGrid.appendChild(fragment);
+}
+
 const searchInput=document.getElementById('searchInput');
 const categoryFilter=document.getElementById('categoryFilter');
 
 function filterProducts(){
   const searchTerm=searchInput.value.toLowerCase();
   const category=categoryFilter.value;
-  const filtered=products.filter(p=>{
-    return (p.name.toLowerCase().includes(searchTerm)) &&
-           (category==='All' || p.category===category);
-  });
+  const filtered=products.filter(p=>
+    p.name.toLowerCase().includes(searchTerm) &&
+    (category==='All' || p.category===category)
+  );
   displayProducts(filtered);
 }
 
 searchInput.addEventListener('input',filterProducts);
 categoryFilter.addEventListener('change',filterProducts);
+
+displayProducts(products);
 </script>
 
 </body>

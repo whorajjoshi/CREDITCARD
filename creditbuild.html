@@ -11,9 +11,9 @@
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #e8f0ff, #ffffff);
       color: #1e3a8a;
+      padding-bottom: 100px; /* space for fixed button */
     }
 
-    /* Header back button container */
     header {
       position: fixed;
       top: 0;
@@ -51,18 +51,21 @@
       text-align: center;
     }
 
-    /* Premium animated button */
+    /* Glowing Blue Button with Golden Border Animation */
     .glow-btn {
+      position: relative;
       background: linear-gradient(90deg, #2563eb, #1d4ed8, #3b82f6);
       background-size: 300% 300%;
       color: white;
       padding: 14px 28px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-weight: 700;
       text-transform: uppercase;
       animation: glow 3s ease infinite;
       box-shadow: 0 0 18px rgba(37, 99, 235, 0.5);
       display: inline-block;
+      overflow: hidden;
+      transition: 0.3s ease;
     }
 
     @keyframes glow {
@@ -71,25 +74,50 @@
       100% { background-position: 0% 50%; }
     }
 
-    .glow-btn:hover {
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
-      position: relative;
+    /* Golden shine border animation */
+    .glow-btn::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, #ffd700, #fff3b0, #ffcc00, #ffd700);
+      background-size: 300% 300%;
+      z-index: -1;
+      animation: borderShine 3s linear infinite;
+      opacity: 0.9;
     }
 
-    footer {
-      background: #1e3a8a;
-      color: white;
+    @keyframes borderShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+    }
+
+    /* Fixed bottom join button */
+    .fixed-join-btn {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      padding: 14px 0;
       text-align: center;
-      padding: 20px 15px;
-      font-size: 14px;
-      margin-top: 50px;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header with Back Button -->
+  <!-- Header -->
   <header>
     <a href="index.html" class="back-btn">← Back</a>
     <h1>Credit Builder Membership</h1>
@@ -101,28 +129,11 @@
       Quickly Boost Your Credit Score with Credit Builder Membership
     </p>
 
-    <a href="https://wee.bnking.in/c/NjE3Yzk5N" target="_blank" class="glow-btn mb-8">Click Here to Join Membership</a>
-
     <div class="text-left bg-white rounded-2xl shadow-md p-5 border border-gray-100">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Why choose Credit Builder Membership?</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-        <li>💰 Get Credit Builder Loan of ₹500 for eligible members</li>
-        <li>💵 Repay loan in small EMIs of ₹175 over 3 months</li>
-        <li>🛍️ Get an Amazon voucher of ₹175 every time you pay your EMI</li>
-        <li>📈 Watch your Credit Score improve in just 30 days</li>
-        <li>🆓 Get exclusive access to your detailed Credit report, expert consultation & more</li>
-        <li>✅ No income proof required to apply</li>
-      </ul>
 
-      <h2 class="text-xl font-semibold text-blue-800 mt-6 mb-3">Eligibility Criteria</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-        <li>Age Group: 18 - 65 years</li>
-        <li>Customer must have a stable source of income</li>
-        <li>Documents Required: Identity proof & PAN Card</li>
-      </ul>
-
-      <h2 class="text-xl font-semibold text-blue-800 mt-6 mb-3">Highlights</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
+      <!-- Highlights Section moved to top -->
+      <h2 class="text-xl font-semibold text-blue-800 mb-3">Highlights</h2>
+      <ul class="list-disc ml-5 text-gray-700 leading-relaxed mb-6">
         <li>⚡ Build 750+ Credit Score with no deposit required</li>
         <li>📈 Start seeing your credit score improve in just 30 days</li>
         <li>💳 Credit builder loan of ₹500 designed to build your Credit score</li>
@@ -133,17 +144,34 @@
         <li>💡 Spend only ₹99 net per month (after vouchers)</li>
       </ul>
 
-      <div class="text-center mt-8">
-        <a href="https://wee.bnking.in/c/NjE3Yzk5N" target="_blank" class="glow-btn">Click Here to Join Membership</a>
-      </div>
+      <!-- Why Choose Section -->
+      <h2 class="text-xl font-semibold text-blue-800 mb-3">Why choose Credit Builder Membership?</h2>
+      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
+        <li>💰 Get Credit Builder Loan of ₹500 for eligible members</li>
+        <li>💵 Repay loan in small EMIs of ₹175 over 3 months</li>
+        <li>🛍️ Get an Amazon voucher of ₹175 every time you pay your EMI</li>
+        <li>📈 Watch your Credit Score improve in just 30 days</li>
+        <li>🆓 Get exclusive access to your detailed Credit report, expert consultation & more</li>
+        <li>✅ No income proof required to apply</li>
+      </ul>
+
+      <!-- Eligibility -->
+      <h2 class="text-xl font-semibold text-blue-800 mt-6 mb-3">Eligibility Criteria</h2>
+      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
+        <li>Age Group: 18 - 65 years</li>
+        <li>Customer must have a stable source of income</li>
+        <li>Documents Required: Identity proof & PAN Card</li>
+      </ul>
+
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <p class="text-white font-semibold">Credit Line With ZET</p>
-    <p>Bringing Financial Inclusion to Bharat</p>
-  </footer>
+  <!-- Fixed Bottom Join Button -->
+  <div class="fixed-join-btn">
+    <a href="https://wee.bnking.in/c/NjE3Yzk5N" target="_blank" class="glow-btn">
+      Click Here to Join Membership
+    </a>
+  </div>
 
 </body>
 </html>

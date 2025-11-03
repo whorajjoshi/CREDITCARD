@@ -11,7 +11,7 @@
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #e8f0ff, #ffffff);
       color: #1e3a8a;
-      padding-bottom: 100px; /* space for fixed button */
+      padding-bottom: 100px;
     }
 
     header {
@@ -51,7 +51,39 @@
       text-align: center;
     }
 
-    /* Glowing Blue Button with Golden Border Animation */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e7eb;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 15px;
+    }
+
+    /* Stylish Gradient Heading */
+    .fancy-heading {
+      background: linear-gradient(90deg, #2563eb, #9333ea, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      font-size: 1.25rem;
+      text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+      letter-spacing: 0.5px;
+    }
+
     .glow-btn {
       position: relative;
       background: linear-gradient(90deg, #2563eb, #1d4ed8, #3b82f6);
@@ -74,7 +106,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Golden shine border animation */
     .glow-btn::before {
       content: "";
       position: absolute;
@@ -96,12 +127,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    .glow-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
-    }
-
-    /* Fixed bottom join button */
     .fixed-join-btn {
       position: fixed;
       bottom: 0;
@@ -123,15 +148,25 @@
     <h1>Credit Builder Membership</h1>
   </header>
 
-  <!-- Main Content -->
-  <div class="max-w-lg mx-auto mt-28 text-center px-6">
-    <p class="text-gray-700 mb-6">
+  <!-- Section with Heading & Video -->
+  <div class="max-w-lg mx-auto mt-24 px-4 text-center">
+    <p class="fancy-heading mb-4">
       Quickly Boost Your Credit Score with Credit Builder Membership
     </p>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube-nocookie.com/embed/E2LXHw98cLQ?rel=0"
+        title="Credit Builder Membership Video"
+        allow="autoplay; fullscreen; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
 
+  <!-- Main Content -->
+  <div class="max-w-lg mx-auto mt-4 text-center px-6">
     <div class="text-left bg-white rounded-2xl shadow-md p-5 border border-gray-100">
 
-      <!-- Highlights Section moved to top -->
       <h2 class="text-xl font-semibold text-blue-800 mb-3">Highlights</h2>
       <ul class="list-disc ml-5 text-gray-700 leading-relaxed mb-6">
         <li>⚡ Build 750+ Credit Score with no deposit required</li>
@@ -144,7 +179,6 @@
         <li>💡 Spend only ₹99 net per month (after vouchers)</li>
       </ul>
 
-      <!-- Why Choose Section -->
       <h2 class="text-xl font-semibold text-blue-800 mb-3">Why choose Credit Builder Membership?</h2>
       <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
         <li>💰 Get Credit Builder Loan of ₹500 for eligible members</li>
@@ -155,14 +189,12 @@
         <li>✅ No income proof required to apply</li>
       </ul>
 
-      <!-- Eligibility -->
       <h2 class="text-xl font-semibold text-blue-800 mt-6 mb-3">Eligibility Criteria</h2>
       <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
         <li>Age Group: 18 - 65 years</li>
         <li>Customer must have a stable source of income</li>
         <li>Documents Required: Identity proof & PAN Card</li>
       </ul>
-
     </div>
   </div>
 
@@ -175,5 +207,3 @@
 
 </body>
 </html>
-
-

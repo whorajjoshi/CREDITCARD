@@ -1,0 +1,202 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referral Earning Program - Credit Line</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #eaf2ff, #ffffff);
+      color: #0f2167;
+      padding-bottom: 100px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #0f2167, #1e3a8a);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      padding: 10px 15px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+    }
+
+    .back-btn {
+      background: linear-gradient(90deg, #e6b800, #ffd700);
+      color: #0f2167;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: 0 3px 8px rgba(255, 215, 0, 0.4);
+      transition: 0.3s;
+    }
+    .back-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 12px rgba(255, 215, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .fancy-heading {
+      background: linear-gradient(90deg, #1e3a8a, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    .highlight-free {
+      background: linear-gradient(90deg, #facc15, #fbbf24, #f59e0b);
+      color: #1e3a8a;
+      font-weight: 800;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+      animation: shine 2.5s linear infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .feature-box {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(30, 58, 138, 0.1);
+      padding: 18px;
+      transition: all 0.3s ease;
+    }
+    .feature-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.15);
+    }
+    .feature-title {
+      font-weight: 700;
+      color: #0f2167;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .glow-btn {
+      position: relative;
+      background: linear-gradient(90deg, #0f2167, #1e3a8a, #0f2167);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(30, 58, 138, 0.4);
+      border: 2px solid #facc15;
+      animation: borderGlow 3s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes borderGlow {
+      0% { box-shadow: 0 0 10px #facc15; }
+      50% { box-shadow: 0 0 25px #fbbf24; }
+      100% { box-shadow: 0 0 10px #facc15; }
+    }
+
+    .fixed-join-btn {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 0;
+      text-align: center;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="back-btn">← Back</a>
+    <h1>Referral Earning Program</h1>
+  </header>
+
+  <!-- Main Content -->
+  <div class="max-w-md mx-auto mt-20 px-4 text-center">
+    <p class="fancy-heading mb-2 mt-2">💰 रोज़ ₹3000 तक की कमाई करें!</p>
+    <p class="text-gray-700 leading-relaxed mb-3">
+       Wallet App से पेमेंट, रिचार्ज और सोशल नेटवर्किंग करते हुए हर दिन कमाओ असली इनकम!
+    </p>
+
+    <div class="text-center mt-4 mb-5">
+      <span class="highlight-free">🎉 Joining 100% Free – कोई फीस नहीं!</span>
+    </div>
+
+    <!-- Feature 1 -->
+    <div class="feature-box mb-4 text-left">
+      <div class="feature-title">💳 Payments & Recharge</div>
+      <div class="feature-desc">
+        बिजली, गैस, पानी, लैंडलाइन और DTH के सभी बिल कुछ क्लिक में भरो!  
+        हर पेमेंट पर कैशबैक और डिस्काउंट पाएं – एक जगह पर सारे बिल मैनेज करें।
+      </div>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="feature-box mb-4 text-left">
+      <div class="feature-title">💰 Social Saving</div>
+      <div class="feature-desc">
+        जब आप इस App से आस-पास की दुकानों या ऑनलाइन शॉपिंग पर पेमेंट करते हैं,  
+        तो आपको रियल डिस्काउंट और इंस्टेंट कैशबैक मिलता है जिससे आपकी बचत होती है।
+      </div>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="feature-box mb-4 text-left">
+      <div class="feature-title">🌐 Social Network</div>
+      <div class="feature-desc">
+        यह सिर्फ पेमेंट ऐप नहीं, बल्कि एक सोशल प्लेटफॉर्म है जहाँ आप अपनी पसंद के लोगों से जुड़ सकते हैं,  
+        referral से income बढ़ा सकते हैं और नए बिजनेस अवसर खोज सकते हैं।
+      </div>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="feature-box mb-4 text-left">
+      <div class="feature-title">🚀 Financial Freedom</div>
+      <div class="feature-desc">
+        इस App के Referral Program से हर यूज़र को अपना नेटवर्क बढ़ाकर  
+        ₹3000 तक daily earning करने का मौका मिलता है – वह भी बिना किसी investment के।
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Fixed Join Button -->
+  <div class="fixed-join-btn">
+    <a href="https://play.google.com/store/apps/details?id=com.useme.wallet&referrer=UM366997" target="_blank" class="glow-btn">
+      👉  Join Now & Start Earning
+    </a>
+  </div>
+
+</body>
+</html>

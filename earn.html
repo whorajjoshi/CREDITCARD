@@ -1,4 +1,5 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
@@ -193,10 +194,27 @@
 
   <!-- Fixed Join Button -->
   <div class="fixed-join-btn">
-    <a href="https://play.google.com/store/apps/details?id=com.useme.wallet&referrer=UM366997" target="_blank" class="glow-btn">
-      👉  Click Here to Start Earning
+    <a href="https://play.google.com/store/apps/details?id=com.useme.wallet&referrer=UM366997"
+       class="glow-btn"
+       onclick="openExternalLink(event)">
+      👉 Click Here to Start Earning
     </a>
   </div>
+
+  <script>
+    // ✅ External browser में लिंक खोलने वाला function
+    function openExternalLink(event) {
+      event.preventDefault();
+      const url = event.currentTarget.href;
+      try {
+        // मोबाइल पर external browser में खोलने की कोशिश
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (e) {
+        // fallback
+        location.href = url;
+      }
+    }
+  </script>
 
 </body>
 </html>

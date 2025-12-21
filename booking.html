@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Booking – Official Partner</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Popup Box */
+.popup-box {
+    background: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-box h2 {
+    margin-top: 0;
+    color: #003580;
+}
+
+.popup-box p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.popup-box button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #003580;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.popup-box button:hover {
+    background: #00224d;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Affiliate Popup -->
+<div id="affiliatePopup" class="popup-overlay" style="display:none;">
+    <div class="popup-box">
+        <h2>Affiliate Disclosure</h2>
+        <p>
+            We participate in the <strong>Booking.com Affiliate Program</strong>.
+            When you continue, you will be redirected to Booking.com.
+            If you make a booking, we may earn a small commission
+            at no extra cost to you.
+        </p>
+        <p>
+            We are <strong>not directly affiliated</strong> with Booking.com.
+            All trademarks belong to their respective owners.
+        </p>
+        <button onclick="acceptAffiliate()">Accept & Continue</button>
+    </div>
+</div>
+
+<script>
+const affiliateLink = "https://www.booking.com/index.html?aid=YOUR_AFFILIATE_ID";
+
+function acceptAffiliate() {
+    localStorage.setItem("affiliateAccepted", "yes");
+    window.location.href = affiliateLink;
+}
+
+window.onload = function () {
+    const accepted = localStorage.getItem("affiliateAccepted");
+    if (!accepted) {
+        document.getElementById("affiliatePopup").style.display = "flex";
+    } else {
+        window.location.href = affiliateLink;
+    }
+};
+</script>
+
+</body>
+</html>

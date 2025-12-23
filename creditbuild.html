@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Credit Builder Membership - Credit Line</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #e8f0ff, #ffffff);
       color: #1e3a8a;
-      padding-bottom: 100px;
+      padding-bottom: 110px;
     }
 
     header {
@@ -35,29 +37,22 @@
       border-radius: 10px;
       font-weight: 600;
       box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
-      transition: all 0.3s;
-    }
-    .back-btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
+      transition: 0.3s;
     }
 
     header h1 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #1e3a8a;
       flex-grow: 1;
       text-align: center;
     }
 
-    /* Video Section - Clean Embed Look */
     .video-wrapper {
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
       border: 1px solid #e5e7eb;
-      position: relative;
     }
 
     .video-container {
@@ -65,18 +60,14 @@
       width: 100%;
       padding-bottom: 56.25%;
       height: 0;
-      overflow: hidden;
     }
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       border: none;
       border-radius: 20px;
-      filter: brightness(1.1) contrast(1.05);
     }
 
     .fancy-heading {
@@ -85,51 +76,17 @@
       -webkit-text-fill-color: transparent;
       font-weight: 800;
       font-size: 1.25rem;
-      text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
-      letter-spacing: 0.5px;
     }
 
     .glow-btn {
-      position: relative;
       background: linear-gradient(90deg, #2563eb, #1d4ed8, #3b82f6);
-      background-size: 300% 300%;
       color: white;
       padding: 14px 28px;
       border-radius: 14px;
       font-weight: 700;
       text-transform: uppercase;
-      animation: glow 3s ease infinite;
-      box-shadow: 0 0 18px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 0 18px rgba(37,99,235,0.5);
       display: inline-block;
-      overflow: hidden;
-      transition: 0.3s ease;
-    }
-
-    @keyframes glow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .glow-btn::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      border-radius: 16px;
-      background: linear-gradient(120deg, #ffd700, #fff3b0, #ffcc00, #ffd700);
-      background-size: 300% 300%;
-      z-index: -1;
-      animation: borderShine 3s linear infinite;
-      opacity: 0.9;
-    }
-
-    @keyframes borderShine {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     .fixed-join-btn {
@@ -138,79 +95,79 @@
       left: 0;
       width: 100%;
       background: white;
-      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
       padding: 10px 0;
       text-align: center;
       z-index: 100;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <a href="index.html" class="back-btn">← Back</a>
-    <h1>Credit Builder Membership</h1>
-  </header>
+<header>
+  <a href="index.html" class="back-btn">← Back</a>
+  <h1>Credit Builder Membership</h1>
+</header>
 
-  <!-- Video + Heading -->
-  <!-- mt-24 (old) → mt-16 (reduced) -->
-  <div class="max-w-md mx-auto mt-16 px-4 text-center">
-    <p class="fancy-heading mb-3 mt-2">
-      Quickly Boost Your Credit Score with Credit Builder Membership
-    </p>
-    <div class="video-wrapper">
-      <div class="video-container">
-        <iframe 
-          src="https://www.youtube-nocookie.com/embed/E2LXHw98cLQ?rel=0&modestbranding=1&showinfo=0&controls=1&color=white"
-          title="Credit Builder Membership"
-          allow="autoplay; fullscreen; encrypted-media"
-          allowfullscreen>
-        </iframe>
-      </div>
+<div class="max-w-md mx-auto mt-16 px-4 text-center">
+  <p class="fancy-heading mb-3 mt-2">
+    Improve Your Credit Score Responsibly with Credit Builder Membership
+  </p>
+
+  <div class="video-wrapper">
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/E2LXHw98cLQ"
+        title="Credit Builder Membership"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
+</div>
 
-  <!-- Highlights Section -->
-  <div class="max-w-md mx-auto mt-5 text-center px-4">
-    <div class="text-left bg-white rounded-2xl shadow-md p-5 border border-gray-100">
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Highlights</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed mb-6">
-        <li>⚡ Build 750+ Credit Score with no deposit required</li>
-        <li>📈 Start seeing your credit score improve in just 30 days</li>
-        <li>💳 Credit builder loan of ₹500 designed to build your Credit score</li>
-        <li>💵 Pay back small loan EMI of ₹175 over three months</li>
-        <li>🎁 Get ₹175 Amazon voucher every time you pay your EMI on time</li>
-        <li>👨‍🏫 Exclusive access to expert consultation and educational videos</li>
-        <li>🧾 One-time joining fee ₹500, monthly membership ₹99</li>
-        <li>💡 Spend only ₹99 net per month (after vouchers)</li>
-      </ul>
+<div class="max-w-md mx-auto mt-5 px-4">
+  <div class="bg-white rounded-2xl shadow-md p-5 border border-gray-100">
 
-      <h2 class="text-xl font-semibold text-blue-800 mb-3">Why choose Credit Builder Membership?</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-        <li>💰 Get Credit Builder Loan of ₹500 for eligible members</li>
-        <li>💵 Repay loan in small EMIs of ₹175 over 3 months</li>
-        <li>🛍️ Get an Amazon voucher of ₹175 every time you pay your EMI</li>
-        <li>📈 Watch your Credit Score improve in just 30 days</li>
-        <li>🆓 Get exclusive access to your detailed Credit report, expert consultation & more</li>
-        <li>✅ No income proof required to apply</li>
-      </ul>
+    <h2 class="text-xl font-semibold text-blue-800 mb-3">Highlights</h2>
+    <ul class="list-disc ml-5 text-gray-700 leading-relaxed mb-6">
+      <li>⚡ Designed to help improve your credit score over time</li>
+      <li>📈 Credit score improvement depends on repayment behaviour</li>
+      <li>💳 Credit builder loan of ₹500 (subject to eligibility)</li>
+      <li>💵 Repay loan EMI of ₹175 over three months</li>
+      <li>🎁 Amazon voucher of ₹175 on successful EMI payment*</li>
+      <li>👨‍🏫 Educational videos and expert guidance</li>
+      <li>🧾 One-time joining fee ₹500, monthly membership ₹99</li>
+    </ul>
 
-      <h2 class="text-xl font-semibold text-blue-800 mt-6 mb-3">Eligibility Criteria</h2>
-      <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
-        <li>Age Group: 18 - 65 years</li>
-        <li>Customer must have a stable source of income</li>
-        <li>Documents Required: Identity proof & PAN Card</li>
-      </ul>
+    <h2 class="text-xl font-semibold text-blue-800 mb-3">Eligibility</h2>
+    <ul class="list-disc ml-5 text-gray-700 leading-relaxed">
+      <li>Age: 18–65 years</li>
+      <li>Stable income source required</li>
+      <li>PAN & identity proof mandatory</li>
+    </ul>
+
+    <div class="mt-6 text-sm text-gray-600 leading-relaxed">
+      <p><strong>Disclaimer:</strong> This is a credit builder membership program and not a guaranteed loan or credit score improvement service. Results may vary.</p>
+      <p class="mt-2"><strong>Affiliate Disclosure:</strong> This page contains partner links. We may earn a commission.</p>
+      <p class="mt-2"><strong>External Link Notice:</strong> You will be redirected to a third-party website. Their terms apply.</p>
     </div>
+
+  </div>
+</div>
+
+<!-- ✅ FIXED BUTTON (FINAL SAFE VERSION) -->
+<div class="fixed-join-btn">
+  <div class="text-xs text-gray-500 mb-1">
+    
   </div>
 
-  <!-- Fixed Join Button -->
-  <div class="fixed-join-btn">
-    <a href="https://wee.bnking.in/c/NjE3Yzk5N" target="_blank" class="glow-btn">
-     👉 Click Here to Join Membership
-    </a>
-  </div>
+  <a href="https://wee.bnking.in/c/NjE3Yzk5N"
+     target="_blank"
+     class="glow-btn">
+    👉 Proceed to Join Membership
+  </a>
+</div>
 
 </body>
 </html>

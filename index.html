@@ -317,16 +317,17 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 <!-- ===== Modern Affiliate Disclaimer Popup ===== -->
 <div id="affiliatePopup" class="af-overlay">
   <div class="af-card">
-    
-    <div class="af-icon">
-      
-    </div>
+
+    <!-- CLOSE / EXIT (X) BUTTON -->
+    <button id="closePopup" class="af-close">✖</button>
 
     <h2 class="af-title">Financial & Affiliate Disclosure 🔰</h2>
 
     <p class="af-text">
-      This app does not engage in lending, credit decisioning, or financial underwriting activities. All financial products displayed are offered by their respective Banks/NBFCs or regulated partners.
-      When you proceed, you may be redirected to the official application page of the respective institution. We may receive a referral or affiliate commission for successful applications, which does not increase your cost.
+      This app does not engage in lending, credit decisioning, or financial underwriting activities. 
+      All financial products displayed are offered by their respective Banks/NBFCs or regulated partners.
+      When you proceed, you may be redirected to the official application page of the respective institution. 
+      We may receive a referral or affiliate commission for successful applications, which does not increase your cost.
       Please review all eligibility criteria, interest rates, charges, and terms & conditions on the lender’s official website before applying.
     </p>
 
@@ -805,6 +806,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   const popup = document.getElementById("affiliatePopup");
   const check = document.getElementById("agreeBox");
   const accept = document.getElementById("acceptBtn");
+  const decline = document.getElementById("declineBtn");
+  const closeBtn = document.getElementById("closePopup");
 
   accept.disabled = true;
 
@@ -812,23 +815,52 @@ document.addEventListener("DOMContentLoaded",()=>{
     accept.disabled = !check.checked;
   });
 
-  if(!localStorage.getItem("affiliateAccepted")){
+  function showPopup(){
     popup.style.display="flex";
     document.body.style.overflow="hidden";
   }
 
-  accept.onclick=function(){
-    localStorage.setItem("affiliateAccepted","yes");
+  function hidePopup(){
     popup.style.display="none";
     document.body.style.overflow="auto";
   }
 
-  declineBtn.onclick=function(){
+  // ---------- 7 DAYS RULE ----------
+  const lastAccept = localStorage.getItem("affiliateAcceptedDate");
+  const now = Date.now();
+  const sevenDays = 7 * 24 * 60 * 60 * 1000;
+
+  if(!lastAccept || (now - lastAccept) > sevenDays){
+    showPopup();
+  }
+
+  // -------- ACCEPT PRESSED --------
+  accept.onclick=function(){
+    localStorage.setItem("affiliateAcceptedDate", Date.now());
+    hidePopup();
+  }
+
+  // -------- CLOSE (X) PRESSED --------
+  closeBtn.onclick=function(){
+    // user ne accept nahi kiya = save mat karo
+    hidePopup();
+  }
+
+  // -------- DECLINE PRESSED --------
+  decline.onclick=function(){
     window.location.href="https://google.com";
   }
 
+  // -------- EXIT / BACK PRESS --------
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+      showPopup();
+      history.pushState(null, null, location.href);
+  };
+
 });
 </script>
+
 
 
 </body>

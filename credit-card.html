@@ -963,6 +963,77 @@ sortSelect.addEventListener('change', ()=>{
   arr.forEach(c=>grid.appendChild(c));
 });
 </script>
+<!-- Redirect Consent Popup -->
+<div id="redirectPopup" class="af-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:5000; justify-content:center; align-items:center;">
+  <div class="af-card" style="background:#fff; width:90%; max-width:420px; border-radius:16px; padding:16px; box-shadow:0 12px 30px rgba(0,0,0,.25); font-family:'Inter',sans-serif;">
+    
+    <h2 class="af-title" style="text-align:center; color:#0d6efd; margin-bottom:8px;">
+      Redirect & Financial Disclosure 🔰
+    </h2>
 
+    <p class="af-text" style="font-size:14px; text-align:justify; line-height:1.55; margin-bottom:10px;">
+      You are being redirected to a partner / bank website to view or apply for a financial product.
+      We are not a lender and do not make credit or approval decisions. All approvals are done only
+      by the respective Bank/NBFC as per their policies. We may receive an affiliate referral
+      commission — this does not increase your cost.
+    </p>
+
+    <label style="display:flex; gap:8px; font-size:13px; margin-bottom:10px;">
+      <input type="checkbox" id="redirectAgree">
+      I understand and agree to continue
+    </label>
+
+    <div style="display:flex; gap:10px;">
+      <button id="cancelRedirect" style="flex:1; padding:10px; border-radius:10px; border:0; background:#e5e7eb; font-weight:600; cursor:pointer;">
+        Cancel
+      </button>
+
+      <button id="continueRedirect" style="flex:1; padding:10px; border-radius:10px; border:0; background:#0d6efd; color:#fff; font-weight:700; cursor:pointer;">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</div>
+<script>
+let targetURL = null;
+
+// 🎯 केवल उन्हीं buttons पर popup चलेगा जिनकी class = apply-btn है
+document.querySelectorAll(".apply-btn").forEach(btn => {
+
+  btn.addEventListener("click", function(e){
+
+    e.preventDefault();   // direct redirects को रोकता है
+
+    targetURL = this.href;
+
+    document.getElementById("redirectPopup").style.display = "flex";
+  });
+
+});
+
+// ❌ Cancel Button
+document.getElementById("cancelRedirect").addEventListener("click", ()=>{
+
+  document.getElementById("redirectPopup").style.display = "none";
+  document.getElementById("redirectAgree").checked = false;
+
+});
+
+// ✅ Continue Button
+document.getElementById("continueRedirect").addEventListener("click", ()=>{
+
+  if(!document.getElementById("redirectAgree").checked){
+    alert("Please tick the confirmation box before continuing.");
+    return;
+  }
+
+  window.open(targetURL, "_blank");
+
+  document.getElementById("redirectPopup").style.display = "none";
+  document.getElementById("redirectAgree").checked = false;
+
+});
+</script>
 </body>
 </html>

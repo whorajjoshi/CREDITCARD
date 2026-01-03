@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Loan Application Portal</title>
+<title>Loan Information Portal</title>
 
 <!-- Tailwind -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -109,8 +109,28 @@
         <h1 class="text-lg font-bold">📢 Loan Products</h1>
     </div>
 </header>
+<!-- 🔰 Affiliate & Financial Disclosure Bar -->
+<div class="max-w-4x1 mx-auto mt-14 mb-0">
+  <div class="bg-blue-50 border border-blue-200 rounded-1xl p-3 shadow-sm flex gap-2">
+    
+    <div class="flex-shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+      </svg>
+    </div>
 
-<div class="max-w-3xl mx-auto p-4 mt-14">
+    <p class="text-sm text-blue-900 leading-relaxed">
+      We provide financial product information only. We are not a lender and do not make loan approval decisions.
+      When you proceed, you may be redirected to a Bank/NBFC partner website. 
+      We may earn an affiliate commission — at no extra cost to you. 
+      Approval is always as per lender policy.
+    </p>
+
+  </div>
+</div>
+
+<div class="max-w-3xl mx-auto p-4 mt-0">
     <div class="mb-4">
         <label class="font-semibold text-sm text-blue-800">Enter Your CIBIL Score</label>
         <input id="cibilInput" type="number" class="w-full p-2 border rounded-lg mt-1" placeholder="Enter CIBIL (300 - 900)" />

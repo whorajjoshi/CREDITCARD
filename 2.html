@@ -3,48 +3,55 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Loan Affilate page</title>
+<title>Loan Application Portal</title>
+
+<!-- Tailwind -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- ================= POPUP CSS (ADDED) ================= -->
 <style>
+
+/* Overlay — dark blur background */
 .popup-overlay{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.55);
-  backdrop-filter:blur(6px);
-  z-index:5000;
+  backdrop-filter: blur(8px);
   display:none;
   justify-content:center;
   align-items:center;
-  padding:18px;
+  z-index:5000;
 }
 
+/* Card — app-style box */
 .popup-card{
-  background:#ffffff;
-  border-radius:18px;
   width:92%;
   max-width:420px;
+  background:#ffffff;
+  border-radius:18px;
   padding:18px 16px 14px;
-  box-shadow:0 18px 40px rgba(0,0,0,.25);
-  font-family:'Segoe UI', system-ui, sans-serif;
-  border:1px solid #e7ecf4;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  font-family:'Inter',sans-serif;
+  animation:fadeUp .25s ease-out;
 }
 
-.popup-header{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
+/* Smooth animation */
+@keyframes fadeUp{
+  from{ transform:translateY(30px); opacity:0; }
+  to{ transform:translateY(0); opacity:1; }
 }
-.popup-icon{
-  font-size:20px;
-}
-.popup-header h3{
-  margin:0;
-  font-size:15px;
+
+.popup-title{
+  font-size:17px;
+  font-weight:800;
+  text-align:center;
   color:#0d6efd;
+  margin-bottom:8px;
 }
 
+/* Smaller + clean font for content */
 .popup-text{
   font-size:13px;
   line-height:1.55;
@@ -53,43 +60,46 @@
   color:#333;
 }
 
+/* Checkbox line */
 .popup-check{
   display:flex;
-  align-items:center;
   gap:8px;
   font-size:13px;
+  background:#f6f8ff;
+  padding:10px;
+  border-radius:10px;
   margin-bottom:12px;
 }
 
+/* Buttons wrapper */
 .popup-buttons{
   display:flex;
   gap:10px;
 }
-.btn-cancel{
+
+/* Buttons Style */
+.popup-btn{
   flex:1;
-  padding:10px;
+  padding:10px 0;
   border-radius:12px;
-  border:0;
-  background:#eef0f3;
-  font-weight:600;
-  cursor:pointer;
-}
-.btn-apply{
-  flex:1;
-  padding:10px;
-  border-radius:12px;
-  border:0;
-  background:#0d6efd;
-  color:#fff;
+  border:none;
   font-weight:700;
   cursor:pointer;
 }
-.btn-apply:active,.btn-cancel:active{
-  transform:scale(.98);
+
+.popup-cancel{ background:#eef0f5; }
+.popup-continue{ background:#0d6efd; color:#fff; }
+
+.popup-continue:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
+
 </style>
+<!-- ================= END POPUP CSS ================= -->
 
 </head>
+
 <body class="bg-blue-50">
 
 <!-- BACK BUTTON -->
@@ -453,7 +463,64 @@ function closePopup() {
     document.getElementById("popup").classList.add("hidden");
 }
 </script>
+<!-- Redirect Confirmation Popup -->
+<div id="redirectPopup" class="popup-overlay">
+  <div class="popup-card">
 
+    <h2 class="popup-title">Redirect & Financial Disclosure 🔰</h2>
+
+    <p class="popup-text">
+      You are being redirected to a partner / bank website to view or apply
+      for a financial product.  
+      We are not a lender & do not make approval decisions.  
+      Approval is handled only by the respective Bank/NBFC as per their
+      policy and eligibility checks.
+    </p>
+
+    <label class="popup-check">
+      <input type="checkbox" id="confirmRedirect">
+      I understand and agree to continue
+    </label>
+
+    <div class="popup-buttons">
+      <button class="popup-btn popup-cancel" id="cancelRedirect">Cancel</button>
+      <button class="popup-btn popup-continue" id="continueRedirect" disabled>Continue</button>
+    </div>
+
+  </div>
+</div>
+<script>
+let redirectURL = null;
+
+// target ONLY Proceed Securely links
+document.addEventListener("click", function(e){
+
+  const btn = e.target.closest("a.bg-blue-600");
+
+  if(!btn) return;
+
+  e.preventDefault();
+
+  redirectURL = btn.href;
+
+  document.getElementById("redirectPopup").style.display = "flex";
+});
+
+document.getElementById("confirmRedirect").addEventListener("change", function(){
+  document.getElementById("continueRedirect").disabled = !this.checked;
+});
+
+document.getElementById("cancelRedirect").addEventListener("click", ()=>{
+  document.getElementById("redirectPopup").style.display = "none";
+  document.getElementById("confirmRedirect").checked = false;
+  document.getElementById("continueRedirect").disabled = true;
+});
+
+document.getElementById("continueRedirect").addEventListener("click", ()=>{
+  window.open(redirectURL, "_blank");
+  document.getElementById("redirectPopup").style.display = "none";
+});
+</script>
 <footer class="mt-1 py-2 px-4 text-left text-[10px] bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-t-2xl shadow-md">
     <h3 class="text-sm font-semibold tracking-wide mb-1">
      Credit Line • Loan & Card Info Guide
@@ -465,71 +532,6 @@ function closePopup() {
         All products belong to respective institutions.
     </p>
 </footer>
-<!-- ===== Premium App Style Redirect Popup ===== -->
-<div id="redirectPopup" class="popup-overlay">
-
-  <div class="popup-card">
-    
-    <div class="popup-header">
-      <div class="popup-icon">🔰</div>
-      <h3>Redirect & Financial Disclosure</h3>
-    </div>
-
-    <p class="popup-text">
-      You are being redirected to a partner / bank website to view or apply for a
-      financial product. We are not a lender and we do not make approval decisions.
-      All approvals are made solely by the respective Bank/NBFC. We may receive a
-      referral / affiliate commission — this does not increase your cost.
-    </p>
-
-    <label class="popup-check">
-      <input type="checkbox" id="redirectAgree">
-      I have read & agree to continue
-    </label>
-
-    <div class="popup-buttons">
-      <button id="cancelRedirect" class="btn-cancel">Cancel</button>
-      <button id="continueRedirect" class="btn-apply">Continue</button>
-    </div>
-
-  </div>
-
-</div>
-<!-- ===== END Popup ===== -->
-<script>
-let redirectURL = null;
-
-// 🎯 सिर्फ़ apply-btn पर popup
-document.querySelectorAll(".apply-btn").forEach(btn => {
-
-  btn.addEventListener("click", function(e){
-    e.preventDefault();
-    redirectURL = this.href;
-    document.getElementById("redirectPopup").style.display = "flex";
-  });
-
-});
-
-// ❌ Cancel
-document.getElementById("cancelRedirect").addEventListener("click", ()=>{
-  document.getElementById("redirectPopup").style.display = "none";
-  document.getElementById("redirectAgree").checked = false;
-});
-
-// ✅ Continue
-document.getElementById("continueRedirect").addEventListener("click", ()=>{
-
-  if(!document.getElementById("redirectAgree").checked){
-    alert("Please tick the confirmation box before continuing.");
-    return;
-  }
-
-  window.open(redirectURL, "_blank");
-
-  document.getElementById("redirectPopup").style.display = "none";
-  document.getElementById("redirectAgree").checked = false;
-});
-</script>
 
 </body>
 </html>

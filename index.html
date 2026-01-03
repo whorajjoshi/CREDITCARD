@@ -834,32 +834,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     showPopup();
   }
 
-  // -------- ACCEPT PRESSED --------
+  // -------- CONTINUE BUTTON --------
   accept.onclick=function(){
     localStorage.setItem("affiliateAcceptedDate", Date.now());
-    hidePopup();
+    hidePopup();   // popup बंद → user home पर रहेगा
   }
 
-  // -------- CLOSE (X) PRESSED --------
-  closeBtn.onclick=function(){
-    // user ne accept nahi kiya = save mat karo
-    hidePopup();
-  }
-
-  // -------- DECLINE PRESSED --------
+  // -------- EXIT BUTTON --------
   decline.onclick=function(){
-    window.location.href="https://google.com";
+    // user exit दबाए → popup फिर से reopen हो जाए
+    showPopup();
   }
 
-  // -------- EXIT / BACK PRESS --------
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-      showPopup();
-      history.pushState(null, null, location.href);
-  };
+  // -------- CLOSE (X) BUTTON --------
+  closeBtn.onclick=function(){
+    // इसे भी Exit जैसा ही treat कर सकते हैं
+    showPopup();
+  }
 
 });
 </script>
+
 
 
 

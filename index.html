@@ -825,38 +825,41 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.body.style.overflow="auto";
   }
 
-  // ---------- 7 DAYS RULE ----------
+  // ---------- 7 DAYS RULE CHECK ----------
   const lastAccept = localStorage.getItem("affiliateAcceptedDate");
   const now = Date.now();
   const sevenDays = 7 * 24 * 60 * 60 * 1000;
 
   if(!lastAccept || (now - lastAccept) > sevenDays){
-    showPopup();
+      showPopup();
+  } 
+  else {
+      hidePopup();
   }
 
-  // -------- CONTINUE BUTTON --------
+  // ---------- ACCEPT ----------
   accept.onclick=function(){
+    if(!check.checked){
+      alert("Please tick the checkbox first");
+      return;
+    }
+
     localStorage.setItem("affiliateAcceptedDate", Date.now());
-    hidePopup();   // popup बंद → user home पर रहेगा
+    hidePopup();
   }
 
-  // -------- EXIT BUTTON --------
+  // ---------- EXIT ----------
   decline.onclick=function(){
-    // user exit दबाए → popup फिर से reopen हो जाए
+    // बस बंद मत करो — same popup reopen रहने दो
     showPopup();
   }
 
-  // -------- CLOSE (X) BUTTON --------
+  // ---------- CLOSE(X) ----------
   closeBtn.onclick=function(){
-    // इसे भी Exit जैसा ही treat कर सकते हैं
     showPopup();
   }
 
 });
 </script>
-
-
-
-
 </body>
 </html>

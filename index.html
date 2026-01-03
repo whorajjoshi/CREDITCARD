@@ -219,73 +219,132 @@ border-bottom-right-radius: 0;  /* Bottom straight */
   .product-grid { grid-template-columns:repeat(2,1fr); }
   .product-section h2, .review-section h2 { font-size:1.1rem; }
 }
-/* ===== POPUP STYLES ===== */
-#affiliatePopup{
+/* ===== Premium App Style Popup ===== */
+
+.af-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(8,12,30,0.75);
+  backdrop-filter: blur(10px);
   display:flex;
   align-items:center;
   justify-content:center;
   z-index:5000;
 }
 
-.popup-box{
+.af-card{
+  width:88%;
+  max-width:480px;
   background:#ffffff;
-  max-width:430px;
-  padding:18px;
-  border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+  border-radius:18px;
+  padding:20px 18px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  animation:fadeUp .35s ease;
   font-family:'Inter',sans-serif;
 }
 
-.popup-box h3{
-  font-size:1.05rem;
+@keyframes fadeUp{
+  from{ transform:translateY(40px); opacity:0; }
+  to{ transform:translateY(0); opacity:1; }
+}
+
+.af-icon{
+  font-size:2.6rem;
+  text-align:center;
   margin-bottom:8px;
+}
+
+.af-title{
+  text-align:center;
+  font-size:1.2rem;
   color:#0d6efd;
+  margin-bottom:10px;
 }
 
-.popup-box p{
+.af-text{
   font-size:.9rem;
-  margin-bottom:12px;
+  line-height:1.6;
+  color:#333;
+  text-align:justify;         /* 👈 Left + Right Equal */
+  text-justify:inter-word;    /* 👈 Word spacing auto adjust */
+  margin-bottom:14px;
+  word-spacing:1px;
 }
 
-.popup-actions{
+.af-check{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.85rem;
+  background:#f6f8ff;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.af-btns{
   display:flex;
   gap:10px;
-  justify-content:flex-end;
+  margin-top:5px;
 }
 
-.popup-btn{
-  padding:9px 14px;
-  border-radius:8px;
+.af-btn{
+  flex:1;
+  padding:10px;
+  border-radius:12px;
   border:0;
+  font-weight:700;
   cursor:pointer;
-  font-weight:600;
 }
 
-.popup-btn.grey{ background:#e6e6e6; }
+.af-exit{
+  background:#eef0f5;
+  color:#333;
+}
 
-.popup-btn.blue{
-  background:#0d6efd;
-  color:white;
+.af-ok{
+  background:linear-gradient(90deg,#007bff,#5a25ff);
+  color:#fff;
+}
+
+.af-ok:disabled{
+  opacity:.6;
 }
 
 </style>
 </head>
 <body>
-<!-- ===== AFFILIATE DISCLAIMER POPUP ===== -->
-<div id="affiliatePopup" style="display:none;">
-  <div class="popup-box">
-    <h3>Affiliate & Financial Disclaimer</h3>
-    <p>
-      We do not provide loans, banking, or financial services. We only connect users to official bank/NBFC partners. Some links may be affiliate links and we may earn a commission at no extra cost to you. Approval & loan decision is done only by the respective bank/NBFC.
+<!-- ===== Modern Affiliate Disclaimer Popup ===== -->
+<div id="affiliatePopup" class="af-overlay">
+  <div class="af-card">
+    
+    <div class="af-icon">
+      
+    </div>
+
+    <h2 class="af-title">Financial & Affiliate Disclosure 🔰</h2>
+
+    <p class="af-text">
+      This app does not engage in lending, credit decisioning, or financial underwriting activities. All financial products displayed are offered by their respective Banks/NBFCs or regulated partners.
+      When you proceed, you may be redirected to the official application page of the respective institution. We may receive a referral or affiliate commission for successful applications, which does not increase your cost.
+      Please review all eligibility criteria, interest rates, charges, and terms & conditions on the lender’s official website before applying.
     </p>
 
-    <div class="popup-actions">
-      <button id="declineBtn" class="popup-btn grey">Exit</button>
-      <button id="acceptBtn" class="popup-btn blue">I Understand</button>
+    <label class="af-check">
+      <input type="checkbox" id="agreeBox">
+      I have read and understood the above information
+    </label>
+
+    <div class="af-btns">
+      <button class="af-btn af-exit" id="declineBtn">Exit</button>
+      <button class="af-btn af-ok" id="acceptBtn">Continue</button>
     </div>
+
+  </div>
+</div>
+<!-- ===== END POPUP ===== -->
+
+
   </div>
 </div>
 
@@ -743,24 +802,34 @@ setInterval(()=> {
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
 
-  const popup=document.getElementById("affiliatePopup");
+  const popup = document.getElementById("affiliatePopup");
+  const check = document.getElementById("agreeBox");
+  const accept = document.getElementById("acceptBtn");
 
-  // show if not accepted before
+  accept.disabled = true;
+
+  check.addEventListener("change",()=>{
+    accept.disabled = !check.checked;
+  });
+
   if(!localStorage.getItem("affiliateAccepted")){
     popup.style.display="flex";
+    document.body.style.overflow="hidden";
   }
 
-  document.getElementById("acceptBtn").onclick=function(){
+  accept.onclick=function(){
     localStorage.setItem("affiliateAccepted","yes");
     popup.style.display="none";
+    document.body.style.overflow="auto";
   }
 
-  document.getElementById("declineBtn").onclick=function(){
+  declineBtn.onclick=function(){
     window.location.href="https://google.com";
   }
 
 });
 </script>
+
 
 </body>
 </html>

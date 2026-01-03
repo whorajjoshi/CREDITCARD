@@ -487,6 +487,7 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 
 <!-- ====== Styles ====== -->
 <style>
+
 /* container card */
 .loan-section{
   margin:20px auto;
@@ -582,7 +583,86 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 @media (max-width: 820px){
   .loan-card{ flex:0 0 78%; min-width:78%; }
 }
+
+
+/* ================= POPUP CSS START ================= */
+
+.af-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  backdrop-filter: blur(2px);
+}
+
+.af-card{
+  background:#ffffff;
+  width:92%;
+  max-width:430px;
+  border-radius:18px;
+  padding:18px 16px 14px;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+  font-family:system-ui, Arial;
+  animation:pop .25s ease-out;
+}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.af-title{
+  text-align:center;
+  font-size:18px;
+  font-weight:700;
+  margin:4px 0 10px;
+}
+
+.af-text{
+  font-size:14px;
+  line-height:1.55;
+  text-align:justify;
+  margin-bottom:14px;
+  color:#333;
+}
+
+.af-check{
+  display:flex;
+  gap:8px;
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.af-btns{
+  display:flex;
+  gap:10px;
+}
+
+.af-btn{
+  flex:1;
+  padding:10px 0;
+  border-radius:12px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.af-ok{
+  background:#0d6efd;
+  color:#fff;
+}
+
+.af-exit{
+  background:#f1f1f3;
+}
+
+/* ================= POPUP CSS END ================= */
+
 </style>
+
 
 <!-- ====== Script (robust auto-slide + manual pause + modal + apply) ====== -->
 <script>
@@ -870,5 +950,70 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 });
 </script>
+<!-- Redirect Consent Popup -->
+<div id="redirectPopup" class="af-overlay">
+  <div class="af-card">
+
+    <h2 class="af-title">Redirect & Affiliate Notice</h2>
+
+    <p class="af-text">
+      You are being redirected to a partner website to view or apply for a financial product.
+      We are not a lender & do not make approval decisions. Approval is done only by the
+      respective Bank/NBFC as per their policies. We may earn an affiliate commission at
+      no extra cost to you.
+    </p>
+
+    <label class="af-check">
+      <input type="checkbox" id="redirectAgree">
+      I understand and agree to continue
+    </label>
+
+    <div class="af-btns">
+      <button class="af-btn af-exit" id="cancelRedirect">Cancel</button>
+      <button class="af-btn af-ok" id="continueRedirect">Continue</button>
+    </div>
+
+  </div>
+</div>
+<script>
+let targetURL = null;
+
+document.querySelectorAll("a[href]").forEach(link => {
+
+  link.addEventListener("click", function(e){
+
+    let linkHost = new URL(this.href).hostname;
+    let currentHost = window.location.hostname;
+
+    // Show popup ONLY for external links
+    if(linkHost !== currentHost){
+      e.preventDefault();
+      targetURL = this.href;
+      document.getElementById("redirectPopup").style.display = "flex";
+    }
+  });
+
+});
+
+// CANCEL = CLOSE POPUP ONLY
+document.getElementById("cancelRedirect").addEventListener("click", ()=>{
+  document.getElementById("redirectPopup").style.display = "none";
+  document.getElementById("redirectAgree").checked = false;
+});
+
+// CONTINUE = ONLY IF CHECKED
+document.getElementById("continueRedirect").addEventListener("click", ()=>{
+
+  if(!document.getElementById("redirectAgree").checked){
+    alert("Please tick the confirmation box before continuing.");
+    return;
+  }
+
+  window.open(targetURL, "_blank");
+  document.getElementById("redirectPopup").style.display = "none";
+  document.getElementById("redirectAgree").checked = false;
+});
+</script>
+
 </body>
 </html>

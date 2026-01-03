@@ -110,8 +110,8 @@
     </div>
 </header>
 <!-- 🔰 Affiliate & Financial Disclosure Bar -->
-<div class="max-w-4x1 mx-auto mt-14 mb-0">
-  <div class="bg-blue-50 border border-blue-200 rounded-1xl p-3 shadow-sm flex gap-2">
+<div id="disclosureBar" class="max-w-3xl mx-auto px-4 mt-14">
+  <div class="bg-blue-50 border border-blue-200 rounded-2xl p-3 shadow-sm flex gap-3 items-start">
     
     <div class="flex-shrink-0">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -120,12 +120,16 @@
       </svg>
     </div>
 
-    <p class="text-sm text-blue-900 leading-relaxed">
+    <p class="text-sm text-blue-900 leading-relaxed flex-1">
       We provide financial product information only. We are not a lender and do not make loan approval decisions.
-      When you proceed, you may be redirected to a Bank/NBFC partner website. 
+      When you proceed, you may be redirected to a Bank/NBFC partner website.
       We may earn an affiliate commission — at no extra cost to you. 
       Approval is always as per lender policy.
     </p>
+
+    <button id="closeDisclosure" class="text-blue-700 font-bold text-lg px-2">
+      ✕
+    </button>
 
   </div>
 </div>
@@ -541,6 +545,22 @@ document.getElementById("continueRedirect").addEventListener("click", ()=>{
   document.getElementById("redirectPopup").style.display = "none";
 });
 </script>
+<script>
+  const bar = document.getElementById("disclosureBar");
+  const closeBtn = document.getElementById("closeDisclosure");
+
+  // Check if user already closed it
+  if(localStorage.getItem("disclosure_hidden") === "yes"){
+    bar.style.display = "none";
+  }
+
+  // Close on click
+  closeBtn.addEventListener("click", ()=> {
+    bar.style.display = "none";
+    localStorage.setItem("disclosure_hidden","yes");
+  });
+</script>
+
 <footer class="mt-1 py-2 px-4 text-left text-[10px] bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-t-2xl shadow-md">
     <h3 class="text-sm font-semibold tracking-wide mb-1">
      Credit Line • Loan & Card Info Guide

@@ -173,10 +173,39 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="index.html" class="back-btn">← Back</a>
   <h1 class="top-title">Credit Cards</h1>
+</div>
+<div id="proDisclaimer" style="
+  background:#EEF4FF;
+  border-bottom:1px solid #D6E1FF;
+  padding:12px 14px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  line-height:1.5;
+  color:#1e3a8a;
+">
+
+  <p style="margin:0;">
+    <strong>Disclosure :</strong>
+    Some links on this page are affiliate links. If you click and apply,
+    we may earn a commission — at no extra cost to you.
+    All approvals, eligibility and offers are decided solely by the
+    respective Bank/NBFC. Please verify details on the official website
+    before applying.
+  </p>
+
+  <button id="discCloseBtn" style="
+    margin-left:auto;
+    border:none;
+    background:transparent;
+    font-size:16px;
+    cursor:pointer;
+  ">✕</button>
+
 </div>
 
 <main class="container">
@@ -1035,5 +1064,31 @@ document.getElementById("continueRedirect").addEventListener("click", ()=>{
 
 });
 </script>
+<script>
+const bar = document.getElementById("proDisclaimer");
+const closeBtn = document.getElementById("discCloseBtn");
+
+const hiddenTime = localStorage.getItem("proDiscHiddenTime");
+const hours24 = 24 * 60 * 60 * 1000;
+
+// Check if already hidden
+if (hiddenTime) {
+  const diff = Date.now() - Number(hiddenTime);
+
+  if (diff < hours24) {
+    bar.style.display = "none";
+  } else {
+    bar.style.display = "flex";
+    localStorage.removeItem("proDiscHiddenTime");
+  }
+}
+
+// Close Button Action
+closeBtn.addEventListener("click", ()=>{
+  bar.style.display = "none";
+  localStorage.setItem("proDiscHiddenTime", Date.now());
+});
+</script>
+
 </body>
 </html>

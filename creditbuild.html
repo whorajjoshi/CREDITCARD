@@ -13,7 +13,7 @@
       font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg, #e8f0ff, #ffffff);
       color: #1e3a8a;
-      padding-bottom: 110px;
+      padding-bottom: 120px;
     }
 
     header {
@@ -78,17 +78,6 @@
       font-size: 1.0rem;
     }
 
-    .glow-btn {
-      background: linear-gradient(90deg, #2563eb, #1d4ed8, #3b82f6);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      box-shadow: 0 0 18px rgba(37,99,235,0.5);
-      display: inline-block;
-    }
-
     .fixed-join-btn {
       position: fixed;
       bottom: 0;
@@ -96,9 +85,10 @@
       width: 100%;
       background: white;
       box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-      padding: 10px 0;
+      padding: 12px 0 14px;
       text-align: center;
       z-index: 100;
+      border-top:1px solid #e5e7eb;
     }
 
     .safe-box{
@@ -108,6 +98,27 @@
       border-radius:14px;
       font-size:13px;
       color:#334155;
+    }
+
+    .join-cta-btn{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding:14px 20px;
+      background:linear-gradient(90deg,#2563eb,#1d4ed8,#3b82f6);
+      color:white;
+      font-weight:800;
+      border-radius:14px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      box-shadow:0 8px 22px rgba(37,99,235,.35);
+      transition:.25s;
+    }
+
+    .join-cta-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(37,99,235,.45);
+      opacity:.95;
     }
   </style>
 </head>
@@ -174,12 +185,20 @@
 <!-- Fixed Button -->
 <div class="fixed-join-btn">
 
-  <a href="https://wee.bnking.in/c/NjE3Yzk5N"
-     target="_blank"
-     rel="noopener nofollow"
-     class="glow-btn">
-    👉 Proceed to Join on ZET
-  </a>
+  <div class="max-w-md mx-auto px-4">
+
+    <a href="https://wee.bnking.in/c/NjE3Yzk5N"
+       target="_blank"
+       rel="noopener nofollow"
+       class="join-cta-btn">
+       🚀 Proceed to Join on ZET
+    </a>
+
+    <p class="text-xs text-gray-500 mt-2">
+      Secure redirection • Official ZET Platform
+    </p>
+
+  </div>
 
 </div>
 

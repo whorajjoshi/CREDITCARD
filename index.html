@@ -83,7 +83,6 @@ header {
 
 
 
-<!--
 /* Slideshow */
 .slideshow-container {
   position: relative; max-width:1000px; height:220px;
@@ -123,7 +122,6 @@ header {
   background:#ddd; cursor:pointer; transition:0.3s;
 }
 .dot.active { background:#0d6efd; }
--->
 
 /* Categories */
 .categories {
@@ -426,19 +424,19 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 </button>
 
 
-<!-- 
+<!-- Slideshow -->
 <div class="slideshow-container">
   <div class="slide"><a href="https://loan.gromo.in/bf/V-aqzOog-K"><img src="slide1.png" alt="Slide1"></a><a href="https://loan.gromo.in/bf/V-aqzOog-K" class="apply-btn">Proceed Securely</a></div>
   <div class="slide"><a href="https://sales.gromo.in/kw/V-aqzOog-K"><img src="slide2.png" alt="Slide2"></a><a href="https://sales.gromo.in/kw/V-aqzOog-K" class="apply-btn">Proceed Securely</a></div>
   <div class="slide"><a href="personal-loan.html"><img src="slide3.png" alt="Slide3"></a><a href="personal-loan.html" class="apply-btn">Proceed Securely</a></div>
   <div class="slide"><a href="all-products.html"><img src="slide4.png" alt="All Products"></a><a href="all-products.html" class="apply-btn">All Products</a></div>
 
+  <!-- Play/Pause Button -->
   <button class="play-pause-btn" id="playPauseBtn">❚❚</button>
 
+  <!-- Dots -->
   <div class="dots-container" id="dotsContainer"></div>
 </div>
--->
-
 
 <!-- Categories -->
 <section class="categories">
@@ -1093,22 +1091,39 @@ const bar = document.getElementById("proDisclaimer");
 const closeBtn = document.getElementById("discCloseBtn");
 const showBtn = document.getElementById("discShowBtn");
 
-if(localStorage.getItem("proDiscHide") === "yes"){
-  bar.style.display = "none";
-  showBtn.style.display = "inline-block";
+const hiddenTime = localStorage.getItem("proDiscHiddenTime");
+const hours24 = 24 * 60 * 60 * 1000;
+
+// ---- Check if already hidden ----
+if (hiddenTime) {
+  const diff = Date.now() - Number(hiddenTime);
+
+  if (diff < hours24) {
+    // Still inside 24 hrs
+    bar.style.display = "none";
+    showBtn.style.display = "inline-block";
+  } else {
+    // 24 hrs complete — show again
+    bar.style.display = "flex";
+    showBtn.style.display = "none";
+    localStorage.removeItem("proDiscHiddenTime");
+  }
 }
 
+// ---- Close Button ----
 closeBtn.addEventListener("click", ()=>{
   bar.style.display = "none";
   showBtn.style.display = "inline-block";
-  localStorage.setItem("proDiscHide","yes");
+  localStorage.setItem("proDiscHiddenTime", Date.now());
 });
 
+// ---- Show Button ----
 showBtn.addEventListener("click", ()=>{
   bar.style.display = "flex";
   showBtn.style.display = "none";
-  localStorage.setItem("proDiscHide","no");
+  localStorage.removeItem("proDiscHiddenTime");
 });
 </script>
+
 </body>
 </html>

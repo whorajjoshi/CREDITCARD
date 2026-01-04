@@ -1068,10 +1068,10 @@ document.getElementById("continueRedirect").addEventListener("click", ()=>{
 const bar = document.getElementById("proDisclaimer");
 const closeBtn = document.getElementById("discCloseBtn");
 
-const hiddenTime = localStorage.getItem("proDiscHiddenTime");
+const hiddenTime = localStorage.getItem("ccDiscHiddenTime");
 const hours24 = 24 * 60 * 60 * 1000;
 
-// Check if already hidden
+// Check status
 if (hiddenTime) {
   const diff = Date.now() - Number(hiddenTime);
 
@@ -1079,16 +1079,19 @@ if (hiddenTime) {
     bar.style.display = "none";
   } else {
     bar.style.display = "flex";
-    localStorage.removeItem("proDiscHiddenTime");
+    localStorage.removeItem("ccDiscHiddenTime");
   }
+} else {
+  bar.style.display = "flex";
 }
 
-// Close Button Action
-closeBtn.addEventListener("click", ()=>{
+// Close button
+closeBtn.addEventListener("click", ()=> {
   bar.style.display = "none";
-  localStorage.setItem("proDiscHiddenTime", Date.now());
+  localStorage.setItem("ccDiscHiddenTime", Date.now());
 });
 </script>
+
 
 </body>
 </html>

@@ -21,6 +21,77 @@ header {
   font-weight:700;
   box-shadow:0 6px 12px rgba(0,0,0,0.15);
 }
+#proDisclaimer{
+  width:100%;
+  backdrop-filter:blur(12px);
+  background:linear-gradient(135deg, rgba(255,191,0,0.25), rgba(255,152,0,0.25));
+  border:1px solid rgba(255,180,65,0.5);
+  border-radius:16px;
+  padding:14px 16px;
+  margin:10px auto;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  animation:slideIn .6s ease;
+  font-family:'Inter', Arial;
+}
+
+@keyframes slideIn{
+  from{opacity:0; transform:translateY(-10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+#proDisclaimer .disc-left{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:#1a1a1a;
+}
+
+#proDisclaimer .disc-icon{
+  font-size:20px;
+}
+
+#proDisclaimer p{
+  margin:0;
+  font-size:14px;
+  line-height:20px;
+  font-weight:500;
+}
+
+#discCloseBtn{
+  background:#ff9800;
+  color:#fff;
+  border:none;
+  padding:7px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+  transition:.2s;
+}
+
+#discCloseBtn:hover{
+  background:#ff8a00;
+}
+
+#discShowBtn{
+  background:#ff9800;
+  color:#fff;
+  border:none;
+  padding:9px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  transition:.25s;
+  margin:10px;
+}
+
+#discShowBtn:hover{
+  transform:translateY(-1px);
+}
 
 /* Slideshow */
 .slideshow-container {
@@ -350,6 +421,23 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 </div>
 
 <header>All Verified Financial Information In One Place 🔰</header>
+<div id="proDisclaimer">
+  <div class="disc-left">
+    <span class="disc-icon">⚠️</span>
+    <p>
+      <strong>Affiliate Disclosure:</strong> Is website par diye gaye kuch links 
+      affiliate links ho sakte hain. Agar aap in par click karke apply karte hain 
+      toh hume commission mil sakta hai — bina kisi extra cost ke. 
+      Final approval bank/NBFC ke rules ke hisaab se hota hai.
+    </p>
+  </div>
+
+  <button id="discCloseBtn">Close ✖</button>
+</div>
+
+<button id="discShowBtn" style="display:none;">
+  Show Disclaimer 🔽
+</button>
 
 <!-- Slideshow -->
 <div class="slideshow-container">
@@ -1011,6 +1099,28 @@ document.getElementById("continueRedirect").addEventListener("click", ()=>{
   window.open(targetURL, "_blank");
   document.getElementById("redirectPopup").style.display = "none";
   document.getElementById("redirectAgree").checked = false;
+});
+</script>
+<script>
+const bar = document.getElementById("proDisclaimer");
+const closeBtn = document.getElementById("discCloseBtn");
+const showBtn = document.getElementById("discShowBtn");
+
+if(localStorage.getItem("proDiscHide") === "yes"){
+  bar.style.display = "none";
+  showBtn.style.display = "inline-block";
+}
+
+closeBtn.addEventListener("click", ()=>{
+  bar.style.display = "none";
+  showBtn.style.display = "inline-block";
+  localStorage.setItem("proDiscHide","yes");
+});
+
+showBtn.addEventListener("click", ()=>{
+  bar.style.display = "flex";
+  showBtn.style.display = "none";
+  localStorage.setItem("proDiscHide","no");
 });
 </script>
 

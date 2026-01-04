@@ -23,75 +23,65 @@ header {
 }
 #proDisclaimer{
   width:100%;
-  backdrop-filter:blur(12px);
-  background:linear-gradient(135deg, rgba(255,191,0,0.25), rgba(255,152,0,0.25));
-  border:1px solid rgba(255,180,65,0.5);
-  border-radius:16px;
-  padding:14px 16px;
-  margin:10px auto;
-  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  position:relative;
+  background:transparent;   /* PAGE COLOR SAME */
+  border:0px solid rgba(0,0,0,0.15);
+  border-radius:0px;
+  padding:1px 15px;
+  margin:8px auto;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  animation:slideIn .6s ease;
+  animation:fadeIn .5s ease;
   font-family:'Inter', Arial;
 }
 
-@keyframes slideIn{
-  from{opacity:0; transform:translateY(-10px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-#proDisclaimer .disc-left{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  color:#1a1a1a;
-}
-
-#proDisclaimer .disc-icon{
-  font-size:20px;
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
 }
 
 #proDisclaimer p{
   margin:0;
   font-size:14px;
   line-height:20px;
+  color:#222;
   font-weight:500;
 }
 
+/* Minimal clean cross button — top-right */
 #discCloseBtn{
-  background:#ff9800;
-  color:#fff;
+  position:absolute;
+  top:8px;
+  right:10px;
+  background:transparent;
   border:none;
-  padding:7px 12px;
-  border-radius:10px;
+  color:#444;
+  font-size:14px;
   cursor:pointer;
-  font-size:13px;
-  transition:.2s;
+  padding:3px;
 }
 
 #discCloseBtn:hover{
-  background:#ff8a00;
+  color:#000;
 }
 
+/* Minimal Show button */
 #discShowBtn{
-  background:#ff9800;
-  color:#fff;
-  border:none;
-  padding:9px 14px;
-  border-radius:12px;
+  background:transparent;
+  border:1px solid rgba(0,0,0,0.25);
+  padding:6px 14px;
+  border-radius:10px;
   cursor:pointer;
-  font-size:14px;
-  font-weight:600;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  transition:.25s;
-  margin:10px;
+  font-size:13px;
+  color:#222;
 }
 
 #discShowBtn:hover{
-  transform:translateY(-1px);
+  background:rgba(0,0,0,0.03);
 }
+
+
 
 /* Slideshow */
 .slideshow-container {
@@ -422,22 +412,21 @@ border-bottom-right-radius: 0;  /* Bottom straight */
 
 <header>All Verified Financial Information In One Place 🔰</header>
 <div id="proDisclaimer">
-  <div class="disc-left">
-    <span class="disc-icon">⚠️</span>
-    <p>
-      <strong>Affiliate Disclosure:</strong> Is website par diye gaye kuch links 
-      affiliate links ho sakte hain. Agar aap in par click karke apply karte hain 
-      toh hume commission mil sakta hai — bina kisi extra cost ke. 
-      Final approval bank/NBFC ke rules ke hisaab se hota hai.
-    </p>
-  </div>
+  <p>
+    <strong>Disclosure :</strong> Some of the links on this website may be affiliate links. 
+    This means we may earn a commission if you click on them and make a purchase or submit an 
+    application — at no additional cost to you. We do not guarantee approval or offers. All loan 
+    and credit-card approvals are subject to the sole discretion of the respective banks/NBFCs and 
+    their policies.
+  </p>
 
-  <button id="discCloseBtn">Close ✖</button>
+  <button id="discCloseBtn">✕</button>
 </div>
 
 <button id="discShowBtn" style="display:none;">
-  Show Disclaimer 🔽
+  Show Disclosure
 </button>
+
 
 <!-- Slideshow -->
 <div class="slideshow-container">
@@ -1123,6 +1112,5 @@ showBtn.addEventListener("click", ()=>{
   localStorage.setItem("proDiscHide","no");
 });
 </script>
-
 </body>
 </html>

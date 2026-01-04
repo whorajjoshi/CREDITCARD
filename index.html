@@ -420,11 +420,6 @@ border-bottom-right-radius: 0;  /* Bottom straight */
   <button id="discCloseBtn">✕</button>
 </div>
 
-<button id="discShowBtn" style="display:none;">
-  Show Disclosure
-</button>
-
-
 <!-- Slideshow -->
 <!--<div class="slideshow-container">
   <div class="slide"><a href="https://loan.gromo.in/bf/V-aqzOog-K"><img src="slide1.png" alt="Slide1"></a><a href="https://loan.gromo.in/bf/V-aqzOog-K" class="apply-btn">Proceed Securely</a></div>
@@ -1091,41 +1086,28 @@ document.getElementById("continueRedirect").addEventListener("click", ()=>{
 <script>
 const bar = document.getElementById("proDisclaimer");
 const closeBtn = document.getElementById("discCloseBtn");
-const showBtn = document.getElementById("discShowBtn");
 
 const hiddenTime = localStorage.getItem("proDiscHiddenTime");
 const hours24 = 24 * 60 * 60 * 1000;
 
-// ---- Check if already hidden ----
+// Page load पर check करो
 if (hiddenTime) {
   const diff = Date.now() - Number(hiddenTime);
 
   if (diff < hours24) {
-    // Still inside 24 hrs
     bar.style.display = "none";
-    showBtn.style.display = "inline-block";
   } else {
-    // 24 hrs complete — show again
-    bar.style.display = "flex";
-    showBtn.style.display = "none";
     localStorage.removeItem("proDiscHiddenTime");
   }
 }
 
-// ---- Close Button ----
+// Close दबाने पर
 closeBtn.addEventListener("click", ()=>{
   bar.style.display = "none";
-  showBtn.style.display = "inline-block";
   localStorage.setItem("proDiscHiddenTime", Date.now());
 });
-
-// ---- Show Button ----
-showBtn.addEventListener("click", ()=>{
-  bar.style.display = "flex";
-  showBtn.style.display = "none";
-  localStorage.removeItem("proDiscHiddenTime");
-});
 </script>
+
 
 </body>
 </html>
